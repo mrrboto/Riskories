@@ -1,3 +1,6 @@
+<?php
+  include('admin_auth.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
