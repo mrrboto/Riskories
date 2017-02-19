@@ -24,11 +24,11 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 			if ($isAdmin == 0)
 			{
 				//header('Location: /Riskories/nav/nav.html');
-				header('Location: /Riskories/nav/profile.php');
+				header('Location: /Riskories/user/profile.php');
 			}
 			if ($isAdmin == 1)
 			{
-				header('Location: /Riskories/nav/nav.html');
+				header('Location: /Riskories/admin/nav.html');
 				//header('Location: /Riskories/nav/profile.php');
 			}
 
@@ -41,31 +41,25 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
     mysqli_close($db);
 }
 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Riskories Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!-- All the files that are required -->
 <link rel="stylesheet" href="log_style.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <!-- Where all the magic happens -->
 <!-- LOGIN FORM -->
-<div class="text-center" style="padding:50px 0">
+<div class="text-center" style="padding:20px 0">
 	<div class="logo">login</div>
 	<!-- Main Form -->
 	<div class="login-form-1">
@@ -81,25 +75,33 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 						<label for="lg_password" class="sr-only">Password</label>
 						<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
 					</div>
-					<div class="form-group login-group-checkbox">
-						<!--<input type="checkbox" id="lg_remember" name="lg_remember">
-						<label for="lg_remember">remember</label>-->
+					<div class="form-group login-group-text">
+                        <a class="link" href="login.php?page=2">Register</a>
+                        or log in as
+                        <a class="link" href="../guest/guest.php">Guest</a>
 					</div>
 				</div>
 				<button type="submit" class="login-button" value="Login"><i class="fa fa-chevron-right"></i></button>
-			</div>
-			<div class="etc-login-form">
-				<!--<p>forgot your password? <a href="#">click here</a></p>
-				<p>new user? <a href="#">create new account</a></p>-->
 			</div>
 		</form>
 	</div>
 	<!-- end:Main Form -->
 </div>
+</div>
+<div>
 <?php
-//readfile('nav.html');
 
-echo "<p>$message</p>";
+    if(isset($_GET['page']))
+    {
+
+        if ($_GET['page'] == 2)
+        {
+            include('reg.php');
+			//echo '<iframe src="reg.php" height="300" width="500" frameborder="0" scrolling="no"></iframe>';
+			echo "<p>$message</p>";
+        }
+    }
+
 ?>
 </div>
 </body>

@@ -4,7 +4,7 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>PHP</title>
+    <title>Admin Portal - Select</title>
 </head>
 <body>
 

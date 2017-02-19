@@ -1,7 +1,12 @@
 <?php
-  include('admin_auth.php');
-?>
-<!DOCTYPE html>
+   require 'admin_auth.php';
+
+  if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
+    $id = $_GET['id'];
+  } else {
+    header('Location: select.php');
+  }
+?><!DOCTYPE html>
 <html>
 <head>
     <title>PHP</title>
@@ -11,7 +16,6 @@
   readfile('nav.html');
 
   $name = '';
-  $password = '';
   $gender = '';
   $color = '';
 
@@ -21,11 +25,6 @@
         $ok = false;
     } else {
         $name = $_POST['name'];
-    }
-    if (!isset($_POST['password']) || $_POST['password'] === '') {
-        $ok = false;
-    } else {
-        $password = $_POST['password'];
     }
     if (!isset($_POST['gender']) || $_POST['gender'] === '') {
         $ok = false;
@@ -39,27 +38,34 @@
     }
 
     if ($ok) {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-
         // add database code here
         $db = mysqli_connect('localhost', 'root', '', 'riskories');
-        $sql = sprintf("INSERT INTO users (name, password, gender, color) VALUES (
-          '%s', '%s', '%s', '%s'
-        )", mysqli_real_escape_string($db, $name),
-            mysqli_real_escape_string($db, $hash),
-            mysqli_real_escape_string($db, $gender),
-            mysqli_real_escape_string($db, $color));
+        $sql = sprintf("UPDATE users SET name='%s', gender='%s', color='%s'
+          WHERE id=%s",
+          mysqli_real_escape_string($db, $name),
+          mysqli_real_escape_string($db, $gender),
+          mysqli_real_escape_string($db, $color),
+          $id);
         mysqli_query($db, $sql);
+        echo '<p>User updated.</p>';
         mysqli_close($db);
-        echo '<p>User added.</p>';
     }
+  } else {
+      $db = mysqli_connect('localhost', 'root', '', 'riskories');
+      $sql = sprintf('SELECT * FROM users WHERE id=%s', $id);
+      $result = mysqli_query($db, $sql);
+      foreach ($result as $row) {
+          $name = $row['name'];
+          $gender = $row['gender'];
+          $color = $row['color'];
+      }
+      mysqli_close($db);
   }
 ?>
 <form method="post" action="">
     User name: <input type="text" name="name" value="<?php
         echo htmlspecialchars($name);
     ?>"><br>
-    Password: <input type="password" name="password"><br>
     Gender:
         <input type="radio" name="gender" value="f"<?php
             if ($gender === 'f') {
