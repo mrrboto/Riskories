@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2017 at 01:05 AM
+-- Generation Time: Feb 21, 2017 at 10:51 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `riskories`
 --
-CREATE DATABASE IF NOT EXISTS `riskories` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `riskories`;
 
 -- --------------------------------------------------------
 
@@ -36,17 +34,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `color` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `isAdmin` bit(1) NOT NULL DEFAULT b'0',
+  `realName` varchar(32) NOT NULL,
+  `soStatus` varchar(11) NOT NULL,
+  `soName` varchar(32) NOT NULL,
+  `age` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `gender`, `color`, `password`, `isAdmin`) VALUES
-(5, 'test', 'm', '#f00', '$2y$10$QhPcp6O65dfGw7U7TDMwAOpp1ckfSDUWwgNN8eTu524GRk6YyZ4M6', b'0'),
-(4, 'test', 'f', '#0f0', '$2y$10$F8dIXbezLs8n7/D53kaT6ucnNCbw6nWJ/lJq9zrP4SToVFJfrs9zu', b'0'),
-(6, 'admin', 'm', '#f00', '$2y$10$JdJIBystbrKhHqw4jiKGP.IPflKiRQtzlt2Uyj./4L0cYpLmRzTke', b'1');
+INSERT INTO `users` (`id`, `name`, `gender`, `color`, `password`, `isAdmin`, `realName`, `soStatus`, `soName`, `age`) VALUES
+(6, 'admin', 'm', '#f00', '$2y$10$JdJIBystbrKhHqw4jiKGP.IPflKiRQtzlt2Uyj./4L0cYpLmRzTke', b'1', '', '0', '', 0),
+(9, 'test1', '', '#f00', '$2y$10$ikRbtyl8vxQ/5hXVp0m9Y.KbtakBhx8pFV8pejoo6f38672nhUmke', b'0', 'Jimmy', 'married', 'Robby', 68);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
