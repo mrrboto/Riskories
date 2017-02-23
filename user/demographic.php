@@ -60,21 +60,34 @@
 				"UPDATE users 
 				SET `realName`='%s'
 				WHERE name='%s'",
-				//need to escape this
-				$_POST['realName'],
+				mysqli_real_escape_string($db,$_POST['realName']),
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
 			}
 			if($okSOS){
+				//check if soName needs to be cleared
+				$clar = 0;
+				if($_POST['soStatus'] === 'single'){
+					$clar=1;
+				}
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
 				"UPDATE users 
 				SET `soStatus`='%s'
 				WHERE name='%s'",
-				//need to escape this
 				$_POST['soStatus'],
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
+				
+				if($clar==1){
+					$sql = sprintf(
+					"UPDATE users 
+					SET `soName`='%s'
+					WHERE name='%s'",
+					mysqli_real_escape_string($db,''),
+					$_SESSION['user']);
+					$query = mysqli_query($db, $sql);
+				}
 			}
 			if($okSON){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
@@ -82,8 +95,7 @@
 				"UPDATE users 
 				SET `soName`='%s'
 				WHERE name='%s'",
-				//need to escape this
-				$_POST['soName'],
+				mysqli_real_escape_string($db,$_POST['soName']),
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
 			}
@@ -93,8 +105,7 @@
 				"UPDATE users 
 				SET `gender`='%s'
 				WHERE name='%s'",
-				//need to escape this
-				$_POST['realName'],
+				mysqli_real_escape_string($db,$_POST['gender']),
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
 			}
@@ -104,12 +115,17 @@
 				"UPDATE users 
 				SET `age`= %s
 				WHERE name='%s'",
-				//need to escape this
-				$_POST['age'],
+				mysqli_real_escape_string($db,$_POST['age']),
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
 			}
 		}
+		?>
+		<script>
+		//PATCHWERK FIX THAT ONLY WORKS FOR REGULAR USER
+		window.location.href = "profile.php"
+		</script>
+		<?php
 	}
 ?>
 <div class="text-center" style="padding:10px 0">
@@ -164,17 +180,6 @@
 		</div>
     </form>
 </div>
-<?php
-	if(isset($_GET['page'])) {
-		if ($_GET['page'] === 'ic') {
-?>
-				<script>
-				alert("it works")
-				</script>
-<?php
-		}	
-	}
-?>
 </div>
 </body>
 </html>
