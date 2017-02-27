@@ -1,0 +1,19 @@
+</div>
+<div id="leftcol">
+	<h2>Navigation</h2>
+	<p style="margin: 0;">
+		<br>
+		&raquo;<a href="index.php">Start over!</a><br />
+		<br />
+		
+        <?php 
+		if ($db) {
+			$total_rooms = db_single(mysql_query("SELECT count(*) as total FROM choose_rooms"));
+			echo "Total Rooms: ".$total_rooms['total'];
+			}
+		?>
+			
+	</p>
+</div>
+</body>
+</html>
