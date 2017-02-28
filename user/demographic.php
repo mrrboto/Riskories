@@ -120,12 +120,7 @@
 				$query = mysqli_query($db, $sql);
 			}
 		}
-		?>
-		<script>
-		//PATCHWERK FIX THAT ONLY WORKS FOR REGULAR USER
-		window.location.href = "profile.php"
-		</script>
-		<?php
+		header("Location: profile.php");
 	}
 ?>
 <div class="text-center" style="padding:10px 0">
