@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+<?php
+if ($db) {
+	$settings = db_single(mysql_query("SELECT * FROM choose_settings ORDER BY 'id' DESC;"));
+	//print_r($settings); //DEBUGGING
+}
+?>
+<title><?php echo $db ? $settings['title'] : "An epic adventure!"; ?></title>
+<link rel="stylesheet" type="text/css" media="screen" href="choose.css" />
+<?php 
+if ($db) {
+	if ($settings['enable_analytics'] == 1) {
+		echo $settings['analytics_blurb'];
+	}
+}
+?>
+</head>
+
+<body id="body">
+<div class="content">
+
