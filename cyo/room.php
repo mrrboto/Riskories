@@ -1,5 +1,6 @@
 <?php
-	include('config.php');
+	//session_start();
+    include('config.php');
 	include('db.php');
 
 	if (isset($_POST['email'])){
@@ -58,6 +59,16 @@
 
 	$room = db_single(mysql_query("SELECT * FROM choose_rooms WHERE id=$room_id"));
 
+
+    //INSERT KEY SWITCH LOGIC HERE
+
+    include('keySwap.php');
+
+    //----------------------------
+
+
+
+
 	if (!$room['id']){
 		print "error: room $room_id not found";
 		include('footer.txt');
@@ -83,7 +94,7 @@
         header( "Refresh:5; url=../login/login.php", true, 303);
     //-------------------------------------------------------------------------------///
 	}else{
-		print defaulty(nl2br(htmlentities(trim($room['blurb']))))."<br />\n";
+		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
 		echo "<br />\n";
 		echo "<b>What will you do?</b><br />\n";
 		echo "<div class=\"choices\">\n";

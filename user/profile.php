@@ -12,12 +12,18 @@ include('user_auth.php');
 <div id="profile">
 	<b id="welcome">Welcome : <i><?php echo $_SESSION['user']; ?></i></b>
 	<b id="logout"><a href="../login/logout.php">Log Out</a></b>
+    <br>
+    <br>
+    <b id="welcome">Name : <i><?php echo $_SESSION['name']; ?></i></b>
 	<div class="user-dem-link">
 		<a class="link" href="profile.php?page=demographic">Edit Demographic</a>
 	</div>
 	<div class="user-pass-link">
 		<a class="link" href="profile.php?page=password">Change Password</a>
 	</div>
+    <div>
+        <a class="link" href="../cyo/index.php">RISKORY</a>
+    </div>
 </div>
 <?php
 	if(isset($_GET['page'])){
@@ -29,5 +35,6 @@ include('user_auth.php');
 		}
 	}
 ?>
+
 </body>
 </html>

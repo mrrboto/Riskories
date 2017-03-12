@@ -20,6 +20,11 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 
             $_SESSION['user'] = $row['name'];
             $_SESSION['isAdmin'] = $isAdmin;
+
+			//Demographics logged into session
+			$_SESSION['name'] = $row['realName'];
+			$_SESSION['soName'] = $row['soName'];
+			$_SESSION['age'] = $row['age'];
             
 			if ($isAdmin == 0)
 			{
