@@ -33,7 +33,7 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 			}
 			if ($isAdmin == 1)
 			{
-				header('Location: /Riskories/admin/nav.html');
+				header('Location: /Riskories/admin/nav.php');
 				//header('Location: /Riskories/nav/profile.php');
 			}
 

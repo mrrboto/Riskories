@@ -1,3 +1,7 @@
+<?php
+include('admin_auth.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +36,6 @@
 <h2>Admin Portal</h2>
 <div class="test">
     <ul>
-
-        <li><a href="../cyo/index.php">CREATE/EDIT STORY</a></li>
         <li><a href="insert.php">INSERT</a></li>
         <li><a href="select.php">SELECT</a></li>
         <li><a href="update.php">UPDATE</a></li>
