@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Admin Portal - Insert</title>
+    <title>Admin Portal - Insert</title>
 </head>
 <body>
 
