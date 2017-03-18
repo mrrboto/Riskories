@@ -1,4 +1,5 @@
 <?php
+    include('../admin/admin_auth.php');
 	include('config.php');
 	include('db.php');
 
@@ -63,7 +64,7 @@
 ?>
 
 
-<h1>Edit <a href="room.php?room=<?= $room['id'] ?>">Room <?= $room['id'] ?></a></h1>
+<h1>Edit <a href="room_adm.php?room=<?= $room['id'] ?>">Room <?= $room['id'] ?></a></h1>
 
 <?php if ($parent['id']){ ?>
 	<p>Parent room: <a href="edit.php?id=<?= $parent['id'] ?>">room <?= $parent['id'] ?></a>.</p>
