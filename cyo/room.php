@@ -91,7 +91,7 @@
 		echo "<br><br><b>It's all over.</b>";
 
     //--------------------CHANGE ONCE MESSAGE PAGE IS READY--------------------------///
-        header( "Refresh:5; url=../login/login.php", true, 303);
+        header( "Refresh:5; url=../guest/guestReg.php", true, 303);
     //-------------------------------------------------------------------------------///
 	}else{
 		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
