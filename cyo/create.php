@@ -1,5 +1,6 @@
 <?php
 	//ini_set('display_errors', 1); //This is handy for debugging PHP errors.
+    include('../admin/admin_auth.php');
 	include('config.php');
 	include('db.php');
 

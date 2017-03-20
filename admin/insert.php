@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Admin Portal - Insert</title>
-    <title>Admin Portal - Insert</title>
 </head>
 <body>
 
@@ -67,6 +66,80 @@
     }
   }
 ?>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Insert</h4>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Insert a new user into the database</div>
+      <div class="panel-body">
+        <form method="post" action="">
+          <div class="form-group">
+            <label for="name">Username:</label>
+            <input type="text" class="form-control" id="name" placeholder="" value="<?php
+                echo htmlspecialchars($name);
+            ?>">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="" value="<?php
+                echo htmlspecialchars($name);
+            ?>">
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender:</label><br>
+            <label class="radio-inline"><input type="radio" name="gender" value="f"<?php
+                if ($gender === 'f') {
+                    echo ' checked';
+                }
+            ?>>Female</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="m"<?php
+                if ($gender === 'm') {
+                    echo ' checked';
+                }
+            ?>>Male</label>
+          </div>
+
+          <div class="form-group">
+			      <label for="gender">Favorite color:</label>
+			      <select class="form-control" name="gender" id="gender">
+							<option value="">Please Select One</option>
+              <option value="#f00"<?php
+                  if ($color === '#f00') {
+                      echo ' selected';
+                  }
+              ?>>Red</option>
+              <option value="#0f0"<?php
+                  if ($color === '#0f0') {
+                      echo ' selected';
+                  }
+              ?>>Green</option>
+              <option value="#00f"<?php
+                  if ($color === '#00f') {
+                      echo ' selected';
+                  }
+              ?>>Blue</option>
+			      </select>
+    			</div>
+
+
+
+          <div>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+        </form>
+  </div>
+  </div>
+</div>
+
+<!--
 <ul>
 <form method="post" action="">
     User name: <input type="text" name="name" value="<?php
@@ -106,5 +179,6 @@
     <input type="submit" name="submit" value="Submit">
 </form>
     </ul>
+-->
 </body>
 </html>
