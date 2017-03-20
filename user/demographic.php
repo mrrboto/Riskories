@@ -14,7 +14,7 @@
 	$soName = '';
 	$gender = '';
 	$age = '';
-	
+
 	if (isset($_POST['saveBtn']))	{
 		$ok = false;
 		$okRN = true;
@@ -52,12 +52,12 @@
 			$ok = true;
 			$age = $_POST['age'];
 		}
-		
+
 		if($ok){
 			if($okRN){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"UPDATE users 
+				"UPDATE users
 				SET `realName`='%s'
 				WHERE name='%s'",
 				mysqli_real_escape_string($db,$_POST['realName']),
@@ -72,16 +72,16 @@
 				}
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"UPDATE users 
+				"UPDATE users
 				SET `soStatus`='%s'
 				WHERE name='%s'",
 				$_POST['soStatus'],
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
-				
+
 				if($clar==1){
 					$sql = sprintf(
-					"UPDATE users 
+					"UPDATE users
 					SET `soName`='%s'
 					WHERE name='%s'",
 					mysqli_real_escape_string($db,''),
@@ -92,7 +92,7 @@
 			if($okSON){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"UPDATE users 
+				"UPDATE users
 				SET `soName`='%s'
 				WHERE name='%s'",
 				mysqli_real_escape_string($db,$_POST['soName']),
@@ -102,7 +102,7 @@
 			if($okG){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"UPDATE users 
+				"UPDATE users
 				SET `gender`='%s'
 				WHERE name='%s'",
 				mysqli_real_escape_string($db,$_POST['gender']),
@@ -112,7 +112,7 @@
 			if($okA){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"UPDATE users 
+				"UPDATE users
 				SET `age`= %s
 				WHERE name='%s'",
 				mysqli_real_escape_string($db,$_POST['age']),
@@ -120,67 +120,84 @@
 				$query = mysqli_query($db, $sql);
 			}
 		}
-		?>
-		<script>
-		//PATCHWERK FIX THAT ONLY WORKS FOR REGULAR USER
-		window.location.href = "profile.php"
-		</script>
-		<?php
+		header("Location: profile.php");
 	}
 ?>
-<div class="text-center" style="padding:10px 0">
-    <div class="logo">Enter your demographic information, blank fields will not be updated</div>
-    <div class="reg-form-1">
-        <form class="text-center" method="post" id="reg-form" action=""> 
-
-        <div class="reg-group">
-		First Name: <input type="text" id="realName" name="realName" value="<?php /*echo htmlspecialchars($name);*/?>"><br>
-
-		<script>
-		function changeSOS(){
-			var l = document.getElementById("soStatus").value
-			var son = document.getElementById("soName")
-			var sonL = document.getElementById("SONLbl")
-			if (l=="dating" || l=="married"){
-				son.style.visibility = "visible"
-				sonL.style.visibility = "visible"
-			}
-			else{
-				son.style.visibility = "hidden"
-				sonL.style.visibility = "hidden"
-			}
-		}
-		
-		function back(){
-			window.history.back();
-		}
-		</script>
-	
-		Marital Status:<select name="soStatus" id="soStatus" onchange="changeSOS()">
-		<option value="">Please Select</option>
-		<option id="single" value="single"> Single </option>
-		<option id="dating" value="dating">Dating </option>
-		<option id="married" value="married"> Married </option>
-		</select><br>
-		
-		<text id="SONLbl">Significant Other Name:</text> <input type="text" id="soName" name="soName" value="<?php /*echo htmlspecialchars(soName);*/?>"><br>
-		
-		Gender: <select name="gender" id="gender">
-				<option value="">Please Select</option>
-				<option id="female" value="f">Female</option>
-				<option id="male" value ="m">Male</option>
-				</select><br>
-				
-		Age: <input type="text" name="age" value="<?php /*echo htmlspecialchars(age);*/?>"><br><br>
-		
-		<div class="dem-save">
-			<input type="submit" name="saveBtn" value="Save">
-			</form>
-		</div>		
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Edit Demographics</h4>
 		</div>
-    </form>
-</div>
+		<div class="col-md-1 col-md-offset-5">
+			<a class="btn btn-primary btn-sm pull-right">Save</a>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Please enter your demographic information (blank fields will not be updated):</div>
+  		<div class="panel-body">
+		<!--
+		<em>
+			Please enter your demographic information (blank fields will not be updated):
+		</em>
+		-->
+				<script>
+				function changeSOS(){
+					var l = document.getElementById("soStatus").value
+					var son = document.getElementById("soName")
+					var sonL = document.getElementById("SONLbl")
+					if (l=="dating" || l=="married"){
+						son.style.visibility = "visible"
+						sonL.style.visibility = "visible"
+					}
+					else{
+						son.style.visibility = "hidden"
+						sonL.style.visibility = "hidden"
+					}
+				}
+
+				function back(){
+					window.history.back();
+				}
+				</script>
+
+		    <form method="post" id="reg-form" action="">
+					<div class="form-group">
+      			<label for="realName">First Name:</label>
+      			<input type="text" class="form-control" id="realName" placeholder="">
+    			</div>
+					<div class="form-group">
+      			<label for="age">Age:</label>
+      			<input type="text" class="form-control" id="age" placeholder="">
+    			</div>
+					<div class="form-group">
+			      <label for="gender">Gender: </label>
+			      <select class="form-control" name="gender" id="gender">
+							<option value="">Please Select One</option>
+							<option id="female" value="f">Female</option>
+							<option id="male" value ="m">Male</option>
+			      </select>
+    			</div>
+					<div class="form-group">
+			      <label for="maritalStatus">Marital Status: </label>
+			      <select class="form-control" name="soStatus" id="soStatus"  onchange="changeSOS()">
+							<option value="">Please Select One</option>
+							<option id="single" value="single">Single</option>
+			        <option id="dating" value="dating">Dating</option>
+			        <option id="married" value="married">Married</option>
+			      </select>
+    			</div>
+					<div class="form-group" id="SONLbl">
+      			<label for="soName">Significant Other Name:</label>
+      			<input type="text" class="form-control" id="soName" placeholder="">
+    			</div>
+
+					<div class="dem-save">
+						<button type="submit" name="saveBtn" class="btn btn-primary">Save</button>
+					</div>
+
+				</form>
+	</div>
+	</div>
 </div>
 </body>
 </html>
-			

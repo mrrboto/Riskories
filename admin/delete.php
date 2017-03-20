@@ -15,7 +15,7 @@
 </head>
 <body>
 <?php
-    readfile('nav.html');
+    readfile('nav.php');
 
     $db = mysqli_connect('localhost', 'root', '', 'riskories');
     $sql = "DELETE FROM users WHERE id=$id";

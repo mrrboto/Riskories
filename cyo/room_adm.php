@@ -95,7 +95,7 @@
 
 			), "id=$from AND room_$opt=0");
 
-			print "Your room has been added. <a href=\"room.php\">Click here</a> to start again.";
+			print "Your room has been added. <a href=\"room_adm.php\">Click here</a> to start again.";
 			include('footer.txt');
 			exit;
 		}
@@ -202,7 +202,7 @@
 
 	if ($room['end_here']){
 		print nl2br(htmlentities(chop($room['blurb'])));
-		print "<br><br><b>It's all over.</b> Why not <a href=\"room.php\">start again</a>.";
+		print "<br><br><b>It's all over.</b> Why not <a href=\"room_adm.php\">start again</a>.";
 	}else{
 		print defaulty(nl2br(htmlentities(trim($room['blurb']))))."<br />\n";
 		echo "<br />\n";
