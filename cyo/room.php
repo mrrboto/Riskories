@@ -56,7 +56,7 @@
 		$room_id = 1;
 	}
 
-
+    //change when adding rooms
 	$room = db_single(mysql_query("SELECT * FROM choose_rooms WHERE id=$room_id"));
 
 
