@@ -25,15 +25,15 @@
   		    <form method="post" id="reg-form" action="">
   					<div class="form-group">
         			<label for="currPass">Old Password:</label>
-        			<input type="password" class="form-control" id="currPass" placeholder="">
+        			<input type="password" class="form-control" name="currPass" placeholder="">
       			</div>
   					<div class="form-group">
         			<label for="newPass">New Password:</label>
-        			<input type="password" class="form-control" id="newPass" placeholder="">
+        			<input type="password" class="form-control" name="newPass" placeholder="">
       			</div>
   					<div class="form-group">
         			<label for="confirmPass">Confirm New Password:</label>
-        			<input type="password" class="form-control" id="confirmPass" placeholder="">
+        			<input type="password" class="form-control" name="confirmPass" placeholder="">
       			</div>
 
   					<div class="dem-save">
