@@ -120,12 +120,7 @@
 				$query = mysqli_query($db, $sql);
 			}
 		}
-		?>
-		<script>
-		//PATCHWERK FIX THAT ONLY WORKS FOR REGULAR USER
-		window.location.href = "profile.php"
-		</script>
-		<?php
+		header("Location: profile.php");
 	}
 ?>
 <div class="container">
@@ -186,7 +181,7 @@
 			      <label for="maritalStatus">Marital Status: </label>
 			      <select class="form-control" name="soStatus" id="soStatus"  onchange="changeSOS()">
 							<option value="">Please Select One</option>
-							<option id="single" value="married">Single</option>
+							<option id="single" value="single">Single</option>
 			        <option id="dating" value="dating">Dating</option>
 			        <option id="married" value="married">Married</option>
 			      </select>

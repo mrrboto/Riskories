@@ -2,10 +2,24 @@
 <div id="leftcol">
 	<h2>Navigation</h2>
 	<p style="margin: 0;">
-		<br>
-		&raquo;<a href="index.php">Start over!</a><br />
-		<br />
-		
+		<?php
+        if(isset($_SESSION['isAdmin']))
+        {
+            if($_SESSION['isAdmin'] == 0)
+            {
+                echo "<br>&raquo;<a href='../user/profile.php'>Profile</a><br /><br />";
+            }
+            else
+            {
+                echo "<br>&raquo;<a href='../admin/nav.php'>Profile</a><br /><br />";
+            }
+                   
+        }
+        else
+        {
+            echo "<br>&raquo;<a href='../index.html'>Main Screen</a><br /><br />"; 
+        }
+		?>
         <?php 
 		if ($db) {
 			$total_rooms = db_single(mysql_query("SELECT count(*) as total FROM choose_rooms"));

@@ -9,7 +9,7 @@
 <body>
 
 <?php
-  readfile('nav.html');
+  readfile('nav.php');
 
   $name = '';
   $password = '';
