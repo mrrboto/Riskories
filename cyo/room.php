@@ -85,11 +85,20 @@
 		echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
 		echo "</div>\n";
 	}
+	#TK UPDATE TRACKING COOKIES
+	if (isset($_GET['room']){
+		$_SESSION['path'] = $_SESSION['path'].$_SESSION['choiceNum'].",".$_GET['opt'].";";
+		$_SESSION['choiceNum']++;
+	}
+	#TK
 
 	if ($room['end_here']){
 		print nl2br(htmlentities(trim($room['blurb'])));
 		echo "<br><br><b>It's all over.</b>";
-
+		#TK RESET TRACKING COOKIE
+		$_SESSION['choiceNum'] = 1;
+		$_SESSION['path'] = '';
+		#TK
     //--------------------CHANGE ONCE MESSAGE PAGE IS READY--------------------------///
         header( "Refresh:5; url=../guest/guestReg.php", true, 303);
     //-------------------------------------------------------------------------------///
@@ -110,6 +119,12 @@
 	function defaulty($x){
 		return strlen($x) ? $x : '<i>Blank</i>';
 	}
-
+	#TK PRINT FOR TESTING PATH TRACKING
+	if (isset ($_GET['room'])){
+		echo "<p>";
+		echo $_SESSION['path'];
+		echo "<p>";
+	}
+	#TK
 	include('footer.txt');
 ?>
