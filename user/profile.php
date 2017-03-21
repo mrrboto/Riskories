@@ -50,6 +50,7 @@ include('user_auth.php');
 		<div class="list-group">
 			<a href="profile.php?page=demographic"><button type="button" class="list-group-item">Edit Demographics</button></a>
 			<a href="profile.php?page=password"><button type="button" class="list-group-item">Change Password</button></a>
+            <a href="../cyo/room.php"><button type="button" class="list-group-item">Riskory</button></a>
 		</div>
 	</div>
 

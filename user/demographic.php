@@ -84,7 +84,7 @@
 					"UPDATE users
 					SET `soName`='%s'
 					WHERE name='%s'",
-					mysqli_real_escape_string($db,''),
+					mysqli_real_escape_string($db,'friend'),
 					$_SESSION['user']);
 					$query = mysqli_query($db, $sql);
 				}
@@ -163,11 +163,11 @@
 		    <form method="post" id="reg-form" action="">
 					<div class="form-group">
       			<label for="realName">First Name:</label>
-      			<input type="text" class="form-control" id="realName" placeholder="">
+      			<input type="text" class="form-control" name="realName" placeholder="">
     			</div>
 					<div class="form-group">
       			<label for="age">Age:</label>
-      			<input type="text" class="form-control" id="age" placeholder="">
+      			<input type="text" class="form-control" name="age" placeholder="">
     			</div>
 					<div class="form-group">
 			      <label for="gender">Gender: </label>
@@ -188,7 +188,7 @@
     			</div>
 					<div class="form-group" id="SONLbl">
       			<label for="soName">Significant Other Name:</label>
-      			<input type="text" class="form-control" id="soName" placeholder="">
+      			<input type="text" class="form-control" name="soName" placeholder="">
     			</div>
 
 					<div class="dem-save">
