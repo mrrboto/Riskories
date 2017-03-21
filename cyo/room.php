@@ -107,8 +107,8 @@
 		echo "<br />\n";
 		echo "<b>What will you do?</b><br />\n";
 		echo "<div class=\"choices\">\n";
-		print "[1] <a href=\"room.php?room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br />\n";
-		print "[2] <a href=\"room.php?room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a><br />\n";
+		print "[1] <a href=\"room.php?room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($choice1))."</a><br />\n";
+		print "[2] <a href=\"room.php?room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($choice2))."</a><br />\n";
 		echo "</div>\n";
 	}
 	print "<br><br><br><br>";
