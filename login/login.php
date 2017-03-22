@@ -25,7 +25,7 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 			$_SESSION['name'] = $row['realName'];
 			$_SESSION['soName'] = $row['soName'];
 			$_SESSION['age'] = $row['age'];
-			#TK TRACK VARS
+			#TK TRACKING VARS
 			$_SESSION['choiceNum']=1;
 			$_SESSION['path'] = '';
 			#TK

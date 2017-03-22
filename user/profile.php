@@ -2,6 +2,22 @@
 include('user_auth.php');
 //testing user auth if admin or not
 //echo $_SESSION['isAdmin'];
+#TK STORING USER PATHS FOR BOTH GUEST AND USER
+//TESTING FOR STORING
+echo $_SESSION['path'];
+if (isset ($_SESSION['path'])){
+	echo "<p>testerino<p>";
+	if($_SESSION['path'] != ''){
+		echo "<p>testerino<p>";
+		
+		
+		$_SESSION['path'] = '';
+		$_SESSION['choiceNum'] = 1;
+	}
+}
+#TK
+
+
 ?>
 <!DOCTYPE>
 <html>

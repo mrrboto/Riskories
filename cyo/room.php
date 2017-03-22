@@ -86,7 +86,7 @@
 		echo "</div>\n";
 	}
 	#TK UPDATE TRACKING COOKIES
-	if (isset($_GET['room']){
+	if (isset($_GET['room'])){
 		$_SESSION['path'] = $_SESSION['path'].$_SESSION['choiceNum'].",".$_GET['opt'].";";
 		$_SESSION['choiceNum']++;
 	}
@@ -96,11 +96,18 @@
 		print nl2br(htmlentities(trim($room['blurb'])));
 		echo "<br><br><b>It's all over.</b>";
 		#TK RESET TRACKING COOKIE
-		$_SESSION['choiceNum'] = 1;
-		$_SESSION['path'] = '';
+		if(isset($_SESSION['user'])){
+			//$_SESSION['choiceNum'] = 1;
+			//$_SESSION['path'] = '';
+			header( "Refresh:5; url=../user/profile.php", true, 303);
+		}
+		//guest
+		else{
+			header( "Refresh:5; url=../guest/guestReg.php", true, 303);
+		}
 		#TK
     //--------------------CHANGE ONCE MESSAGE PAGE IS READY--------------------------///
-        header( "Refresh:5; url=../guest/guestReg.php", true, 303);
+        //header( "Refresh:5; url=../guest/guestReg.php", true, 303);
     //-------------------------------------------------------------------------------///
 	}else{
 		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
