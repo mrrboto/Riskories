@@ -97,8 +97,6 @@
 		echo "<br><br><b>It's all over.</b>";
 		#TK RESET TRACKING COOKIE
 		if(isset($_SESSION['user'])){
-			//$_SESSION['choiceNum'] = 1;
-			//$_SESSION['path'] = '';
 			header( "Refresh:5; url=../user/profile.php", true, 303);
 		}
 		//guest
@@ -126,12 +124,5 @@
 	function defaulty($x){
 		return strlen($x) ? $x : '<i>Blank</i>';
 	}
-	#TK PRINT FOR TESTING PATH TRACKING
-	if (isset ($_GET['room'])){
-		echo "<p>";
-		echo $_SESSION['path'];
-		echo "<p>";
-	}
-	#TK
 	include('footer.txt');
 ?>
