@@ -4,7 +4,15 @@
 
 <?php
 if ($db) {
-	$settings = db_single(mysql_query("SELECT * FROM choose_settings ORDER BY 'id' DESC;"));
+	if(isset($_GET['story']))
+	{
+		$name = $_GET['story']."_settings";
+	}
+	else
+	{
+	    $name = "choose_settings";
+	}
+	$settings = db_single(mysql_query("SELECT * FROM $name ORDER BY 'id' DESC;"));
 	//print_r($settings); //DEBUGGING
 }
 ?>

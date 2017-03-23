@@ -22,8 +22,12 @@ print nl2br(htmlentities(chop($settings['main_page_text'])));
 
 
 <br /><br />
-So what are you waiting for? <a href="room.php" style="font-size: 140%;">Start playing</a>.
-<br /><br />
+So what are you waiting for?
+<?php
+$story = $_GET['story'];
+echo "<a href='room.php?story=$story' style='font-size: 140%;'>Start playing</a>.
+<br /><br />"
+?>
 <?php
 	include('footer.txt');
 ?>
