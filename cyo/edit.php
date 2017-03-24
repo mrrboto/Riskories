@@ -2,6 +2,7 @@
     include('../admin/admin_auth.php');
 	include('config.php');
 	include('db.php');
+    include('header.txt');
 
 	#
 	# save changes?
@@ -11,13 +12,13 @@
 
 		$id = intval($_POST['id']);
 
-		db_update('choose_rooms', array(
+		db_update($storyR, array(
 			'blurb'		=> AddSlashes($_POST['blurb']),
 			'text_1'	=> AddSlashes($_POST['text_1']),
 			'text_2'	=> AddSlashes($_POST['text_2']),
 		), "id=$id");
 
-		header("location: edit.php?id=$id&done=1");
+		header("location: edit.php?story=$storyT&id=$id&done=1");
 		exit;
 	}
 
@@ -30,14 +31,14 @@
 
 		$id = intval($_POST['id']);
 
-		$room = db_single(mysql_query("SELECT * FROM choose_rooms WHERE id=$id"));
-		$parent	= db_single(mysql_query("SELECT * FROM choose_rooms WHERE room_1=$id OR room_2=$id"));
+		$room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$id"));
+		$parent	= db_single(mysql_query("SELECT * FROM $storyR WHERE room_1=$id OR room_2=$id"));
 
-		db_write("DELETE FROM choose_rooms WHERE id=$id");
-		db_write("UPDATE choose_rooms SET room_1=0 WHERE room_1=$id");
-		db_write("UPDATE choose_rooms SET room_2=0 WHERE room_2=$id");
+		db_write("DELETE FROM $storyR WHERE id=$id");
+		db_write("UPDATE $storyR SET room_1=0 WHERE room_1=$id");
+		db_write("UPDATE $storyR SET room_2=0 WHERE room_2=$id");
 
-		header("location: edit.php?id=$parent[id]");
+		header("location: edit.php?story=$storyT&id=$parent[id]");
 		exit;
 	}
 
@@ -49,8 +50,8 @@
 
 	$room_id = intval($_GET['id']);
 
-	$room = db_single(mysql_query("SELECT * FROM choose_rooms WHERE id=$room_id"));
-	$parent	= db_single(mysql_query("SELECT * FROM choose_rooms WHERE room_1=$room_id OR room_2=$room_id"));
+	$room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$room_id"));
+	$parent	= db_single(mysql_query("SELECT * FROM $storyR WHERE room_1=$room_id OR room_2=$room_id"));
 
 	if (!$room['id']){
 		include('header.txt');
@@ -60,14 +61,14 @@
 	}
 
 
-	include('header.txt');
+
 ?>
 
 
-<h1>Edit <a href="room_adm.php?room=<?= $room['id'] ?>">Room <?= $room['id'] ?></a></h1>
+<h1>Edit <a href="room_adm.php?story=<?= $storyT ?>&room=<?= $room['id'] ?>">Room <?= $room['id'] ?></a></h1>
 
 <?php if ($parent['id']){ ?>
-	<p>Parent room: <a href="edit.php?id=<?= $parent['id'] ?>">room <?= $parent['id'] ?></a>.</p>
+	<p>Parent room: <a href="edit.php?story=<?= $storyT ?>&id=<?= $parent['id'] ?>">room <?= $parent['id'] ?></a>.</p>
 <?php } ?>
 
 <?php if (isset($_GET['done']) && $_GET['done']){ ?>
@@ -91,7 +92,7 @@
 
 	<p>	Choice 1:
 <?php if ($room['room_1']){ ?>
-		(to <a href="edit.php?id=<?= $room['room_1'] ?>">room <?= $room['room_1'] ?></a>)
+		(to <a href="edit.php?story=<?= $storyT ?>&id=<?= $room['room_1'] ?>">room <?= $room['room_1'] ?></a>)
 <?php }else{ ?>
 		(no story written)
 <?php } ?>
@@ -100,7 +101,7 @@
 
 	<p>	Choice 2:
 <?php if ($room['room_2']){ ?>
-		(to <a href="edit.php?id=<?= $room['room_2'] ?>">room <?= $room['room_2'] ?></a>)
+		(to <a href="edit.php?story=<?= $storyT ?>&id=<?= $room['room_2'] ?>">room <?= $room['room_2'] ?></a>)
 <?php }else{ ?>
 		(no story written)
 <?php } ?>

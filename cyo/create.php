@@ -63,7 +63,7 @@
 	<div style="border: 1px solid #000000; padding: 10px; background-color: #eeeeee;">Your changes have been saved.</div>
 <?php } ?>
 
-<form method="post">
+<form action="create.php" method="post">
 <input type="hidden" name="done" value="1" />
 
 	<p>Site Title:<br /><input name="title" type="text" size="50" value="<?= HtmlSpecialChars($settings['title']) ?>"/></p><br />
