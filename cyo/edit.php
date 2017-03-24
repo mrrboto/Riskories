@@ -75,7 +75,7 @@
 	<div style="border: 1px solid #000000; padding: 10px; background-color: #eeeeee;">Your changes have been saved.</div>
 <?php } ?>
 
-<form action="edit.php" method="post">
+<form method="post">
 <input type="hidden" name="id" value="<?= $room['id'] ?>" />
 <input type="hidden" name="done" value="1" />
 
@@ -83,7 +83,7 @@
 
 <?php if ($room['end_here']){ ?>
 
-	<p>(stort ends here)</p>
+	<p>(story ends here)</p>
 
 	<input type="hidden" name="text_1" value="" />
 	<input type="hidden" name="text_2" value="" />
@@ -125,7 +125,7 @@
 	}else{
 ?>
 
-<form action="edit.php" method="post">
+<form method="post">
 <input type="hidden" name="id" value="<?= $room['id'] ?>" />
 <input type="hidden" name="delete" value="1" />
 

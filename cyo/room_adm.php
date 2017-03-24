@@ -73,7 +73,7 @@
 
 		if (!count($problems)){
 
-			$ret = db_insert('choose_rooms', array(
+			$ret = db_insert($storyR, array(
 				//'email'		=> AddSlashes($_POST['email']),
 				'blurb'		=> AddSlashes($_POST['blurb']),
 				'text_1'	=> AddSlashes($_POST['choice1']),
@@ -90,7 +90,7 @@
 			$opt	= intval($_POST['opt']);
 			$from	= intval($_POST['from']);
 
-			db_update('choose_rooms', array(
+			db_update($storyR, array(
 
 				"room_$opt" => $room_id,
 
