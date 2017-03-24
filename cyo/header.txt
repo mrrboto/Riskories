@@ -4,15 +4,23 @@
 
 <?php
 if ($db) {
-	if(isset($_GET['story']))
+	
+    //Get story title and attributes
+    
+    if(isset($_GET['story']))
 	{
-		$name = $_GET['story']."_settings";
+		$storyT = $_GET['story'];
+		$storyR = $storyT."_rooms";
+		$storyS = $storyT."_settings";
 	}
 	else
 	{
-	    $name = "choose_settings";
+	    $storyT = "choose";
+        $storyR = "choose_rooms";
+        $storyS = "choose_settings";
+        
 	}
-	$settings = db_single(mysql_query("SELECT * FROM $name ORDER BY 'id' DESC;"));
+	$settings = db_single(mysql_query("SELECT * FROM $storyS ORDER BY 'id' DESC;"));
 	//print_r($settings); //DEBUGGING
 }
 ?>

@@ -22,8 +22,11 @@ Story Name: <input type='text' name='title'>
 
     foreach ($stories as $row)
     {
-        printf('<li><span>%s</span></li>',
-        htmlspecialchars($row['title'])
+        printf('<li><span><a href="../cyo/room_adm.php?story=%s">%s</a></span>&nbsp&nbsp
+        <a href="../cyo/create.php?story=%s">create</a></li>',
+        $row['title'],
+        htmlspecialchars($row['title']),
+        $row['title']
         );
     }
 

@@ -21,7 +21,7 @@
 	# get the number of rooms
 	#
 
-	list($rooms) = mysql_num_rows(mysql_query("SELECT * FROM choose_rooms",$db));
+	list($rooms) = mysql_num_rows(mysql_query("SELECT * FROM $storyR",$db));
 	$insert = "<br /><br /><b>Rooms:</b> ".number_format($rooms);
 
 	#
@@ -33,7 +33,7 @@
 		if ($room_id == 1){return 1;}
 
 		//list($parent_room_id) = mysql_num_rows(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
-		$parent_room_id = db_single(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
+		$parent_room_id = db_single(mysql_query("SELECT id FROM $storyR WHERE room_1=".$room_id." OR room_2=".$room_id));
 		//echo "<!-- Parent ID: ".$parent_room_id['id']." --/>";
 		if ($parent_room_id['id']){
 			return 1 + get_room_depth($parent_room_id['id']);
@@ -95,7 +95,7 @@
 
 			), "id=$from AND room_$opt=0");
 
-			print "Your room has been added. <a href=\"room_adm.php\">Click here</a> to start again.";
+			print "Your room has been added. <a href=\"room_adm.php?story=$storyT\">Click here</a> to start again.";
 			include('footer.txt');
 			exit;
 		}
@@ -109,7 +109,7 @@
 	if (isset($_REQUEST['from']) && !$_GET['room']){
 
 		$from_id = intval($_REQUEST['from']);
-		$from_room = db_single(mysql_query("SELECT * FROM choose_rooms WHERE id=$from_id"));
+		$from_room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$from_id"));
 
 		$depth = get_room_depth($from_id);
 
@@ -181,7 +181,7 @@
 	}
 
 
-	$room = db_single(mysql_query("SELECT * FROM choose_rooms WHERE id=$room_id"));
+	$room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$room_id"));
 
 	if (!$room['id']){
 		print "error: room $room_id not found";
@@ -202,14 +202,14 @@
 
 	if ($room['end_here']){
 		print nl2br(htmlentities(chop($room['blurb'])));
-		print "<br><br><b>It's all over.</b> Why not <a href=\"room_adm.php\">start again</a>.";
+		print "<br><br><b>It's all over.</b> Why not <a href=\"room_adm.php?story=$storyT\">start again</a>.";
 	}else{
 		print defaulty(nl2br(htmlentities(trim($room['blurb']))))."<br />\n";
 		echo "<br />\n";
 		echo "<b>What will you do?</b><br />\n";
 		echo "<div class=\"choices\">\n";
-		print "[1] <a href=\"room_adm.php?room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br />\n";
-		print "[2] <a href=\"room_adm.php?room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a><br />\n";
+		print "[1] <a href=\"room_adm.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br />\n";
+		print "[2] <a href=\"room_adm.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a><br />\n";
 		echo "</div>\n";
 	}
 	print "<br><br><br><br>";
@@ -220,7 +220,7 @@
 
         echo "<br />";
 		echo "<div class=\"godbox\">You're logged in as an admin!";
-		echo "[<a href=\"edit.php?id=".$room['id']."\">edit</a>]";
+		echo "[<a href=\"edit.php?story=".$storyT."&id=".$room['id']."\">edit</a>]";
 		echo "</div>";
 
 

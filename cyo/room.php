@@ -16,11 +16,6 @@
 
 <?php
 
-    # get story
-    $storyT = $_GET['story'];
-    $storyR = $storyT."_rooms";
-
-
 	#
 	# get the number of rooms
 	#

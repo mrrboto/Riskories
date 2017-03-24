@@ -1,16 +1,28 @@
 <?php
+//if(isset($_GET['story']))
+//{
+//    $storyT = $_GET['story'];
+//    $storyR = $storyT."_rooms";
+//    $storyS = $storyT."_settings";
+//
+//}
+
+?>
+
+<?php
 	//ini_set('display_errors', 1); //This is handy for debugging PHP errors.
     include('../admin/admin_auth.php');
 	include('config.php');
 	include('db.php');
+    include('header.txt');
 
 	#
 	# save changes?
 	#
-
+    //$storyTT = $_GET['story'];
 	if (isset($_POST['done']) && $_POST['done']){
 
-		db_update('choose_settings', array(
+		db_update($storyS, array(
 			'title'	             	=> AddSlashes($_POST['title']),
 			//'root_url'	            => AddSlashes($_POST['root_url']),
 			//'copyright_text'	    => AddSlashes($_POST['copyright_text']),
@@ -30,7 +42,8 @@
             //'analytics_blurb'       => AddSlashes($_POST['analytics_blurb']),
 		), "id=1");
 
-		header("location: create.php?done=1");
+
+        header("location: create.php?story=$storyT&done=1");
 		exit;
 	}
 
@@ -39,16 +52,18 @@
 	# get info for display
 	#
 
-	include('header.txt');
+
+    echo "<p></p>";
 ?>
 
 <h1>Site Admin</h1>
+
 
 <?php if (isset($_GET['done']) && $_GET['done']){ ?>
 	<div style="border: 1px solid #000000; padding: 10px; background-color: #eeeeee;">Your changes have been saved.</div>
 <?php } ?>
 
-<form action="create.php" method="post">
+<form method="post">
 <input type="hidden" name="done" value="1" />
 
 	<p>Site Title:<br /><input name="title" type="text" size="50" value="<?= HtmlSpecialChars($settings['title']) ?>"/></p><br />
