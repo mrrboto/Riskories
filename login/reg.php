@@ -48,7 +48,7 @@
 				mysqli_query($db, $sql);
 				mysqli_close($db);
 				$message = 'User added.';
-				
+
 				$_SESSION['user'] = $name;
 				$_SESSION['isAdmin'] = 0;
 				header("Location: ../user/profile.php");
@@ -71,9 +71,9 @@
             echo htmlspecialchars($name);?>"><br>
 
             Password: <input type="password" name="password" class="form-control"><br>
-			
+
 			Confirm Password: <input type="password" name="newPass" class="form-control"><br>
-            
+
 			Gender:
             <input type="radio" name="gender" value="f"<?php
             if ($gender === 'f') {
@@ -83,8 +83,8 @@
             if ($gender === 'm') {
                 echo ' checked';
             }?>>male<br>
-			
-			
+
+
             <div class="reg-submit">
                 <input type="submit" name="submit" value="Submit">
             </div>
