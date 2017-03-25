@@ -85,6 +85,27 @@ if (isset ($_SESSION['path'])){
             <a href="../cyo/room.php"><button type="button" class="list-group-item">Riskory</button></a>
 		</div>
 	</div>
+    <div>
+        <a class="link" href="../cyo/index.php">RISKORY</a>
+    </div>
+</div>
+
+<?php //display stories
+
+    $dbi = mysqli_connect('localhost', 'root', '', 'riskories');
+    $sqli = 'SELECT * FROM stories';
+    $stories = mysqli_query($dbi, $sqli);
+
+    foreach ($stories as $row)
+    {
+        $name = $row['title'];
+        printf('<li><span><a href="../cyo/index.php?story=%s">%s</a></span></li>',
+        $name,
+        htmlspecialchars($row['title'])
+        );
+    }
+
+?>
 
 <?php
 	if(isset($_GET['page'])){

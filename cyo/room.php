@@ -16,12 +16,11 @@
 
 <?php
 
-
 	#
 	# get the number of rooms
 	#
 
-	list($rooms) = mysql_num_rows(mysql_query("SELECT * FROM choose_rooms",$db));
+	list($rooms) = mysql_num_rows(mysql_query("SELECT * FROM $storyR",$db));
 	$insert = "<br /><br /><b>Rooms:</b> ".number_format($rooms);
 
 	#
@@ -33,7 +32,8 @@
 		if ($room_id == 1){return 1;}
 
 		//list($parent_room_id) = mysql_num_rows(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
-		$parent_room_id = db_single(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
+        $storyR = $GLOBALS['storyR'];
+		$parent_room_id = db_single(mysql_query("SELECT id FROM $storyR WHERE room_1=".$room_id." OR room_2=".$room_id));
 		//echo "<!-- Parent ID: ".$parent_room_id['id']." --/>";
 		if ($parent_room_id['id']){
 			return 1 + get_room_depth($parent_room_id['id']);
@@ -57,7 +57,7 @@
 	}
 
     //change when adding rooms
-	$room = db_single(mysql_query("SELECT * FROM choose_rooms WHERE id=$room_id"));
+	$room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$room_id"));
 
 
     //INSERT KEY SWITCH LOGIC HERE
@@ -112,8 +112,8 @@
 		echo "<br />\n";
 		echo "<b>What will you do?</b><br />\n";
 		echo "<div class=\"choices\">\n";
-		print "[1] <a href=\"room.php?room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($choice1))."</a><br />\n";
-		print "[2] <a href=\"room.php?room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($choice2))."</a><br />\n";
+		print "[1] <a href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br />\n";
+		print "[2] <a href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a><br />\n";
 		echo "</div>\n";
 	}
 	print "<br><br><br><br>";

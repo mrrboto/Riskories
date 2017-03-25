@@ -17,7 +17,6 @@
 
   $name = '';
   $gender = '';
-  $color = '';
 
   if (isset($_POST['submit'])) {
     $ok = true;
@@ -31,20 +30,15 @@
     } else {
         $gender = $_POST['gender'];
     }
-    if (!isset($_POST['color']) || $_POST['color'] === '') {
-        $ok = false;
-    } else {
-        $color = $_POST['color'];
-    }
+
 
     if ($ok) {
         // add database code here
         $db = mysqli_connect('localhost', 'root', '', 'riskories');
-        $sql = sprintf("UPDATE users SET name='%s', gender='%s', color='%s'
+        $sql = sprintf("UPDATE users SET name='%s', gender='%s'
           WHERE id=%s",
           mysqli_real_escape_string($db, $name),
           mysqli_real_escape_string($db, $gender),
-          mysqli_real_escape_string($db, $color),
           $id);
         mysqli_query($db, $sql);
         echo '<p>User updated.</p>';
@@ -57,7 +51,6 @@
       foreach ($result as $row) {
           $name = $row['name'];
           $gender = $row['gender'];
-          $color = $row['color'];
       }
       mysqli_close($db);
   }
@@ -77,25 +70,6 @@
                 echo ' checked';
             }
         ?>>male<br>
-    Favorite color:
-        <select name="color">
-            <option value="">Please select</option>
-            <option value="#f00"<?php
-                if ($color === '#f00') {
-                    echo ' selected';
-                }
-            ?>>red</option>
-            <option value="#0f0"<?php
-                if ($color === '#0f0') {
-                    echo ' selected';
-                }
-            ?>>green</option>
-            <option value="#00f"<?php
-                if ($color === '#00f') {
-                    echo ' selected';
-                }
-            ?>>blue</option>
-        </select><br>
     <input type="submit" name="submit" value="Submit">
 </form>
 </body>

@@ -1,8 +1,10 @@
 <?php
 include('admin_auth.php');
+include('../cyo/config.php');
+include('../cyo/db.php');
 ?>
 
-<!DOCTYPE html>
+
 <html>
 <head>
 <style>
@@ -104,11 +106,13 @@ include('admin_auth.php');
 
     </ul>
 </div>
-<h2>Riskories</h2>
-<div class="test">
+
+<div class="test" style="float: middle">
+    <h2>Riskories</h2>
     <ul>
         <li><a href="../cyo/create.php">CREATE</a></li>
         <li><a href="../cyo/index.php">EDIT</a></li>
+        <li><a href="add.php">NEW STORY</a></li>
     </ul>
 </div>
 -->
