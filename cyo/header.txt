@@ -4,7 +4,23 @@
 
 <?php
 if ($db) {
-	$settings = db_single(mysql_query("SELECT * FROM choose_settings ORDER BY 'id' DESC;"));
+	
+    //Get story title and attributes
+    
+    if(isset($_GET['story']))
+	{
+		$storyT = $_GET['story'];
+		$storyR = $storyT."_rooms";
+		$storyS = $storyT."_settings";
+	}
+	else
+	{
+	    $storyT = "choose";
+        $storyR = "choose_rooms";
+        $storyS = "choose_settings";
+        
+	}
+	$settings = db_single(mysql_query("SELECT * FROM $storyS ORDER BY 'id' DESC;"));
 	//print_r($settings); //DEBUGGING
 }
 ?>

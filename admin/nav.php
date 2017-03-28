@@ -1,8 +1,10 @@
 <?php
 include('admin_auth.php');
+include('../cyo/config.php');
+include('../cyo/db.php');
 ?>
 
-<!DOCTYPE html>
+
 <html>
 <head>
 <style>
@@ -88,11 +90,13 @@ include('admin_auth.php');
 		<div class="list-group">
       <a href="../cyo/create.php"><button type="button" class="list-group-item">Create</button></a>
 			<a href="../cyo/index.php"><button type="button" class="list-group-item">Edit</button></a>
+            <a href="add.php"><button type="button" class="list-group-item">New Story</button></a>
 		</div>
 
   </div>
 
 <!--
+>>>>>>> master
 <h2>Admin Portal</h2>
 <div class="test">
     <ul>
@@ -104,16 +108,24 @@ include('admin_auth.php');
 
     </ul>
 </div>
-<h2>Riskories</h2>
-<div class="test">
+
+<div class="test" style="float: middle">
+    <h2>Riskories</h2>
     <ul>
         <li><a href="../cyo/create.php">CREATE</a></li>
         <li><a href="../cyo/index.php">EDIT</a></li>
+        <li><a href="add.php">NEW STORY</a></li>
     </ul>
 </div>
+<<<<<<< HEAD
+
+
+
+=======
 -->
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>

@@ -54,6 +54,25 @@ include('user_auth.php');
 		</div>
 	</div>
 
+
+<?php //display stories
+
+    $dbi = mysqli_connect('localhost', 'root', '', 'riskories');
+    $sqli = 'SELECT * FROM stories';
+    $stories = mysqli_query($dbi, $sqli);
+
+    foreach ($stories as $row)
+    {
+        $name = $row['title'];
+        printf('<li><span><a href="../cyo/index.php?story=%s">%s</a></span></li>',
+        $name,
+        htmlspecialchars($row['title'])
+        );
+    }
+
+?>
+
+
 <?php
 	if(isset($_GET['page'])){
 		if($_GET['page'] == 'demographic'){

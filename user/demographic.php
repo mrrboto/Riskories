@@ -180,10 +180,10 @@
 					<div class="form-group">
 			      <label for="maritalStatus">Marital Status: </label>
 			      <select class="form-control" name="soStatus" id="soStatus"  onchange="changeSOS()">
-							<option value="">Please Select One</option>
-							<option id="single" value="single">Single</option>
-			        <option id="dating" value="dating">Dating</option>
-			        <option id="married" value="married">Married</option>
+				        <option value="">Please Select One</option>
+				        <option name="single" id="single" value="single">Single</option>
+			            <option name="dating" id="dating" value="dating">Dating</option>
+			            <option name="married" id="married" value="married">Married</option>
 			      </select>
     			</div>
 					<div class="form-group" id="SONLbl">
