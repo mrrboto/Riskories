@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body onload="changeSOS()">
-<link rel="stylesheet" href="log_style.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
 <?php
 	$realName = '';
 	$soStatus = '';
@@ -123,24 +113,18 @@
 		header("Location: profile.php");
 	}
 ?>
-<div class="container">
-	<div class="row">
-		<div class="col-md-6">
-			<h4>Edit Demographics</h4>
-		</div>
-		<div class="col-md-1 col-md-offset-5">
-			<a class="btn btn-primary btn-sm pull-right">Save</a>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">Please enter your demographic information (blank fields will not be updated):</div>
-  		<div class="panel-body">
-		<!--
-		<em>
-			Please enter your demographic information (blank fields will not be updated):
-		</em>
-		-->
-				<script>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body onload="changeSOS()">
+<link rel="stylesheet" href="log_style.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+		<script>
 				function changeSOS(){
 					var l = document.getElementById("soStatus").value
 					var son = document.getElementById("soName")
@@ -159,6 +143,26 @@
 					window.history.back();
 				}
 				</script>
+
+
+    <div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Edit Demographics</h4>
+		</div>
+		<div class="col-md-1 col-md-offset-5">
+			<a class="btn btn-primary btn-sm pull-right">Save</a>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Please enter your demographic information (blank fields will not be updated):</div>
+  		<div class="panel-body">
+		<!--
+		<em>
+			Please enter your demographic information (blank fields will not be updated):
+		</em>
+		-->
+
 
 		    <form method="post" id="reg-form" action="">
 					<div class="form-group">
@@ -188,7 +192,7 @@
     			</div>
 					<div class="form-group" id="SONLbl">
       			<label for="soName">Significant Other Name:</label>
-      			<input type="text" class="form-control" name="soName" placeholder="">
+      			<input type="text" class="form-control" name="soName" id="soName" placeholder="">
     			</div>
 
 					<div class="dem-save">
