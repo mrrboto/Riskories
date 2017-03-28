@@ -47,7 +47,7 @@ Story Name: <input type='text' name='title'>
         {
             include('../cyo/add_room.php');
             echo "<p>Story added</p>";
-            header('Location: nav.php');
+            //header('Location: nav.php');
         }
 
     }
