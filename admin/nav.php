@@ -119,7 +119,6 @@ include('../cyo/db.php');
 </ul>
 </div>
 <<<<<<< HEAD
-=======
 -->
 
     <!-- Latest compiled and minified JavaScript -->

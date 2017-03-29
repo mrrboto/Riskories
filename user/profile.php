@@ -2,6 +2,38 @@
 include('user_auth.php');
 //testing user auth if admin or not
 //echo $_SESSION['isAdmin'];
+#TK STORING USER PATHS FOR BOTH GUEST AND USER
+//TESTING FOR STORING
+//echo $_SESSION['path'];
+if (isset ($_SESSION['path'])){
+	//echo "<p>testerino<p>";
+	if($_SESSION['path'] != ''){
+		//echo "<p>testerino<p>";
+		$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
+		$db = mysqli_connect('localhost', 'root', '', 'riskories');
+		$sql = sprintf("SELECT * FROM users WHERE name='%s' AND %s=''",
+        mysqli_real_escape_string($db, $_SESSION['user']),
+		mysqli_real_escape_string($db, $_SESSION['storyNum'])
+		);
+		$result = mysqli_query($db, $sql);
+		$row = mysqli_fetch_assoc($result);
+		if($row){
+			$updateSQL = sprintf("UPDATE users SET %s='%s' WHERE name='%s'",
+			mysqli_real_escape_string($db, $_SESSION['storyNum']),
+			mysqli_real_escape_string($db, $_SESSION['path']),
+			mysqli_real_escape_string($db,$_SESSION['user'])
+			);
+			$result = mysqli_query($db, $updateSQL);
+			//echo $_SESSION['storyNum'].$_SESSION['path'].$_SESSION['user'];
+		}
+		
+		$_SESSION['path'] = '';
+		$_SESSION['choiceNum'] = 1;
+	}
+}
+#TK
+
+
 ?>
 <!DOCTYPE>
 <html>
@@ -53,7 +85,6 @@ include('user_auth.php');
             <a href="../cyo/index.php"><button type="button" class="list-group-item">Riskory</button></a>
 		</div>
 	</div>
-
 
 <?php //display stories
 
