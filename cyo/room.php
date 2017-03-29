@@ -97,6 +97,7 @@
 		echo "<br><br><b>It's all over.</b>";
 		#TK RESET TRACKING COOKIE
 		if(isset($_SESSION['user'])){
+			$_SESSION['storyNum'] = $_GET['story'];
 			header( "Refresh:5; url=../user/profile.php", true, 303);
 		}
 		//guest
