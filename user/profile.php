@@ -82,13 +82,9 @@ if (isset ($_SESSION['path'])){
 		<div class="list-group">
 			<a href="profile.php?page=demographic"><button type="button" class="list-group-item">Edit Demographics</button></a>
 			<a href="profile.php?page=password"><button type="button" class="list-group-item">Change Password</button></a>
-            <a href="../cyo/room.php"><button type="button" class="list-group-item">Riskory</button></a>
+            <a href="../cyo/index.php"><button type="button" class="list-group-item">Riskory</button></a>
 		</div>
 	</div>
-    <div>
-        <a class="link" href="../cyo/index.php">RISKORY</a>
-    </div>
-</div>
 
 <?php //display stories
 
@@ -106,6 +102,7 @@ if (isset ($_SESSION['path'])){
     }
 
 ?>
+
 
 <?php
 	if(isset($_GET['page'])){

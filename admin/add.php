@@ -23,9 +23,11 @@ Story Name: <input type='text' name='title'>
     foreach ($stories as $row)
     {
         printf('<li><span><a href="../cyo/room_adm.php?story=%s">%s</a></span>&nbsp&nbsp
-        <a href="../cyo/create.php?story=%s">create</a></li>',
+        <a href="../cyo/create.php?story=%s">create</a>&nbsp&nbsp
+        <a href="../cyo/deleteS.php?story=%s">delete</a></li>',
         $row['title'],
         htmlspecialchars($row['title']),
+        $row['title'],
         $row['title']
         );
     }
@@ -45,7 +47,7 @@ Story Name: <input type='text' name='title'>
         {
             include('../cyo/add_room.php');
             echo "<p>Story added</p>";
-            header('Location: nav.php');
+            //header('Location: nav.php');
         }
 
     }
