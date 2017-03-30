@@ -39,11 +39,11 @@ include('../cyo/db.php');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     </head>
+    <body>
 
-<body>
     <header class="navbar">
-        <div class="container navbar-inverse" role="banner">
-            <nav role="navigation">
+        <nav class="container navbar-inverse">
+            <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -53,19 +53,22 @@ include('../cyo/db.php');
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Riskories</a>
+                    <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="../img/s_logo_3.png" height="45px" width="40px" style="padding-bottom: 20px">
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Home <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">About</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
-            </nav>
-            <div>
-    </header>
+            </div><!-- /.container-fluid -->
+        </nav>
+     </header>
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -122,8 +125,7 @@ include('../cyo/db.php');
 -->
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>
