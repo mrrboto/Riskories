@@ -51,7 +51,7 @@
 			'%s', '%s', '%s')",
                 mysqli_real_escape_string($db, $name),
 				mysqli_real_escape_string($db, $hash),
-				mysqli_real_escape_string($db, $gender);
+				mysqli_real_escape_string($db, $gender));
 				mysqli_query($db, $sql);
 				mysqli_close($db);
 				echo '<p>User added.</p>';

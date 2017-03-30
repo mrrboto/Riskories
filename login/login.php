@@ -25,6 +25,12 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 			$_SESSION['name'] = $row['realName'];
 			$_SESSION['soName'] = $row['soName'];
 			$_SESSION['age'] = $row['age'];
+			#TK TRACKING VARS
+			$_SESSION['choiceNum']=1;
+			$_SESSION['path'] = '';
+			//change storyNum later to change based on story for now/testing use story 1 always
+			$_SESSION['storyNum'] = 'Riskory_1';
+			#TK
             
 			if ($isAdmin == 0)
 			{
