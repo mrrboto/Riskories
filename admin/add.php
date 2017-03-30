@@ -43,6 +43,10 @@ Story Name: <input type='text' name='title'>
         {
             echo "<p>Field cannot be blank</p>";
         }
+        else if(preg_match("/[^A-Za-z0-9\' ']/", $_POST['title']))
+        {
+            echo "<p>Title cannot contain special characters</p>";
+        }
         else
         {
             include('../cyo/add_room.php');

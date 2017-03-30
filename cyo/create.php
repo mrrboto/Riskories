@@ -69,7 +69,7 @@
 	<p>Site Title:<br /><input name="title" type="text" size="50" value="<?= HtmlSpecialChars($settings['title']) ?>"/></p><br />
 	<p>Main Page Text:<br /><textarea name="main_page_text" cols="50" rows="10"><?= $settings['main_page_text'] ?></textarea></p><br />
 
-	<p>Content Warning Text:<br /><textarea name="warn_box_blurb" cols="50" rows="10"><?= $settings['warn_box_blurb'] ?></textarea><br />
+    <p>Content Warning Text:<br /><textarea name="warn_box_blurb" cols="50" rows="10"><?= $settings['warn_box_blurb'] ?></textarea><br />
 	<small>This is the content warning that will display when the user opens the first "room".</small></p><br />
 
 	<p>Depth Before End:<br /><input name="kill_depth" type="text" size="50" value="<?= HtmlSpecialChars($settings['kill_depth']) ?>"/><br />

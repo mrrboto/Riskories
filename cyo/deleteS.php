@@ -16,8 +16,8 @@ if(isset($_GET['story']))
 
 mysql_select_db("riskories", $db);
 
-$drop1 = "DROP TABLE $storyR";
-$drop2 = "DROP TABLE $storyS";
+$drop1 = "DROP TABLE `$storyR`";
+$drop2 = "DROP TABLE `$storyS`";
 $drop3 = "ALTER TABLE `users` DROP `$storyT`;";
 $delete = "DELETE FROM stories WHERE title='$storyT'";
 

@@ -20,7 +20,7 @@
 	# get the number of rooms
 	#
 
-	list($rooms) = mysql_num_rows(mysql_query("SELECT * FROM $storyR",$db));
+	list($rooms) = mysql_num_rows(mysql_query("SELECT * FROM `$storyR`",$db));
 	$insert = "<br /><br /><b>Rooms:</b> ".number_format($rooms);
 
 	#
@@ -33,7 +33,7 @@
 
 		//list($parent_room_id) = mysql_num_rows(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
         $storyR = $GLOBALS['storyR'];
-		$parent_room_id = db_single(mysql_query("SELECT id FROM $storyR WHERE room_1=".$room_id." OR room_2=".$room_id));
+		$parent_room_id = db_single(mysql_query("SELECT id FROM `$storyR` WHERE room_1=".$room_id." OR room_2=".$room_id));
 		//echo "<!-- Parent ID: ".$parent_room_id['id']." --/>";
 		if ($parent_room_id['id']){
 			return 1 + get_room_depth($parent_room_id['id']);
@@ -57,7 +57,7 @@
 	}
 
     //change when adding rooms
-	$room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$room_id"));
+	$room = db_single(mysql_query("SELECT * FROM `$storyR` WHERE id=$room_id"));
 
 
     //INSERT KEY SWITCH LOGIC HERE

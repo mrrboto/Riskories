@@ -20,7 +20,7 @@ if ($db) {
         $storyS = "choose_settings";
         
 	}
-	$settings = db_single(mysql_query("SELECT * FROM $storyS ORDER BY 'id' DESC;"));
+	$settings = db_single(mysql_query("SELECT * FROM `$storyS` ORDER BY 'id' DESC;"));
 	//print_r($settings); //DEBUGGING
 }
 ?>

@@ -4,7 +4,9 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 
 <?php
 
-$title = $_POST['title'];
+//$title = $_POST['title'];
+$title = trim($_POST['title'], "\x20..\x20");
+
 $room = $title."_rooms";
 $room_set = $title."_settings";
 //echo $title;

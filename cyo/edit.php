@@ -31,12 +31,12 @@
 
 		$id = intval($_POST['id']);
 
-		$room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$id"));
-		$parent	= db_single(mysql_query("SELECT * FROM $storyR WHERE room_1=$id OR room_2=$id"));
+		$room = db_single(mysql_query("SELECT * FROM `$storyR` WHERE id=$id"));
+		$parent	= db_single(mysql_query("SELECT * FROM `$storyR` WHERE room_1=$id OR room_2=$id"));
 
-		db_write("DELETE FROM $storyR WHERE id=$id");
-		db_write("UPDATE $storyR SET room_1=0 WHERE room_1=$id");
-		db_write("UPDATE $storyR SET room_2=0 WHERE room_2=$id");
+		db_write("DELETE FROM `$storyR` WHERE id=$id");
+		db_write("UPDATE `$storyR` SET room_1=0 WHERE room_1=$id");
+		db_write("UPDATE `$storyR` SET room_2=0 WHERE room_2=$id");
 
 		header("location: edit.php?story=$storyT&id=$parent[id]");
 		exit;
@@ -50,8 +50,8 @@
 
 	$room_id = intval($_GET['id']);
 
-	$room = db_single(mysql_query("SELECT * FROM $storyR WHERE id=$room_id"));
-	$parent	= db_single(mysql_query("SELECT * FROM $storyR WHERE room_1=$room_id OR room_2=$room_id"));
+	$room = db_single(mysql_query("SELECT * FROM `$storyR` WHERE id=$room_id"));
+	$parent	= db_single(mysql_query("SELECT * FROM `$storyR` WHERE room_1=$room_id OR room_2=$room_id"));
 
 	if (!$room['id']){
 		include('header.txt');
