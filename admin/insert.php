@@ -1,15 +1,15 @@
 <?php
-  include('admin_auth.php');
+  include('nav.php');
 ?>
 <!DOCTYPE>
 <html>
 <head>
     <title>Admin Portal - Insert</title>
 </head>
-<body>
+<body style="background: #efefef;">
 
 <?php
-  readfile('nav.php');
+  //readfile('nav.php');
 
   $name = '';
   $password = '';
@@ -61,6 +61,7 @@
     }
   }
 ?>
+
 
 <div class="container">
 

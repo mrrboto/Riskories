@@ -11,7 +11,7 @@
             }
             else
             {
-                echo "<br>&raquo;<a href='../admin/nav.php'>Profile</a><br /><br />";
+                echo "<br>&raquo;<a href='../admin/admin.php'>Profile</a><br /><br />";
             }
                    
         }

@@ -27,5 +27,5 @@ mysql_query($drop3,$db);
 mysql_query($delete,$db);
 
 echo "<p>Story deleted</p>";
-header('Location: ../admin/nav.php');
+header('Location: ../admin/admin.php');
 ?>
