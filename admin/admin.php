@@ -28,11 +28,12 @@ if (isset($_POST['save']))
     </head>
     <body style="background: #efefef;">
 
+        <!-- LIST CSS STYLE CUSTOM -->
         <style>
 
             .list-group {
-
-                max-width: 330px;
+                max-width: 160px;
+                min-width: 160px;
             }
             .list-group-item {
                 position: relative;
@@ -41,12 +42,13 @@ if (isset($_POST['save']))
                 margin-bottom: -1px;
                 background-color: #000;
                 border: 1px solid #ddd;
-                max-width: 330px;
+                max-width: 160px;
+                min-width: 160px;
             }
 
         </style>
 
-
+        <!-- START NEW STORY BUTTON CONTAINER + LOGIC -->
         <div class="container">
             <a href="admin.php?add=1"><button type="button" class="btn btn-default btn-md">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> New Story
@@ -81,29 +83,26 @@ if (isset($_POST['save']))
         {
             echo '<div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <h4>Riskories</h4>
-                        </div>
-                    </div>
-
-                    <div class="bs-example">
-                        <ul class="list-group">';
+                            <ul class="list-group">';
         }
         foreach ($stories as $row)
         {
             printf('<li class="list-group-item"><span><a href="../cyo/room_adm.php?story=%s">%s</a></span>&nbsp&nbsp
-                                <a href="../cyo/create.php?story=%s">create</a>&nbsp&nbsp
-                                <a href="../cyo/deleteS.php?story=%s">delete</a></li>',
-                   $row['title'],
-                   htmlspecialchars($row['title']),
-                   $row['title'],
-                   $row['title']
+                    <a href="../cyo/create.php?story=%s">create</a>&nbsp&nbsp
+                    <a href="../cyo/deleteS.php?story=%s">delete</a></li>',
+                    $row['title'],
+                    htmlspecialchars($row['title']),
+                    $row['title'],
+                    $row['title']
                   );
         }
 
         ?>
         </ul>
     </div>
-</div>
+</div><!--end story row-->
+</div><!--end story container-->
 </body>
 </html>

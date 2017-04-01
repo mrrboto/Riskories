@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
 <?php
 
   $name = '';
@@ -10,7 +7,7 @@
   $message = '';
 
   if (isset($_POST['submit'])) {
-	if($_POST['password']===$_POST['newPass']){
+	if($_POST['password']===$_POST['password_cf']){
 		$ok = true;
 		if (!isset($_POST['name']) || $_POST['name'] === '') {
 			$ok = false;
@@ -59,35 +56,38 @@
 	}
   }
 ?>
-<div class="text-center" style="padding:10px 0">
-    <div class="logo">register</div>
-    <div class="reg-form-1">
-        <form class="text-center" method="post" id="reg-form" action="">
-
-        <div class="reg-group">
-
-
-            User name: <input type="text" name="name" class="form-control" value="<?php
-            echo htmlspecialchars($name);?>"><br>
-
-            Password: <input type="password" name="password" class="form-control"><br>
-
-			Confirm Password: <input type="password" name="newPass" class="form-control"><br>
-
-			Gender:
-            <input type="radio" name="gender" value="f"<?php
-            if ($gender === 'f') {
-                echo ' checked';
-            }?>>female
-            <input type="radio" name="gender" value="m"<?php
-            if ($gender === 'm') {
-                echo ' checked';
-            }?>>male<br>
-
-
-            <div class="reg-submit">
-                <input type="submit" name="submit" value="Submit">
+<!DOCTYPE html>
+<html>
+<body>
+<div class="text-center" style="padding:0px 0">
+<div class="logo">register</div>
+<div class="login-form-1">
+    <form method="post" id="login-form" class="text-center" action="">
+        <div class="login-form-main-message"></div>
+        <div class="main-login-form">
+            <div class="login-group">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="lg_username" name="name" placeholder="enter username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="lg_password" name="password" placeholder="enter password">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="lg_password_cf" name="password_cf" placeholder="confirm password">
+                </div>
+                <div class="form-group">
+                    Gender:
+                    <input type="radio" name="gender" value="f"<?php
+                    if ($gender === 'f') {
+                        echo ' checked';
+                    }?>>female
+                    <input type="radio" name="gender" value="m"<?php
+                    if ($gender === 'm') {
+                        echo ' checked';
+                    }?>>male<br>
+                </div>
             </div>
+            <button type="submit" name="submit" class="login-button" value="Login"><i class="fa fa-chevron-right"></i></button>
         </div>
     </form>
 </div>
