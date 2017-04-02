@@ -32,8 +32,8 @@ if (isset($_POST['save']))
         <style>
 
             .list-group {
-                max-width: 160px;
-                min-width: 160px;
+                max-width: 250px;
+                min-width: 250px;
             }
             .list-group-item {
                 position: relative;
@@ -42,8 +42,8 @@ if (isset($_POST['save']))
                 margin-bottom: -1px;
                 background-color: #000;
                 border: 1px solid #ddd;
-                max-width: 160px;
-                min-width: 160px;
+                max-width: 250px;
+                min-width: 250px;
             }
 
         </style>
@@ -54,18 +54,17 @@ if (isset($_POST['save']))
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> New Story
                 </button>
             </a>
-            <ul class="list-group">
+            <ul>
                 <?php
 
                     if(isset($_GET['add']))
                     {
                         echo '<form method="post" action="" class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                        <input type="text" name="title" class="form-control" placeholder="Story Name">
+                        <input type="text" style="max-width: 200px;" name="title" class="form-control" placeholder="Story Name">
                         </div>
                         <button type="submit" name="save" class="btn btn-default">Submit</button>'.$message.'
-                      </form>
-                     </div>';
+                      </form>';
                     }
 
                 ?>
@@ -89,9 +88,13 @@ if (isset($_POST['save']))
         }
         foreach ($stories as $row)
         {
-            printf('<li class="list-group-item"><span><a href="../cyo/room_adm.php?story=%s">%s</a></span>&nbsp&nbsp
-                    <a href="../cyo/create.php?story=%s">create</a>&nbsp&nbsp
-                    <a href="../cyo/deleteS.php?story=%s">delete</a></li>',
+            printf('<li class="list-group-item">
+                        <a href="../cyo/room_adm.php?story=%s">%s</a>
+                        <span style="float:right;">
+                            <a href="../cyo/create.php?story=%s">create</a>&nbsp&nbsp
+                            <a href="../cyo/deleteS.php?story=%s">delete</a>
+                        </span>
+                    </li>',
                     $row['title'],
                     htmlspecialchars($row['title']),
                     $row['title'],
