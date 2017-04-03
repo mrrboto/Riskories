@@ -95,7 +95,11 @@
 	if ($room['end_here']){
 		print nl2br(htmlentities(trim($room['blurb'])));
 		echo "<br><br><b>It's all over.</b>";
-		#TK RESET TRACKING COOKIE
+		#TK purge path if random
+		if ($_SESSION['randChoice'] == 1){
+			$_SESSION['path'] = 'generic;';
+		}
+		#TK get the story name
 		if(isset($_SESSION['user'])){
 			$_SESSION['storyNum'] = $_GET['story'];
 			header( "Refresh:5; url=../user/profile.php", true, 303);

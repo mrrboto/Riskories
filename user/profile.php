@@ -31,6 +31,7 @@ if (isset ($_SESSION['path'])){
 		$_SESSION['choiceNum'] = 1;
 	}
 }
+//echo $_SESSION['randChoice'];
 #TK
 
 
