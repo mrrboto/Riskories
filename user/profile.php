@@ -18,6 +18,36 @@ if (isset ($_SESSION['path'])){
 		$result = mysqli_query($db, $sql);
 		$row = mysqli_fetch_assoc($result);
 		if($row){
+			#TK CHECK DEMOGRAPHICS
+			if ($_SESSION['stockDemo'] == 0){
+				$anyFilled = false;
+				$_SESSION['path'] .= '[';
+				if ($row['age'] != ''){
+					$_SESSION['path'] .= 'a;';
+					$anyFilled = true;
+				}
+				if ($row['realName'] != ''){
+					$_SESSION['path'] .= 'rN;';
+					$anyFilled = true;
+				}
+				if ($row['soStatus'] != ''){
+					$_SESSION['path'] .= 'soS;';
+					$anyFilled = true;
+				}
+				if ($row['soName'] != ''){
+					$_SESSION['path'] .= 'soN;';
+					$anyFilled = true;
+				}
+				if ($anyFilled)
+				{
+					$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
+				}
+			}
+			else{
+				$_SESSION['path'] .= 'generic';
+			}
+			$_SESSION['path'] .= ']';
+			#TK END DEMO CHECK
 			$updateSQL = sprintf("UPDATE users SET %s='%s' WHERE name='%s'",
 			mysqli_real_escape_string($db, $_SESSION['storyNum']),
 			mysqli_real_escape_string($db, $_SESSION['path']),
