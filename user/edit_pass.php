@@ -1,51 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<!--  ?><script>alert("it works")</script>< ?php -->
-</head>
-<body>
-
-  <div class="container">
-  	<div class="row">
-  		<div class="col-md-6">
-  			<h4>Change Password</h4>
-  		</div>
-  		<div class="col-md-1 col-md-offset-5">
-  			<a class="btn btn-primary btn-sm pull-right">Update Password</a>
-  		</div>
-  	</div>
-  	<div class="panel panel-default">
-      <div class="panel-heading">Please enter your current password, then enter your new password:</div>
-        <div class="panel-body">
-  		<!--
-  		<em>
-  			Please enter your current password, then enter your new password:
-  		</em>
-  		-->
-  		    <form method="post" id="reg-form" action="">
-  					<div class="form-group">
-        			<label for="currPass">Old Password:</label>
-        			<input type="password" class="form-control" name="currPass" placeholder="">
-      			</div>
-  					<div class="form-group">
-        			<label for="newPass">New Password:</label>
-        			<input type="password" class="form-control" name="newPass" placeholder="">
-      			</div>
-  					<div class="form-group">
-        			<label for="confirmPass">Confirm New Password:</label>
-        			<input type="password" class="form-control" name="confirmPass" placeholder="">
-      			</div>
-
-  					<div class="dem-save">
-  						<button type="submit" name="saveBtn" class="btn btn-primary">Update Password</button>
-  					</div>
-
-  				</form>
-  	</div>
-  	</div>
-  </div>
-
 <?php
+
+    include('nav.php');
+
   $message = '';
   //checks if save button is pressed
   if(isset($_POST['saveBtn'])){
@@ -80,10 +36,56 @@
     }
 
   }
-  echo "<p>$message</p>";
 ?>
 
-<div name="input_div">
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Portal - Change Password</title>
+    </head>
+    <body style="background: #efefef;">
+
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Change Password</h4>
+            </div>
+            <!-- OTHER PASSWORD BUTTON
+            <div class="col-md-1 col-md-offset-5">
+                <a class="btn btn-primary btn-sm pull-right">Update Password</a>
+            </div>-->
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Please enter your current password, then enter your new password:</div>
+            <div class="panel-body">
+            <!--
+            <em>
+                Please enter your current password, then enter your new password:
+            </em>
+            -->
+                <form method="post" id="reg-form" action="">
+                        <div class="form-group">
+                        <label for="currPass">Old Password:</label>
+                        <input type="password" class="form-control" name="currPass" placeholder="">
+                    </div>
+                        <div class="form-group">
+                        <label for="newPass">New Password:</label>
+                        <input type="password" class="form-control" name="newPass" placeholder="">
+                    </div>
+                        <div class="form-group">
+                        <label for="confirmPass">Confirm New Password:</label>
+                        <input type="password" class="form-control" name="confirmPass" placeholder="">
+                    </div>
+                        <div class="dem-save">
+                            <button type="submit" name="saveBtn" class="btn btn-primary">Update Password</button>
+                        </div>
+
+                    </form>
+             </div>
+        </div>
+        <?php
+            echo "<p>$message</p>";
+        ?>
+      </div>
 </body>
 </html>

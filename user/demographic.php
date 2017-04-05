@@ -1,4 +1,7 @@
 <?php
+
+    include('nav.php');
+
 	$realName = '';
 	$soStatus = '';
 	$soName = '';
@@ -117,8 +120,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>User Portal - Demographics</title>
 </head>
-<body onload="changeSOS()">
+<body onload="changeSOS()" style="background: #efefef;">
 <link rel="stylesheet" href="log_style.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
@@ -150,9 +154,10 @@
 		<div class="col-md-6">
 			<h4>Edit Demographics</h4>
 		</div>
+        <!-- EXTRA SAVE BUTTON
 		<div class="col-md-1 col-md-offset-5">
 			<a class="btn btn-primary btn-sm pull-right">Save</a>
-		</div>
+		</div>-->
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-heading">Please enter your demographic information (blank fields will not be updated):</div>
