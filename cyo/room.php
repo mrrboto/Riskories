@@ -112,7 +112,12 @@
     //--------------------CHANGE ONCE MESSAGE PAGE IS READY--------------------------///
         //header( "Refresh:5; url=../guest/guestReg.php", true, 303);
     //-------------------------------------------------------------------------------///
-	}else{
+	}else if($_SESSION['randChoice']){
+		echo "<div class=\"choices\">\n";
+		echo "test for now";
+		echo "</div>\n";
+	}
+	else{
 		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
 		echo "<br />\n";
 		echo "<b>What will you do?</b><br />\n";
