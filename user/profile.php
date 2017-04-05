@@ -2,26 +2,29 @@
 include('user_auth.php');
 //testing user auth if admin or not
 //echo $_SESSION['isAdmin'];
+
+#TK temp? rerandom randomizers every time this page loads
+$_SESSION['randChoice'] = rand(0,1);
+$_SESSION['stockDemo'] = rand(0,1);
+echo "demo".$_SESSION['stockDemo']." nochoice".$_SESSION['randChoice'];
 #TK STORING USER PATHS FOR BOTH GUEST AND USER
-//TESTING FOR STORING
-//echo $_SESSION['path'];
 if (isset ($_SESSION['path'])){
-	//echo "<p>testerino<p>";
 	if($_SESSION['path'] != ''){
-		//echo "<p>testerino<p>";
 		$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
 		$db = mysqli_connect('localhost', 'root', '', 'riskories');
 		$sql = sprintf("SELECT * FROM users WHERE name='%s' AND %s IS NULL",
         mysqli_real_escape_string($db, $_SESSION['user']),
 		mysqli_real_escape_string($db, $_SESSION['storyNum'])
 		);
+		//echo $_SESSION['user']."did".$_SESSION['storyNum'];
 		$result = mysqli_query($db, $sql);
 		$row = mysqli_fetch_assoc($result);
 		if($row){
 			#TK CHECK DEMOGRAPHICS
+			$_SESSION['path'] .= '[';
+			//stock demographics werent used
 			if ($_SESSION['stockDemo'] == 0){
 				$anyFilled = false;
-				$_SESSION['path'] .= '[';
 				if ($row['age'] != ''){
 					$_SESSION['path'] .= 'a;';
 					$anyFilled = true;
@@ -43,8 +46,9 @@ if (isset ($_SESSION['path'])){
 					$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
 				}
 			}
+			//stock demographics were used
 			else{
-				$_SESSION['path'] .= 'generic';
+				$_SESSION['path'] .= 'stock';
 			}
 			$_SESSION['path'] .= ']';
 			#TK END DEMO CHECK
