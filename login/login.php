@@ -61,7 +61,7 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <div class="text-center">
-    <img src="../img/logo_1.png" class="rounded" alt="..." width="50%">
+    <img src="../img/logo_1.png" class="rounded" alt="..." width="50%" style="min-width:200px;">
     </div>
 
 
