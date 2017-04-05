@@ -119,94 +119,90 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>User Portal - Demographics</title>
-</head>
-<body onload="changeSOS()" style="background: #efefef;">
-<link rel="stylesheet" href="log_style.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <head>
+        <title>User Portal - Demographics</title>
+    </head>
+    <body onload="changeSOS()" style="background: #efefef;">
 
 		<script>
-				function changeSOS(){
-					var l = document.getElementById("soStatus").value
-					var son = document.getElementById("soName")
-					var sonL = document.getElementById("SONLbl")
-					if (l=="dating" || l=="married"){
-						son.style.visibility = "visible"
-						sonL.style.visibility = "visible"
-					}
-					else{
-						son.style.visibility = "hidden"
-						sonL.style.visibility = "hidden"
-					}
-				}
 
-				function back(){
-					window.history.back();
-				}
-				</script>
+            function changeSOS(){
+                var l = document.getElementById("soStatus").value
+                var son = document.getElementById("soName")
+                var sonL = document.getElementById("SONLbl")
+                if (l=="dating" || l=="married"){
+                    son.style.visibility = "visible"
+                    sonL.style.visibility = "visible"
+                }
+                else{
+                    son.style.visibility = "hidden"
+                    sonL.style.visibility = "hidden"
+                }
+            }
 
+            function back(){
+                window.history.back();
+            }
 
-    <div class="container">
-	<div class="row">
-		<div class="col-md-6">
-			<h4>Edit Demographics</h4>
-		</div>
-        <!-- EXTRA SAVE BUTTON
-		<div class="col-md-1 col-md-offset-5">
-			<a class="btn btn-primary btn-sm pull-right">Save</a>
-		</div>-->
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">Please enter your demographic information (blank fields will not be updated):</div>
-  		<div class="panel-body">
-		<!--
-		<em>
-			Please enter your demographic information (blank fields will not be updated):
-		</em>
-		-->
+        </script>
 
 
-		    <form method="post" id="reg-form" action="">
-					<div class="form-group">
-      			<label for="realName">First Name:</label>
-      			<input type="text" class="form-control" name="realName" placeholder="">
-    			</div>
-					<div class="form-group">
-      			<label for="age">Age:</label>
-      			<input type="text" class="form-control" name="age" placeholder="">
-    			</div>
-					<div class="form-group">
-			      <label for="gender">Gender: </label>
-			      <select class="form-control" name="gender" id="gender">
-							<option value="">Please Select One</option>
-							<option id="female" value="f">Female</option>
-							<option id="male" value ="m">Male</option>
-			      </select>
-    			</div>
-					<div class="form-group">
-			      <label for="maritalStatus">Marital Status: </label>
-			      <select class="form-control" name="soStatus" id="soStatus"  onchange="changeSOS()">
-				        <option value="">Please Select One</option>
-				        <option name="single" id="single" value="single">Single</option>
-			            <option name="dating" id="dating" value="dating">Dating</option>
-			            <option name="married" id="married" value="married">Married</option>
-			      </select>
-    			</div>
-					<div class="form-group" id="SONLbl">
-      			<label for="soName">Significant Other Name:</label>
-      			<input type="text" class="form-control" name="soName" id="soName" placeholder="">
-    			</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Edit Demographics</h4>
+                </div>
+                <!-- EXTRA SAVE BUTTON
+                <div class="col-md-1 col-md-offset-5">
+                    <a class="btn btn-primary btn-sm pull-right">Save</a>
+                </div>-->
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Please enter your demographic information (blank fields will not be updated):</div>
+                <div class="panel-body">
+                <!--
+                <em>
+                    Please enter your demographic information (blank fields will not be updated):
+                </em>
+                -->
+                <form method="post" id="reg-form" action="">
+                        <div class="form-group">
+                    <label for="realName">First Name:</label>
+                    <input type="text" class="form-control" name="realName" placeholder="">
+                    </div>
+                        <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="text" class="form-control" name="age" placeholder="">
+                    </div>
+                        <div class="form-group">
+                      <label for="gender">Gender: </label>
+                      <select class="form-control" name="gender" id="gender">
+                                <option value="">Please Select One</option>
+                                <option id="female" value="f">Female</option>
+                                <option id="male" value ="m">Male</option>
+                      </select>
+                    </div>
+                        <div class="form-group">
+                      <label for="maritalStatus">Marital Status: </label>
+                      <select class="form-control" name="soStatus" id="soStatus"  onchange="changeSOS()">
+                            <option value="">Please Select One</option>
+                            <option name="single" id="single" value="single">Single</option>
+                            <option name="dating" id="dating" value="dating">Dating</option>
+                            <option name="married" id="married" value="married">Married</option>
+                      </select>
+                    </div>
+                        <div class="form-group" id="SONLbl">
+                    <label for="soName">Significant Other Name:</label>
+                    <input type="text" class="form-control" name="soName" id="soName" placeholder="">
+                    </div>
 
-					<div class="dem-save">
-						<button type="submit" name="saveBtn" class="btn btn-primary">Save</button>
-					</div>
+                        <div class="dem-save">
+                            <button type="submit" name="saveBtn" class="btn btn-primary">Save</button>
+                        </div>
 
-				</form>
-	</div>
-	</div>
-</div>
-</body>
+                    </form>
+                    </div>
+                </div>
+            </div>
+    </body>
 </html>
