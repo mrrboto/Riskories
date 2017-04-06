@@ -28,8 +28,10 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 			#TK TRACKING VARS
 			$_SESSION['choiceNum']=1;
 			$_SESSION['path'] = '';
-			//change storyNum later to change based on story for now/testing use story 1 always
-			$_SESSION['storyNum'] = 'Riskory_1';
+			$_SESSION['storyNum'] = '';
+			#TK RANDOMIZATION VARS
+			$_SESSION['stockDemo'] = rand(0,1);
+			$_SESSION['randChoice'] = rand(0,1); 
 			#TK
             
 			if ($isAdmin == 0)

@@ -95,20 +95,32 @@
 	if ($room['end_here']){
 		print nl2br(htmlentities(trim($room['blurb'])));
 		echo "<br><br><b>It's all over.</b>";
-		#TK RESET TRACKING COOKIE
+		#TK purge path if random
+		if ($_SESSION['randChoice'] == 1){
+			$_SESSION['path'] = 'generic;';
+		}
+		#TK get the story name
+		$_SESSION['storyNum'] = $_GET['story'];
 		if(isset($_SESSION['user'])){
-			$_SESSION['storyNum'] = $_GET['story'];
 			header( "Refresh:5; url=../user/profile.php", true, 303);
 		}
 		//guest
 		else{
 			header( "Refresh:5; url=../guest/guestReg.php", true, 303);
 		}
-		#TK
-    //--------------------CHANGE ONCE MESSAGE PAGE IS READY--------------------------///
-        //header( "Refresh:5; url=../guest/guestReg.php", true, 303);
-    //-------------------------------------------------------------------------------///
-	}else{
+	#TK TAKE AWAY THE CHOICE
+	}else if($_SESSION['randChoice']){
+		echo "<div class=\"choices\">\n";
+		$randRoom = rand(1,2);
+		if ($randRoom == 1){
+			echo "<a href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
+		}else{
+			echo "<a href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
+		}
+		echo "</div>\n";
+	}
+	#TK
+	else{
 		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
 		echo "<br />\n";
 		echo "<b>What will you do?</b><br />\n";

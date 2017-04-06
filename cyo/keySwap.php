@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['name']))
+    if(isset($_SESSION['name']) || $_SESSION['stockDemo']==0)
     {
         $name = $_SESSION['name'];
         $soName = $_SESSION['soName'];
