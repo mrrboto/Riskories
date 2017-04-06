@@ -108,15 +108,18 @@
 		else{
 			header( "Refresh:5; url=../guest/guestReg.php", true, 303);
 		}
-		#TK
-    //--------------------CHANGE ONCE MESSAGE PAGE IS READY--------------------------///
-        //header( "Refresh:5; url=../guest/guestReg.php", true, 303);
-    //-------------------------------------------------------------------------------///
+	#TK TAKE AWAY THE CHOICE
 	}else if($_SESSION['randChoice']){
 		echo "<div class=\"choices\">\n";
-		echo "test for now";
+		$randRoom = rand(1,2);
+		if ($randRoom == 1){
+			echo "<a href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
+		}else{
+			echo "<a href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
+		}
 		echo "</div>\n";
 	}
+	#TK
 	else{
 		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
 		echo "<br />\n";
