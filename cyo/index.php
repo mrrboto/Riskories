@@ -5,7 +5,7 @@
     //If the user is an admin - redirect to room_adm.php
     if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1)
     {
-        header('Location: /Riskories/cyo/room_adm.php');
+        header('Location: ../cyo/room_adm.php');
        //header('Location: /Riskories/nav/profile.php');
     }
 
