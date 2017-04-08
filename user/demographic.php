@@ -1,5 +1,4 @@
 <?php
-
     include('nav.php');
 
 	$realName = '';
@@ -47,8 +46,9 @@
 		}
 
 		if($ok){
+            include('../db/config.php');
+            include('../db/db.php');
 			if($okRN){
-				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
 				"UPDATE users
 				SET `realName`='%s'
@@ -63,7 +63,6 @@
 				if($_POST['soStatus'] === 'single'){
 					$clar=1;
 				}
-				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
 				"UPDATE users
 				SET `soStatus`='%s'
@@ -83,7 +82,6 @@
 				}
 			}
 			if($okSON){
-				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
 				"UPDATE users
 				SET `soName`='%s'
@@ -93,7 +91,6 @@
 				$query = mysqli_query($db, $sql);
 			}
 			if($okG){
-				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
 				"UPDATE users
 				SET `gender`='%s'
@@ -103,7 +100,6 @@
 				$query = mysqli_query($db, $sql);
 			}
 			if($okA){
-				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
 				"UPDATE users
 				SET `age`= %s
@@ -112,6 +108,8 @@
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
 			}
+
+            mysqli_close($db);
 		}
 		header("Location: profile.php");
 	}

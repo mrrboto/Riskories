@@ -4,9 +4,9 @@
 
 <?php
 if ($db) {
-	
+
     //Get story title and attributes
-    
+
     if(isset($_GET['story']))
 	{
 		$storyT = $_GET['story'];
@@ -18,7 +18,7 @@ if ($db) {
 	    $storyT = "choose";
         $storyR = "choose_rooms";
         $storyS = "choose_settings";
-        
+
 	}
 	$settings = db_single(mysql_query("SELECT * FROM `$storyS` ORDER BY 'id' DESC;"));
 	//print_r($settings); //DEBUGGING
@@ -26,7 +26,7 @@ if ($db) {
 ?>
 <title><?php echo $db ? $settings['title'] : "An epic adventure!"; ?></title>
 <link rel="stylesheet" type="text/css" media="screen" href="choose.css" />
-<?php 
+<?php
 if ($db) {
 	if ($settings['enable_analytics'] == 1) {
 		echo $settings['analytics_blurb'];

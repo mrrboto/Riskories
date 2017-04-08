@@ -13,21 +13,21 @@
             {
                 echo "<br>&raquo;<a href='../admin/admin.php'>Profile</a><br /><br />";
             }
-                   
+
         }
         else
         {
-            echo "<br>&raquo;<a href='../index.html'>Main Screen</a><br /><br />"; 
+            echo "<br>&raquo;<a href='../index.html'>Main Screen</a><br /><br />";
         }
 		?>
-        <?php 
+        <?php
 		if ($db) {
 			//$storyR = $_GET['story']."_rooms";
 			$total_rooms = db_single(mysql_query("SELECT count(*) as total FROM `$storyR`"));
 			echo "Total Rooms: ".$total_rooms['total'];
             }
 		?>
-			
+
 	</p>
 </div>
 </body>

@@ -10,8 +10,12 @@ $_SESSION['stockDemo'] = rand(0,1);
 #TK STORING USER PATHS FOR BOTH GUEST AND USER
 if (isset ($_SESSION['path'])){
 	if($_SESSION['path'] != ''){
+
+        include('../db/config.php');
+        include('../db/db.php');
+
 		$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
-		$db = mysqli_connect('localhost', 'root', '', 'riskories');
+
 		$sql = sprintf("SELECT * FROM users WHERE name='%s' AND %s IS NULL",
         mysqli_real_escape_string($db, $_SESSION['user']),
 		mysqli_real_escape_string($db, $_SESSION['storyNum'])
@@ -63,6 +67,8 @@ if (isset ($_SESSION['path'])){
 		
 		$_SESSION['path'] = '';
 		$_SESSION['choiceNum'] = 1;
+
+        mysqli_close($db);
 	}
 }
 //echo $_SESSION['randChoice'];
@@ -124,9 +130,11 @@ if (isset ($_SESSION['path'])){
 
         <?php //display stories
 
-            $dbi = mysqli_connect('localhost', 'root', '', 'riskories');
+            include('../db/config.php');
+            include('../db/db.php');
+
             $sqli = 'SELECT * FROM stories';
-            $stories = mysqli_query($dbi, $sqli);
+            $stories = mysqli_query($db, $sqli);
 
             if(mysqli_num_rows($stories) > 0)
             {
@@ -147,6 +155,7 @@ if (isset ($_SESSION['path'])){
                       );
             }
 
+            mysqli_close($db);
         ?>
 
     </body>

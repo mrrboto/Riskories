@@ -2,7 +2,7 @@
     include('../admin/admin_auth.php');
 	include('config.php');
 	include('db.php');
-    include('header.txt');
+    include('header.php');
 
 	#
 	# save changes?
@@ -144,5 +144,5 @@
 
 
 <?php
-	include('footer.txt');
+	include('footer.php');
 ?>

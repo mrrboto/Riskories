@@ -39,7 +39,8 @@
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         // add database code here
-        $db = mysqli_connect('localhost', 'root', '', 'riskories');
+        include('../db/config.php');
+        include('../db/db.php');
 		$query = mysqli_query($db, "SELECT name FROM users WHERE name='$name'");
 		if (mysqli_num_rows($query) != 0)
 		{
@@ -57,7 +58,7 @@
 				echo '<p>User added.</p>';
 		}
 
-
+       //mysqli_close($db);
     }
   }
 ?>

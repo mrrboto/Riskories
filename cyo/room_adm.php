@@ -7,7 +7,7 @@
 		setcookie('email_cookie', $_POST['email'], time()+(60*60*24*365));
 	}
 
-	include('header.txt');
+	include('header.php');
 ?>
 <h1><?php echo $db ? $settings['title'] : "An epic adventure!"; ?></h1>
 </div>
@@ -232,5 +232,5 @@
 		return strlen($x) ? $x : '<i>Blank</i>';
 	}
 
-	include('footer.txt');
+	include('footer.php');
 ?>

@@ -16,11 +16,13 @@
 <body>
 <?php
     readfile('nav.php');
+    include('../db/config.php');
+    include('../db/db.php');
 
-    $db = mysqli_connect('localhost', 'root', '', 'riskories');
     $sql = "DELETE FROM users WHERE id=$id";
     mysqli_query($db, $sql);
     echo '<p>User deleted.</p>';
+
     mysqli_close($db);
 ?>
 </body>

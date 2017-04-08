@@ -34,7 +34,9 @@
 
     if ($ok) {
         // add database code here
-        $db = mysqli_connect('localhost', 'root', '', 'riskories');
+        include('../db/config.php');
+        include('../db/db.php');
+
         $sql = sprintf("UPDATE users SET name='%s', gender='%s'
           WHERE id=%s",
           mysqli_real_escape_string($db, $name),
@@ -45,7 +47,9 @@
         mysqli_close($db);
     }
   } else {
-      $db = mysqli_connect('localhost', 'root', '', 'riskories');
+      include('../db/config.php');
+      include('../db/db.php');
+
       $sql = sprintf('SELECT * FROM users WHERE id=%s', $id);
       $result = mysqli_query($db, $sql);
       foreach ($result as $row) {

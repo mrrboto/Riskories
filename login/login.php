@@ -1,10 +1,13 @@
 <?php
+include('../db/config.php');
+include('../db/db.php');
+
   session_start();
 
 $message = '';
 
 if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
-    $db = mysqli_connect('localhost', 'root', '', 'riskories');
+
     $sql = sprintf("SELECT * FROM users WHERE name='%s'",
         mysqli_real_escape_string($db, $_POST['lg_username'])
     );

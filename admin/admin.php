@@ -1,6 +1,7 @@
 <?php
 include('nav.php');
 
+
 $message = '';
 
 if (isset($_POST['save']))
@@ -84,10 +85,12 @@ if (isset($_POST['save']))
 
         <!--START STORY LIST -->
         <?php
+        include('../db/config.php');
+        include('../db/db.php');
 
-        $dbi = mysqli_connect('localhost', 'root', '', 'riskories');
+
         $sqli = 'SELECT * FROM stories';
-        $stories = mysqli_query($dbi, $sqli);
+        $stories = mysqli_query($db, $sqli);
 
         if(mysqli_num_rows($stories) > 0)
         {
@@ -113,6 +116,7 @@ if (isset($_POST['save']))
                   );
         }
 
+        mysqli_close($db);
         ?>
         </ul>
     </div>

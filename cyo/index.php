@@ -13,7 +13,7 @@
 
     include('config.php');
 	include('db.php');
-	include('header.txt');
+	include('header.php');
 
 
 
@@ -29,5 +29,5 @@ echo "<a href='room.php?story=$storyT' style='font-size: 140%;'>Start playing</a
 <br /><br />"
 ?>
 <?php
-	include('footer.txt');
+	include('footer.php');
 ?>

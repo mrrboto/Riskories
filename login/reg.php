@@ -6,6 +6,8 @@
   $color = '';
   $message = '';
 
+    //echo "<p style='text-align:center'>THIS FEATURE IS CURRENTLY DISABLED</p>";
+
   if (isset($_POST['submit'])) {
 	if($_POST['password']===$_POST['password_cf']){
 		$ok = true;
@@ -29,7 +31,8 @@
 			$hash = password_hash($password, PASSWORD_DEFAULT);
 
 			// add database code here
-			$db = mysqli_connect('localhost', 'root', '', 'riskories');
+            include('../db/config.php');
+            include('../db/db.php');
 			$query = mysqli_query($db, "SELECT name FROM users WHERE name='$name'");
 			if (mysqli_num_rows($query) != 0)
 			{
@@ -50,12 +53,16 @@
 				$_SESSION['isAdmin'] = 0;
 				header("Location: ../user/profile.php");
 			}
+
+            mysqli_close($db);
 		}
     }else{
 		$message = 'Passwords do not match';
 	}
   }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -94,3 +101,5 @@
 </div>
 </body>
 </html>
+
+
