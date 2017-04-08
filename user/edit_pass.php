@@ -5,8 +5,6 @@
   //checks if save button is pressed
   if(isset($_POST['saveBtn'])){
 
-     include('../db/config.php');
-     include('../db/db.php');
      //this call selects only current user from database
      $queryString = sprintf("SELECT * FROM `users` WHERE name='%s'", $_SESSION['user']);
      $res = mysqli_query($db,$queryString);

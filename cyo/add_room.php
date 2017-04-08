@@ -11,7 +11,7 @@ $room = $title."_rooms";
 $room_set = $title."_settings";
 //echo $title;
 
-mysql_select_db("riskories", $db);
+//mysql_select_db("riskories", $db);
 
 $sql = "CREATE TABLE `$room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -33,10 +33,10 @@ $story = "INSERT INTO `stories` (`title`, `table_loc`) VALUES ('$title', '$room'
 $user_add = "ALTER TABLE `users` ADD `$title` VARCHAR(255);";
 
 
-mysql_query($sql,$db);
-mysql_query($table,$db);
-mysql_query($story,$db);
-mysql_query($user_add, $db);
+mysqli_query($db, $sql);
+mysqli_query($db, $table);
+mysqli_query($db, $story);
+mysqli_query($db, $user_add);
 
 $sql2 = "CREATE TABLE `$room_set` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -62,8 +62,8 @@ $sql2 = "CREATE TABLE `$room_set` (
 
 $table2 = "INSERT INTO `$room_set` (`id`, `title`, `root_url`, `copyright_text`, `copyright_year`, `copyright_url`, `main_page_text`, `warn_box_blurb`, `new_room_blurb`, `kill_depth`, `privacy_policy`, `enable_adsense`, `adsense_blurb`, `enable_recaptcha`, `recaptcha_public_key`, `recaptcha_private_key`, `enable_analytics`, `analytics_blurb`) VALUES (1, 'Riskories 1', '', 'Your Name', 2012, 'https://github.com/jeffgeiger', 'This is a Riskory...\r\n', 'This has so and so disclaimers.', 'Now it\'s time for you to create your own adventure.', 1, 'We only want your email address to distinguish your work from others in the back end of the website.  We won\'t sell it, give it away, spam you, or anything else.  Promise.', 0x31, '', 0x30, '', '', 0x30, '');";
 
-mysql_query($sql2,$db);
-mysql_query($table2,$db);
+mysqli_query($db, $sql2);
+mysqli_query($db, $table2);
 
 
 ?>

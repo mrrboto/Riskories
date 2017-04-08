@@ -1,7 +1,10 @@
 <?php
 include('admin_auth.php');
-include('../cyo/config.php');
-include('../cyo/db.php');
+include('../cyo/config.php');//to be deleted
+include('../cyo/db.php');//to be deleted
+
+include('../db/config.php');
+include('../db/db.php');
 ?>
 <html>
     <head>

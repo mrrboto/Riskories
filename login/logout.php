@@ -2,6 +2,7 @@
 session_start();
 if(session_destroy()) // Destroying All Sessions
 {
-header("Location: /Riskories/login/login.php"); // Redirecting To Home Page
+    mysqli_close($connection);
+    header("Location: /Riskories/login/login.php"); // Redirecting To Home Page
 }
 ?>

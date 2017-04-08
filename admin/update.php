@@ -1,5 +1,5 @@
 <?php
-   require 'admin_auth.php';
+   include('nav.php');
 
   if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $id = $_GET['id'];
@@ -11,9 +11,8 @@
 <head>
     <title>PHP</title>
 </head>
-<body>
+<body style="background: #efefef;">
 <?php
-  readfile('nav.php');
 
   $name = '';
   $gender = '';
@@ -33,9 +32,6 @@
 
 
     if ($ok) {
-        // add database code here
-        include('../db/config.php');
-        include('../db/db.php');
 
         $sql = sprintf("UPDATE users SET name='%s', gender='%s'
           WHERE id=%s",
@@ -47,8 +43,6 @@
         mysqli_close($db);
     }
   } else {
-      include('../db/config.php');
-      include('../db/db.php');
 
       $sql = sprintf('SELECT * FROM users WHERE id=%s', $id);
       $result = mysqli_query($db, $sql);

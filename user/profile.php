@@ -11,8 +11,6 @@ $_SESSION['stockDemo'] = rand(0,1);
 if (isset ($_SESSION['path'])){
 	if($_SESSION['path'] != ''){
 
-        include('../db/config.php');
-        include('../db/db.php');
 
 		$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
 
@@ -68,7 +66,7 @@ if (isset ($_SESSION['path'])){
 		$_SESSION['path'] = '';
 		$_SESSION['choiceNum'] = 1;
 
-        mysqli_close($db);
+        //mysqli_close($db);
 	}
 }
 //echo $_SESSION['randChoice'];
@@ -129,9 +127,6 @@ if (isset ($_SESSION['path'])){
         </style>
 
         <?php //display stories
-
-            include('../db/config.php');
-            include('../db/db.php');
 
             $sqli = 'SELECT * FROM stories';
             $stories = mysqli_query($db, $sqli);

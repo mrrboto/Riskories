@@ -13,9 +13,6 @@
 
     <?php
 
-    include('../db/config.php');
-    include('../db/db.php');
-
     $sql = 'SELECT * FROM users';
     $result = mysqli_query($db, $sql);
 
