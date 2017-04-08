@@ -1,8 +1,5 @@
 <?php
 include('user_auth.php');
-include('../cyo/config.php');//to be deleted
-include('../cyo/db.php');//to be deleted
-
 include('../db/config.php');
 include('../db/db.php');
 ?>
