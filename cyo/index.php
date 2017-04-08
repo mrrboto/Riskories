@@ -9,10 +9,8 @@
        //header('Location: /Riskories/nav/profile.php');
     }
 
-
-
-    include('config.php');
-	include('db.php');
+    include('../db/config.php');
+	include('../db/db.php');
 	include('header.php');
 
 

@@ -1,10 +1,7 @@
 <?php
-include('../cyo/config.php');
-include('../cyo/db.php');
-error_reporting(E_ALL ^ E_DEPRECATED);
-?>
+include('../db/config.php');
+include('../db/db.php');
 
-<?php
 
 if(isset($_GET['story']))
 {
@@ -14,17 +11,15 @@ if(isset($_GET['story']))
 }
 
 
-mysql_select_db("riskories", $db);
-
 $drop1 = "DROP TABLE `$storyR`";
 $drop2 = "DROP TABLE `$storyS`";
 $drop3 = "ALTER TABLE `users` DROP `$storyT`;";
 $delete = "DELETE FROM stories WHERE title='$storyT'";
 
-mysql_query($drop1,$db);
-mysql_query($drop2,$db);
-mysql_query($drop3,$db);
-mysql_query($delete,$db);
+mysqli_query($db, $drop1);
+mysqli_query($db, $drop2);
+mysqli_query($db, $drop3);
+mysqli_query($db, $delete);
 
 echo "<p>Story deleted</p>";
 header('Location: ../admin/admin.php');

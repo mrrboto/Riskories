@@ -23,7 +23,7 @@
         <?php
 		if ($db) {
 			//$storyR = $_GET['story']."_rooms";
-			$total_rooms = db_single(mysql_query("SELECT count(*) as total FROM `$storyR`"));
+			$total_rooms = db_single(mysqli_query($db, "SELECT count(*) as total FROM `$storyR`"));
 			echo "Total Rooms: ".$total_rooms['total'];
             }
 		?>
