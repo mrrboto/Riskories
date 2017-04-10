@@ -34,6 +34,7 @@
 
 		//list($parent_room_id) = mysql_num_rows(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
         $storyR = $GLOBALS['storyR'];
+        $db = $GLOBALS['db'];
 		$parent_room_id = db_single(mysqli_query($db, "SELECT id FROM `$storyR` WHERE room_1=".$room_id." OR room_2=".$room_id));
 		//echo "<!-- Parent ID: ".$parent_room_id['id']." --/>";
 		if ($parent_room_id['id']){
@@ -97,7 +98,7 @@
 			), "id=$from AND room_$opt=0");
 
 			print "Your room has been added. <a href=\"room_adm.php?story=$storyT\">Click here</a> to start again.";
-			include('footer.txt');
+			include('footer.php');
 			exit;
 		}
 	}
@@ -164,7 +165,7 @@
 			echo recaptcha_get_html($publickey);
 		}
 		print "<br /><br /><input type=\"submit\" value=\"Add My Room!\">";
-		include('footer.txt');
+		include('footer.php');
 		exit;
 	}
 
@@ -186,7 +187,7 @@
 
 	if (!$room['id']){
 		print "error: room $room_id not found";
-		include('footer.txt');
+		include('footer.php');
 		exit;
 	}
 

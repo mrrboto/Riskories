@@ -71,7 +71,7 @@
 
 	if (!$room['id']){
 		print "error: room $room_id not found";
-		include('footer.txt');
+		include('footer.php');
 		exit;
 	}
 

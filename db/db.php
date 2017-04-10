@@ -1,10 +1,11 @@
 <?php
-$db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+
 ?>
 
 
 <?php //CYO DATABASE ADDITIONS (VP)
 
+$db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
 
 if (!$db)
 {
@@ -22,7 +23,9 @@ function db_single($ret){
 
 function db_query($sql){
 
-	$result = mysqli_query($db, $sql);
+
+    $db = $GLOBALS['db'];
+    $result = mysqli_query($db, $sql);
 
 	if (!$result){
 		echo "<hr /><pre>";
@@ -49,6 +52,7 @@ function db_update($table, $hash, $where){
 
 function db_write($sql){
 
+    $db = $GLOBALS['db'];
     $result = mysqli_query($db, $sql);
 
     if (!$result){
@@ -64,6 +68,7 @@ function db_write($sql){
 
 function db_insert($table, $hash){
 
+    $db = $GLOBALS['db'];
     $fields = array_keys($hash);
 
     $sql = "INSERT INTO `$table` (`".implode('`,`',$fields)."`) VALUES ('".implode("','",$hash)."')";

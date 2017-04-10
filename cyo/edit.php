@@ -54,9 +54,9 @@
 	$parent	= db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE room_1=$room_id OR room_2=$room_id"));
 
 	if (!$room['id']){
-		include('header.txt');
+		include('header.php');
 		print "error: room $room_id not found";
-		include('footer.txt');
+		include('footer.php');
 		exit;
 	}
 
