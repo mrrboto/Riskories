@@ -63,6 +63,10 @@ if (isset($_POST['save']))
                         Default Story
                         </button>
                     </a>
+                    <a href="../admin/excel.php"><button type="button" class="btn btn-default btn-md">
+                        Export CSV
+                        </button>
+                    </a>
                     <ul>
                     <?php
 
