@@ -32,8 +32,9 @@
 		if ($room_id == 1){return 1;}
 
 		//list($parent_room_id) = mysql_num_rows(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
+        $db = $GLOBALS['db'];
         $storyR = $GLOBALS['storyR'];
-		$parent_room_id = db_single(mysqli_query("$db, SELECT id FROM `$storyR` WHERE room_1=".$room_id." OR room_2=".$room_id));
+		$parent_room_id = db_single(mysqli_query($db, "SELECT id FROM `$storyR` WHERE room_1=".$room_id." OR room_2=".$room_id));
 		//echo "<!-- Parent ID: ".$parent_room_id['id']." --/>";
 		if ($parent_room_id['id']){
 			return 1 + get_room_depth($parent_room_id['id']);
