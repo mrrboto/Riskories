@@ -19,6 +19,9 @@
 </form>
 
 <?php
+	if (isset($_POST['no'])){
+		header("Location: ../login/login.php");
+	}
 	if(isset($_GET['page']))
     {
         if ($_GET['page'] == 2)
@@ -26,8 +29,5 @@
 			include('../login/reg.php');
 			echo "<p>$message</p>";
 		}
-	}
-	if (isset($_POST['no'])){
-		header("Location: ../login/login.php");
 	}
 ?>
