@@ -1,7 +1,7 @@
 <?php
     include('../admin/admin_auth.php');
-	include('config.php');
-	include('db.php');
+	include('../db/config.php');
+	include('../db/db.php');
 
 	if (isset($_POST['email'])){
 		setcookie('email_cookie', $_POST['email'], time()+(60*60*24*365));
@@ -21,7 +21,7 @@
 	# get the number of rooms
 	#
 
-	list($rooms) = mysql_num_rows(mysql_query("SELECT * FROM `$storyR`",$db));
+	list($rooms) = mysqli_num_rows(mysqli_query($db, "SELECT * FROM `$storyR`"));
 	$insert = "<br /><br /><b>Rooms:</b> ".number_format($rooms);
 
 	#
@@ -34,7 +34,8 @@
 
 		//list($parent_room_id) = mysql_num_rows(mysql_query("SELECT id FROM choose_rooms WHERE room_1=".$room_id." OR room_2=".$room_id));
         $storyR = $GLOBALS['storyR'];
-		$parent_room_id = db_single(mysql_query("SELECT id FROM `$storyR` WHERE room_1=".$room_id." OR room_2=".$room_id));
+        $db = $GLOBALS['db'];
+		$parent_room_id = db_single(mysqli_query($db, "SELECT id FROM `$storyR` WHERE room_1=".$room_id." OR room_2=".$room_id));
 		//echo "<!-- Parent ID: ".$parent_room_id['id']." --/>";
 		if ($parent_room_id['id']){
 			return 1 + get_room_depth($parent_room_id['id']);
@@ -97,7 +98,7 @@
 			), "id=$from AND room_$opt=0");
 
 			print "Your room has been added. <a href=\"room_adm.php?story=$storyT\">Click here</a> to start again.";
-			include('footer.txt');
+			include('footer.php');
 			exit;
 		}
 	}
@@ -110,7 +111,7 @@
 	if (isset($_REQUEST['from']) && !$_GET['room']){
 
 		$from_id = intval($_REQUEST['from']);
-		$from_room = db_single(mysql_query("SELECT * FROM `$storyR` WHERE id=$from_id"));
+		$from_room = db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE id=$from_id"));
 
 		$depth = get_room_depth($from_id);
 
@@ -164,7 +165,7 @@
 			echo recaptcha_get_html($publickey);
 		}
 		print "<br /><br /><input type=\"submit\" value=\"Add My Room!\">";
-		include('footer.txt');
+		include('footer.php');
 		exit;
 	}
 
@@ -182,11 +183,11 @@
 	}
 
 
-	$room = db_single(mysql_query("SELECT * FROM `$storyR` WHERE id=$room_id"));
+	$room = db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE id=$room_id"));
 
 	if (!$room['id']){
 		print "error: room $room_id not found";
-		include('footer.txt');
+		include('footer.php');
 		exit;
 	}
 

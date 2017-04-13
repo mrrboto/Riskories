@@ -6,7 +6,7 @@
   $color = '';
   $message = '';
 
-    //echo "<p style='text-align:center'>THIS FEATURE IS CURRENTLY DISABLED</p>";
+    echo "<p style='text-align:center'>THIS FEATURE IS CURRENTLY DISABLED</p>";
 
   if (isset($_POST['submit'])) {
 	if($_POST['password']===$_POST['password_cf']){
@@ -63,7 +63,7 @@
 ?>
 
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 <body>
 <div class="text-center" style="padding:0px 0">
@@ -100,6 +100,6 @@
 </div>
 </div>
 </body>
-</html>
+</html>-->
 
 

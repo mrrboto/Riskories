@@ -89,10 +89,6 @@ if (isset($_POST['save']))
 
         <!--START STORY LIST -->
         <?php
-        include('../db/config.php');
-        include('../db/db.php');
-
-
         $sqli = 'SELECT * FROM stories';
         $stories = mysqli_query($db, $sqli);
 
@@ -128,3 +124,4 @@ if (isset($_POST['save']))
 </div><!--end story container-->
 </body>
 </html>
+

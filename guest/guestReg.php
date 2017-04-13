@@ -23,8 +23,9 @@
     {
         if ($_GET['page'] == 2)
         {
-			include('../login/reg.php');
-			echo "<p>$message</p>";
+			//include('../login/reg.php');
+			//echo "<p>$message</p>";
+            echo"<p>Registration currently unavailable</p>";
 		}
 	}
 	if (isset($_POST['no'])){

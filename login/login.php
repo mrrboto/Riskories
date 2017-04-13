@@ -40,11 +40,11 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 			if ($isAdmin == 0)
 			{
 				//header('Location: /Riskories/nav/nav.html');
-				header('Location: /Riskories/user/profile.php');
+				header('Location: ../user/profile.php');
 			}
 			if ($isAdmin == 1)
 			{
-				header('Location: /Riskories/admin/admin.php');
+				header('Location: ../admin/admin.php');
 				//header('Location: /Riskories/nav/profile.php');
 			}
 

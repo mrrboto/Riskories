@@ -2,7 +2,7 @@
 //KR Excel Export
 //Include config and db files for easy sql connection
 include('../db/config.php');
-include('../db/db.php'); 
+include('../db/db.php');
 
  session_start();
 

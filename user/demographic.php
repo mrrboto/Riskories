@@ -46,8 +46,7 @@
 		}
 
 		if($ok){
-            include('../db/config.php');
-            include('../db/db.php');
+
 			if($okRN){
 				$sql = sprintf(
 				"UPDATE users

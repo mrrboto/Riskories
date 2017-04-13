@@ -1,7 +1,7 @@
 <?php
 include('admin_auth.php');
-include('../cyo/config.php');
-include('../cyo/db.php');
+include('../db/config.php');
+include('../db/db.php');
 ?>
 <html>
     <head>

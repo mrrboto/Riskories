@@ -1,7 +1,7 @@
 <?php
     include('../admin/admin_auth.php');
-	include('config.php');
-	include('db.php');
+	include('../db/config.php');
+	include('../db/db.php');
     include('header.php');
 
 	#
@@ -31,8 +31,8 @@
 
 		$id = intval($_POST['id']);
 
-		$room = db_single(mysql_query("SELECT * FROM `$storyR` WHERE id=$id"));
-		$parent	= db_single(mysql_query("SELECT * FROM `$storyR` WHERE room_1=$id OR room_2=$id"));
+		$room = db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE id=$id"));
+		$parent	= db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE room_1=$id OR room_2=$id"));
 
 		db_write("DELETE FROM `$storyR` WHERE id=$id");
 		db_write("UPDATE `$storyR` SET room_1=0 WHERE room_1=$id");
@@ -50,13 +50,13 @@
 
 	$room_id = intval($_GET['id']);
 
-	$room = db_single(mysql_query("SELECT * FROM `$storyR` WHERE id=$room_id"));
-	$parent	= db_single(mysql_query("SELECT * FROM `$storyR` WHERE room_1=$room_id OR room_2=$room_id"));
+	$room = db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE id=$room_id"));
+	$parent	= db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE room_1=$room_id OR room_2=$room_id"));
 
 	if (!$room['id']){
-		include('header.txt');
+		include('header.php');
 		print "error: room $room_id not found";
-		include('footer.txt');
+		include('footer.php');
 		exit;
 	}
 

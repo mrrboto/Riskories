@@ -1,5 +1,5 @@
 <?php
-  include('admin_auth.php');
+    include('nav.php');
 
     if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
         $id = $_GET['id'];
@@ -13,11 +13,11 @@
 <head>
     <title>PHP</title>
 </head>
-<body>
+<body style="background: #efefef;">
 <?php
-    readfile('nav.php');
-    include('../db/config.php');
-    include('../db/db.php');
+    //readfile('nav.php');
+    //include('../db/config.php');
+    //include('../db/db.php');
 
     $sql = "DELETE FROM users WHERE id=$id";
     mysqli_query($db, $sql);

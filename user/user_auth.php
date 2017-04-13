@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 0){
 mysqli_close($connection); // Closing Connection
-header('Location: /Riskories/login/login.php'); // Redirecting To Home
+header('Location: ../login/login.php'); // Redirecting To Home
 
 }
 /*
