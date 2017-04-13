@@ -59,10 +59,11 @@ if (isset($_POST['save']))
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> New Story
                         </button></a>
                     </span>
+                    <span style="padding-right:15px">
                     <a href="../cyo/room_adm.php"><button type="button" class="btn btn-default btn-md">
                         Default Story
-                        </button>
-                    </a>
+                        </button></a>
+                    </span>
                     <a href="../admin/excel.php"><button type="button" class="btn btn-default btn-md">
                         Export CSV
                         </button>

@@ -6,7 +6,6 @@
   $color = '';
   $message = '';
 
-    echo "<p style='text-align:center'>THIS FEATURE IS CURRENTLY DISABLED</p>";
 
   if (isset($_POST['submit'])) {
 	if($_POST['password']===$_POST['password_cf']){
@@ -77,7 +76,6 @@
 	color: yellow;
 }
 </style>
-<!--TK-->
 <body>
 <div class="text-center" style="padding:0px 0">
 <div class="logo">register</div>
@@ -152,6 +150,6 @@
 </div>
 </div>
 </body>
-</html>-->
+</html>
 
 
