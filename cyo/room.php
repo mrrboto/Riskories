@@ -111,6 +111,9 @@
 		}
 	#TK TAKE AWAY THE CHOICE
 	}else if($_SESSION['randChoice']){
+		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
+		echo "<br />\n";
+		echo "<b>What will you do?</b><br />\n";
 		echo "<div class=\"choices\">\n";
 		$randRoom = rand(1,2);
 		if ($randRoom == 1){

@@ -19,6 +19,9 @@
 </form>
 
 <?php
+	if (isset($_POST['no'])){
+		header("Location: ../login/login.php");
+	}
 	if(isset($_GET['page']))
     {
         if ($_GET['page'] == 2)
@@ -27,8 +30,5 @@
 			//echo "<p>$message</p>";
             echo"<p>Registration currently unavailable</p>";
 		}
-	}
-	if (isset($_POST['no'])){
-		header("Location: ../login/login.php");
 	}
 ?>
