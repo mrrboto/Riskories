@@ -16,7 +16,7 @@ if (isset($_POST['save']))
     }
     else
     {
-        include('../cyo/addS.php');
+        include('../cyo/add_room.php');
         $message = "<p>Story added</p>";
         header('Location: admin.php');
     }
@@ -61,6 +61,10 @@ if (isset($_POST['save']))
                     </span>
                     <a href="../cyo/room_adm.php"><button type="button" class="btn btn-default btn-md">
                         Default Story
+                        </button>
+                    </a>
+                    <a href="../admin/excel.php"><button type="button" class="btn btn-default btn-md">
+                        Export CSV
                         </button>
                     </a>
                     <ul>
@@ -120,3 +124,4 @@ if (isset($_POST['save']))
 </div><!--end story container-->
 </body>
 </html>
+
