@@ -16,7 +16,7 @@ if (isset($_POST['save']))
     }
     else
     {
-        include('../cyo/add_room.php');
+        include('../cyo/addS.php');
         $message = "<p>Story added</p>";
         header('Location: admin.php');
     }
