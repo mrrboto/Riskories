@@ -59,7 +59,7 @@ color: white;
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="admin.php">Home <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">About</a></li>
+                            <li><a href="../consent/consentform.php">View Consent Form</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Users <span class="caret"></span></a>
@@ -70,7 +70,7 @@ color: white;
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="../login/logout.php">Logout</a></li>
+                            <li><a href="../login/logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

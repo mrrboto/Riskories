@@ -9,9 +9,9 @@
 
 	include('header.php');
 ?>
-<h1><?php echo $db ? $settings['title'] : "An epic adventure!"; ?></h1>
+<div class="page-header">
+    <h1><?php echo $db ? $settings['title'] : "An epic adventure!"; ?></h1>
 </div>
-<div class="content">
 <br>
 
 <?php
@@ -134,38 +134,67 @@
 			echo "<br />\n";
 		}
 
+        // Start Add New Room
+        echo "<div class=\"well\">";
+  		print "<!-- Depth: $depth -->";
+ 		print nl2br(htmlentities(chop($settings['new_room_blurb'])))."<br /><br />";
+  		print "What happens when someone chooses &quot;".HtmlSpecialChars($from_room["text_$opt"])."&quot;?<br/>";
+  		echo "<br />";
+        // Start Form
+  		print "<form method=\"post\">";
+  		print "<input type=\"hidden\" name=\"addroom\" value=\"1\">";
+  		print "<input type=\"hidden\" name=\"from\" value=\"$from_id\">";
+  		print "<input type=\"hidden\" name=\"opt\" value=\"$opt\">";
+ 		//print "Story description:<br><textarea name=\"blurb\" cols=\"50\" rows=\"10\"></textarea><br><br>";
+        /* Begin textarea code */
+        echo "<div class=\"form-group\">"; // added by Spencer
+ 		print "<label for=\"comment\">Riskory room text:</label><br><textarea class=\"form-control\" name=\"blurb\" cols=\"50\" rows=\"10\"></textarea>"; // <br><br> taken out
+        echo "</div>"; // added by Spencer
+        /* End textarea code */
 
-		print "<!-- Depth: $depth -->";
-		print nl2br(htmlentities(chop($settings['new_room_blurb'])))."<br /><br />";
-		print "What happens when someone chooses &quot;".HtmlSpecialChars($from_room["text_$opt"])."&quot;?<br/>";
-		echo "<br />";
-		print "<form method=\"post\">";
-		print "<input type=\"hidden\" name=\"addroom\" value=\"1\">";
-		print "<input type=\"hidden\" name=\"from\" value=\"$from_id\">";
-		print "<input type=\"hidden\" name=\"opt\" value=\"$opt\">";
-		print "Story description:<br><textarea name=\"blurb\" cols=\"50\" rows=\"10\"></textarea><br><br>";
-		if ($depth >= $settings['kill_depth']){
-			print "<select name=\"end_here\"><option value=\"0\">The adventure continues...</option><option value=\"1\">The adventure ends here</option></select><br><br>";
-		}else{
-			print "<input type=\"hidden\" name=\"end_here\" value=\"0\">";
-		}
-		print "Choice 1:<br><input type=\"text\" name=\"choice1\" size=\"50\"><br><br>";
-		print "Choice 2:<br><input type=\"text\" name=\"choice2\" size=\"50\"><br><br>";
-		if ($settings['enable_recaptcha'] == 1) {
-			echo "Prove you're a human:<br />";
-			$recaptcha_theme = " <script type=\"text/javascript\">";
- 			$recaptcha_theme .= "var RecaptchaOptions = {";
- 			$recaptcha_theme .= "theme : 'white'";
- 			$recaptcha_theme .= "};";
-			$recaptcha_theme .= " </script>";
-			echo $recaptcha_theme;
-			echo "<form method=\"post\" action=\"\">";
-			require_once('recaptchalib.php');
-			$publickey = $settings['recaptcha_public_key'];
-			echo recaptcha_get_html($publickey);
-		}
-		print "<br /><br /><input type=\"submit\" value=\"Add My Room!\">";
-		include('footer.php');
+        /* Begin options code */
+        echo "<div class=\"form-group\">"; // added by Spencer
+        echo "<label for=\"\">Is this an end room?</label>"; // added by Spencer // Note: for attribute not needed
+  		if ($depth >= $settings['kill_depth']){
+ 			//print "<select name=\"end_here\"><option value=\"0\">The adventure continues...</option><option value=\"1\">The adventure ends here</option></select><br><br>";
+ 			print "<select class=\"form-control\" name=\"end_here\"><option value=\"0\">The Riskory continues...</option><option value=\"1\">The Riskory ends here</option></select><br>";
+  		}
+        else {
+  			print "<input type=\"hidden\" name=\"end_here\" value=\"0\">";
+  		}
+ 		//print "Choice 1:<br><input type=\"text\" name=\"choice1\" size=\"50\"><br><br>";
+ 		//print "Choice 2:<br><input type=\"text\" name=\"choice2\" size=\"50\"><br><br>";
+        echo "</div>"; // added by Spencer
+        /* End options code */
+
+        /* Begin Choices code */
+        echo "<div class=\"form-group\">"; // added by Spencer
+        echo "<label for=\"\">Choice 1:</label>"; // added by Spencer // Note: for attribute not needed
+ 		print "<input class=\"form-control\" type=\"text\" name=\"choice1\" size=\"50\">";
+        echo "</div>"; // added by Spencer
+
+        echo "<div class=\"form-group\">"; // added by Spencer
+        echo "<label for=\"\">Choice 2:</label>"; // added by Spencer // Note: for attribute not needed
+ 		print "<input class=\"form-control\" type=\"text\" name=\"choice2\" size=\"50\">";
+        echo "</div>"; // added by Spencer
+        print "<input class=\"btn btn-primary\" type=\"submit\" value=\"Add This Room\">";
+        /* End Choices code */
+  		if ($settings['enable_recaptcha'] == 1) {
+  			echo "Prove you're a human:<br />";
+  			$recaptcha_theme = " <script type=\"text/javascript\">";
+  			$recaptcha_theme .= "var RecaptchaOptions = {";
+  			$recaptcha_theme .= "theme : 'white'";
+  			$recaptcha_theme .= "};";
+ 			$recaptcha_theme .= " </script>";
+ 			echo $recaptcha_theme;
+ 			echo "<form method=\"post\" action=\"\">";
+ 			require_once('recaptchalib.php');
+  			$publickey = $settings['recaptcha_public_key'];
+  			echo recaptcha_get_html($publickey);
+  		}
+ 		include('footer.php');
+        echo "</div>";
+        // End Add New Room
 		exit;
 	}
 
@@ -197,36 +226,63 @@
 	echo "<!-- depth: ".$depth." -->\n";
 
 	if ($room['id'] == 1){
-		echo "<div class=\"warnbox\">\n";
-		echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
-		echo "</div>\n";
+        echo "<div class=\"alert alert-danger\">\n";
+ 		echo "<strong>Warning:</strong>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
+  		echo "</div>\n";
+		//echo "<div class=\"warnbox\">\n";
+		//echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
+		//echo "</div>\n";
 	}
 
 	if ($room['end_here']){
 		print nl2br(htmlentities(chop($room['blurb'])));
 		print "<br><br><b>It's all over.</b> Why not <a href=\"room_adm.php?story=$storyT\">start again</a>.";
-	}else{
-		print defaulty(nl2br(htmlentities(trim($room['blurb']))))."<br />\n";
+	}
+    else{
+        //echo "<div class=\"well\"><p>";
+        //<div class="panel panel-default">
+        //    <div class="panel-body">A Basic Panel</div>
+        //</div>
+        echo "<div class=\"well\">";
+        echo "<h4>Riskory Text:</h4>";
+        /* Start Story Panel/Well */
+        echo "<div class=\"panel panel-default\"><div class=\"panel-body\"><p>";
+  		print defaulty(nl2br(htmlentities(trim($room['blurb']))))."<br />\n";
+		//echo "</p></div>\n";
+        echo "</p></div></div>";//end panel and panel body
+        /* End Story Panel * /
+        /* Start Choice Panel */
+        //echo
+        echo "<h4>Available Decisions:</h4>";
+        print "[1] <a class=\"btn btn-primary\" href=\"room_adm.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br/>";
+ 		print "[2] <a class=\"btn btn-primary\" href=\"room_adm.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a></p>";
+ 		echo "</div>";
+        /* End Choice Panel */
+
+        echo "Something wrong with this entry? Bad spelling/grammar? Empty? Makes no sense? Then <a href=\"report.php?id=".$room['id']."\">report it</a>.<br />";
+
+        //echo "</div>";
+
+        echo "<br />";
+		//echo "<div class=\"godbox\">You're logged in as an admin!";
+		//echo "[<a href=\"edit.php?story=".$storyT."&id=".$room['id']."\">edit</a>]";
+        echo "<div class=\"alert alert-info\">You're logged in as an admin!";
+ 		echo "<a class=\"pull-right\" href=\"edit.php?story=".$storyT."&id=".$room['id']."\">[Edit]</a>";
+		echo "</div>";
+  	}
+ 	print "<br>";//print "<br><br><br><br>";
+
+		/*print defaulty(nl2br(htmlentities(trim($room['blurb']))))."<br />\n";
 		echo "<br />\n";
 		echo "<b>What will you do?</b><br />\n";
 		echo "<div class=\"choices\">\n";
 		print "[1] <a href=\"room_adm.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br />\n";
 		print "[2] <a href=\"room_adm.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a><br />\n";
-		echo "</div>\n";
-	}
-	print "<br><br><br><br>";
-	echo "Something wrong with this entry? Bad spelling/grammar? Empty? Makes no sense? Then <a href=\"report.php?id=".$room['id']."\">report it</a>.<br />";
+		echo "</div>\n";*/
+
+
 
 	//if (isset($_SERVER['PHP_AUTH_USER']) && $_SERVER['PHP_AUTH_USER'])
-
-
-        echo "<br />";
-		echo "<div class=\"godbox\">You're logged in as an admin!";
-		echo "[<a href=\"edit.php?story=".$storyT."&id=".$room['id']."\">edit</a>]";
-		echo "</div>";
-
-
-
 
 
 	function defaulty($x){
