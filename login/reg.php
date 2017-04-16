@@ -6,7 +6,6 @@
   $color = '';
   $message = '';
 
-    //echo "<p style='text-align:center'>THIS FEATURE IS CURRENTLY DISABLED</p>";
 
   if (isset($_POST['submit'])) {
 	if($_POST['password']===$_POST['password_cf']){
@@ -63,9 +62,9 @@
 ?>
 
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
-<!-- source of the crappy CSS
+<!-- source of the crappy CSS -->
 <style>
 .consentH1{
 	font-size: 18px;
@@ -77,15 +76,9 @@
 	color: yellow;
 }
 </style>
--->
-<!--TK-->
 <body>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-</script>
 <div class="text-center" style="padding:0px 0">
-<div class="logo">Register</div>
+<div class="logo">register</div>
 <div class="login-form-1">
     <form method="post" id="login-form" class="text-center" action="">
         <div class="login-form-main-message"></div>
@@ -113,7 +106,6 @@
                 </div>
             </div>
 			<!-- Tyler added this, feel free to CSS it better -->
-            <!--
 			<div name="Consent" class ="consentDiv">
 			<h1 class="consentH1">Title of research study:</h1> Riskories – how does being embedded in a story affect risk perceptions? 
 			<h1 class="consentH1">Investigator:</h1> Prof. Andrew Maynard
@@ -151,9 +143,8 @@
 			<br><br>
 			By clicking “Continue” you are granting your consent.  Thank you and enjoy your Riskories! 
 			</div>
-			Tyler addition ends here -->
-            <!--<button class="btn-primary" data-toggle="modal" data-target="#myModal">Agree To Terms</button>-->
-            <button class="login-button" type="submit" name="submit" value="Login"><i class="fa fa-chevron-right"></i></button>
+			<!--Tyler addition ends here -->
+            <button type="submit" name="submit" class="login-button" value="Login"><i class="fa fa-chevron-right"></i></button>
         </div>
     </form>
 </div>
