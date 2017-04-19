@@ -1,0 +1,18 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1){
+mysqli_close($connection); // Closing Connection
+header('Location: ../login/login.php'); // Redirecting To Home
+
+}
+/*
+if (!isset($_SESSION['isAdmin']) || !$_SESSION['isAdmin']) {
+    echo "not an admin";
+}
+else
+{
+    header('Location: login.php');
+}*/
+
+?>

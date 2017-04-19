@@ -1,0 +1,147 @@
+<?php
+    include('nav.php');
+
+$postQ1= '';
+$postQ2 = '';
+$postQ3 = '';
+
+    if (isset($_POST['saveBtn']))   {
+        $ok = false;
+        $okPostQ1 = true;
+        $okPostQ2 = true;
+        $okPostQ3 = true;
+        
+        if (!isset($_POST['postQ1']) || $_POST['postQ1'] === '') {
+            $okPostQ1 = false;
+            
+        } else {
+            $ok = true;
+            $postQ1 = $_POST['postQ1'];
+        }
+        if (!isset($_POST['postQ2']) || $_POST['postQ2'] === '') {
+            $okPostQ2 = false;
+        
+        } else {
+            $ok = true;
+            $postQ2 = $_POST['postQ2'];
+        }
+        if (!isset($_POST['postQ3']) || $_POST['postQ3'] === '') {
+            $okPostQ3 = false;
+            
+        } else {
+            $ok = true;
+            $postQ3 = $_POST['postQ3'];
+        }
+
+
+        if($ok){
+
+            if($okPostQ1){
+                $db = mysqli_connect('localhost', 'root', '', 'riskories');
+                $sql = sprintf(
+                "UPDATE users 
+                SET `postQ1`= '%s'
+                WHERE name='%s'",
+                mysqli_real_escape_string($db,$_POST['postQ1']),
+                $_SESSION['user']);
+                $query = mysqli_query($db, $sql);
+            }
+            if($okPostQ2){
+                $db = mysqli_connect('localhost', 'root', '', 'riskories');
+                $sql = sprintf(
+                "UPDATE users 
+                SET `postQ2`= '%s'
+                WHERE name='%s'",
+                mysqli_real_escape_string($db,$_POST['postQ2']),
+                $_SESSION['user']);
+                $query = mysqli_query($db, $sql);
+            }
+            if($okPostQ3){
+                $db = mysqli_connect('localhost', 'root', '', 'riskories');
+                $sql = sprintf(
+                "UPDATE users 
+                SET `postQ3`= '%s'
+                WHERE name='%s'",
+                mysqli_real_escape_string($db,$_POST['postQ3']),
+                $_SESSION['user']);
+                $query = mysqli_query($db, $sql);
+            }
+
+            mysqli_close($db);
+        }
+        header("Location: profile.php");
+    }
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Post-Questions</title>
+    </head>
+    <body>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Post-Questions</h4>
+                </div>
+                <!-- EXTRA SAVE BUTTON
+                <div class="col-md-1 col-md-offset-5">
+                    <a class="btn btn-primary btn-sm pull-right">Save</a>
+                </div>-->
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Please answer these quick questions:</div>
+                <div class="panel-body">
+                <!--
+                <em>
+                    Please enter your demographic information (blank fields will not be updated):
+                </em>
+                -->
+                <form method="post" id="reg-form" action="">
+                       
+                        <div class="form-group">
+                      <label for="postQ1">Question 1: How much control do you feel you have over risks in your life?</label>
+                     <ul>
+                        <input type="radio" name="postQ1" id="1a" value="1a"><label for="1a">Not at all to a little control</label><br>
+                        <input type="radio" name="postQ1" id="1b" value="1b"><label for="1b">Somewhat but less than 50%</label><br>
+                        <input type="radio" name="postQ1" id="1c" value="1c"><label for="1c">About half or so</label><br>
+                        <input type="radio" name="postQ1" id="1d" value="1d"><label for="1d">A fair amount or more than half</label><br>
+                        <input type="radio" name="postQ1" id="1e" value="1e"><label for="1e">A real lot to all of the time</label>
+                    </ul>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="postQ2">Question 2: How important are the little daily decisions in determining your risks?</label>
+                     <ul>
+                        <input type="radio" name="postQ2" id="2a" value="2a"><label for="2a">Not at all to a little important</label><br>
+                        <input type="radio" name="postQ2" id="2b" value="2b"><label for="2b">Somewhat but less than 50%</label><br>
+                        <input type="radio" name="postQ2" id="2c" value="2c"><label for="2c">About half or so</label><br>
+                        <input type="radio" name="postQ2" id="2d" value="2d"><label for="2d">A fair amount or more than half</label><br>
+                        <input type="radio" name="postQ2" id="2e" value="2e"><label for="2e">A real lot to all important</label>
+                    </ul>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="postQ3">Question 3: How influenced are you by stories?</label>
+                     <ul>
+                        <input type="radio" name="postQ3" id="3a" value="3a"><label for="3a">Not to a little influenced</label><br>
+                        <input type="radio" name="postQ3" id="3b" value="3b"><label for="3b">Somewhat influenced but less than 50%</label><br>
+                        <input type="radio" name="postQ3" id="3c" value="3c"><label for="3c">About half or so influenced</label><br>
+                        <input type="radio" name="postQ3" id="3d" value="3d"><label for="3d">A fair amount or more than half</label><br>
+                        <input type="radio" name="postQ3" id="3e" value="3e"><label for="3e">A real lot to entirely influenced</label>
+                    </ul>
+                    </div>
+                       
+
+                        <div class="dem-save">
+                            <button type="submit" name="saveBtn" class="btn btn-primary">Save</button>
+                        </div>
+
+                    </form>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>
