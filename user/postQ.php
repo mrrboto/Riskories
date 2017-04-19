@@ -10,24 +10,24 @@ $postQ3 = '';
         $okPostQ1 = true;
         $okPostQ2 = true;
         $okPostQ3 = true;
-        
+
         if (!isset($_POST['postQ1']) || $_POST['postQ1'] === '') {
             $okPostQ1 = false;
-            
+
         } else {
             $ok = true;
             $postQ1 = $_POST['postQ1'];
         }
         if (!isset($_POST['postQ2']) || $_POST['postQ2'] === '') {
             $okPostQ2 = false;
-        
+
         } else {
             $ok = true;
             $postQ2 = $_POST['postQ2'];
         }
         if (!isset($_POST['postQ3']) || $_POST['postQ3'] === '') {
             $okPostQ3 = false;
-            
+
         } else {
             $ok = true;
             $postQ3 = $_POST['postQ3'];
@@ -39,7 +39,7 @@ $postQ3 = '';
             if($okPostQ1){
                 $db = mysqli_connect('localhost', 'root', '', 'riskories');
                 $sql = sprintf(
-                "UPDATE users 
+                "UPDATE users
                 SET `postQ1`= '%s'
                 WHERE name='%s'",
                 mysqli_real_escape_string($db,$_POST['postQ1']),
@@ -49,7 +49,7 @@ $postQ3 = '';
             if($okPostQ2){
                 $db = mysqli_connect('localhost', 'root', '', 'riskories');
                 $sql = sprintf(
-                "UPDATE users 
+                "UPDATE users
                 SET `postQ2`= '%s'
                 WHERE name='%s'",
                 mysqli_real_escape_string($db,$_POST['postQ2']),
@@ -59,7 +59,7 @@ $postQ3 = '';
             if($okPostQ3){
                 $db = mysqli_connect('localhost', 'root', '', 'riskories');
                 $sql = sprintf(
-                "UPDATE users 
+                "UPDATE users
                 SET `postQ3`= '%s'
                 WHERE name='%s'",
                 mysqli_real_escape_string($db,$_POST['postQ3']),
@@ -100,7 +100,7 @@ $postQ3 = '';
                 </em>
                 -->
                 <form method="post" id="reg-form" action="">
-                       
+
                         <div class="form-group">
                       <label for="postQ1">Question 1: How much control do you feel you have over risks in your life?</label>
                      <ul>
@@ -133,7 +133,7 @@ $postQ3 = '';
                         <input type="radio" name="postQ3" id="3e" value="3e"><label for="3e">A real lot to entirely influenced</label>
                     </ul>
                     </div>
-                       
+
 
                         <div class="dem-save">
                             <button type="submit" name="saveBtn" class="btn btn-primary">Save</button>

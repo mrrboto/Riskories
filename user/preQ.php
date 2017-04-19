@@ -10,24 +10,24 @@ $preQ3 = '';
 		$okPreQ1 = true;
 		$okPreQ2 = true;
 		$okPreQ3 = true;
-		
+
 		if (!isset($_POST['preQ1']) || $_POST['preQ1'] === '') {
 			$okPreQ1 = false;
-			
+
 		} else {
 			$ok = true;
 			$preQ1 = $_POST['preQ1'];
 		}
 		if (!isset($_POST['preQ2']) || $_POST['preQ2'] === '') {
 			$okPreQ2 = false;
-		
+
 		} else {
 			$ok = true;
 			$preQ2 = $_POST['preQ2'];
 		}
 		if (!isset($_POST['preQ3']) || $_POST['preQ3'] === '') {
 			$okPreQ3 = false;
-			
+
 		} else {
 			$ok = true;
 			$preQ3 = $_POST['preQ3'];
@@ -39,7 +39,7 @@ $preQ3 = '';
 			if($okPreQ1){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"INSERT users 
+				"INSERT users
 				SET `preQ1`= '%s'
 				WHERE name='%s'",
 				mysqli_real_escape_string($db,$_POST['preQ1']),
@@ -49,7 +49,7 @@ $preQ3 = '';
 			if($okPreQ2){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"INSERT users 
+				"INSERT users
 				SET `preQ2`= '%s'
 				WHERE name='%s'",
 				mysqli_real_escape_string($db,$_POST['preQ2']),
@@ -59,7 +59,7 @@ $preQ3 = '';
 			if($okPreQ3){
 				$db = mysqli_connect('localhost', 'root', '', 'riskories');
 				$sql = sprintf(
-				"INSERT users 
+				"INSERT users
 				SET `preQ3`= '%s'
 				WHERE name='%s'",
 				mysqli_real_escape_string($db,$_POST['preQ3']),
@@ -100,7 +100,7 @@ $preQ3 = '';
                 </em>
                 -->
                 <form method="post" id="reg-form" action="">
-                       
+
                         <div class="form-group">
                       <label for="preQ1">Question 1: How much control do you feel you have over risks in your life?</label>
                      <ul>
@@ -133,7 +133,7 @@ $preQ3 = '';
                         <input type="radio" name="preQ3" id="3e" value="3e"><label for="3e">A real lot to entirely influenced</label>
                     </ul>
                     </div>
-                       
+
 
                         <div class="dem-save">
                             <button type="submit" name="saveBtn" class="btn btn-primary">Next</button>

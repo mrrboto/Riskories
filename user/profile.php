@@ -62,7 +62,7 @@ if (isset ($_SESSION['path'])){
 			$result = mysqli_query($db, $updateSQL);
 			//echo $_SESSION['storyNum'].$_SESSION['path'].$_SESSION['user'];
 		}
-		
+
 		$_SESSION['path'] = '';
 		$_SESSION['choiceNum'] = 1;
 

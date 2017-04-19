@@ -19,7 +19,7 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 
         if (password_verify($_POST['lg_password'], $hash)) {
             $message = 'Login successful.';
-            
+
 
             $_SESSION['user'] = $row['name'];
             $_SESSION['isAdmin'] = $isAdmin;
@@ -34,9 +34,9 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 			$_SESSION['storyNum'] = '';
 			#TK RANDOMIZATION VARS
 			$_SESSION['stockDemo'] = rand(0,1);
-			$_SESSION['randChoice'] = rand(0,1); 
+			$_SESSION['randChoice'] = rand(0,1);
 			#TK
-            
+
 			if ($isAdmin == 0)
 			{
 				//header('Location: /Riskories/nav/nav.html');

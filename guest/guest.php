@@ -35,7 +35,7 @@
 	#TK
 
     mysqli_close($db);
-	
+
     //header("Location: ../cyo/index.php");
     ?>
 </html>
