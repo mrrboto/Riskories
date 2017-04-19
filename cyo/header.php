@@ -5,6 +5,10 @@
 <?php
 if ($db) {
 
+    if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    }
+
     //Get story title and attributes
 
     if(isset($_GET['story']))
