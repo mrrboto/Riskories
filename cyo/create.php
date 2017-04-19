@@ -66,6 +66,33 @@
 <form method="post">
 <input type="hidden" name="done" value="1" />
 
+    <div class="well">
+        <div class="form-group">
+            <label>Site Title: </label>
+            <input class="form-control" name="title" type="text" size="50" value="<?= HtmlSpecialChars($settings['title']) ?>"/>
+        </div>
+        <div class="form-group">
+            <label>Main Page Text: </label>
+            <textarea class="form-control" name="main_page_text" cols="50" rows="10"><?= $settings['main_page_text'] ?></textarea>
+        </div>
+        <div class="form-group">
+            <label>Content Warning Text: </label>
+            <textarea class="form-control" name="warn_box_blurb" cols="50" rows="10"><?= $settings['warn_box_blurb'] ?></textarea>
+            <small>This is the content warning that will display when the user opens the first "room".</small>
+        </div>
+        <div class="form-group">
+            <label>Depth Before End: </label>
+            <input class="form-control" name="kill_depth" type="text" size="50" value="<?= HtmlSpecialChars($settings['kill_depth']) ?>"/>
+            <small>How many levels deep does the story have to go before the option to end the story branch is available?</small>
+        </div>
+        <div class="form-group">
+            <label>Privacy Policy:</label>
+            <textarea class="form-control" name="privacy_policy" cols="50" rows="10"><?= $settings['privacy_policy'] ?></textarea>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Save Changes" />
+    </div> <!-- end well -->
+
+    <!--
 	<p>Site Title:<br /><input name="title" type="text" size="50" value="<?= HtmlSpecialChars($settings['title']) ?>"/></p><br />
 	<p>Main Page Text:<br /><textarea name="main_page_text" cols="50" rows="10"><?= $settings['main_page_text'] ?></textarea></p><br />
 
@@ -78,6 +105,7 @@
 	<p>Privacy Policy:<br /><textarea name="privacy_policy" cols="50" rows="10"><?= $settings['privacy_policy'] ?></textarea></p><br />
 
 	<p><input type="submit" value="Save Changes" /></p>
+    -->
 </form>
 
 <?php
