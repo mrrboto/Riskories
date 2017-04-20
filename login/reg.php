@@ -30,9 +30,6 @@
 		if ($ok) {
 			$hash = password_hash($password, PASSWORD_DEFAULT);
 
-			// add database code here
-            include('../db/config.php');
-            include('../db/db.php');
 			$query = mysqli_query($db, "SELECT name FROM users WHERE name='$name'");
 			if (mysqli_num_rows($query) != 0)
 			{
