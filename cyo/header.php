@@ -117,9 +117,9 @@ if ($db) {
 
                              <!-- Collect the nav links, forms, and other content for toggling -->
                              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                 <ul id="navigationLinks" class="nav navbar-nav">
+                                 <!--<ul id="navigationLinks" class="nav navbar-nav">
                                      <li><a href="../consent/consentform.php">View Consent Form</a></li>
-                                 </ul>
+                                 </ul>-->
                                  <ul class="nav navbar-nav navbar-right">
                                         <?php
                                         if($status == 'guest' || $status == 'user')
