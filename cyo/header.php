@@ -117,9 +117,10 @@ if ($db) {
 
                              <!-- Collect the nav links, forms, and other content for toggling -->
                              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                 <!--
                                  <ul id="navigationLinks" class="nav navbar-nav">
                                      <li><a href="../consent/consentform.php">View Consent Form</a></li>
-                                 </ul>
+                                 </ul>-->
                                  <ul class="nav navbar-nav navbar-right">
                                         <?php
                                         if($status == 'guest' || $status == 'user')
@@ -138,15 +139,16 @@ if ($db) {
                      </nav>
                  </div>
 
-        <div class="container">
-
-    </head>
-    <body class="body" id="body" onload="updateNavbar()">
-
-
-        <!-- Latest compiled and minified JavaScript -->
+         <!-- Latest compiled and minified JavaScript -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+    <div class="container">
+
+
+
 
 
 
