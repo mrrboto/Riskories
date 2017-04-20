@@ -29,7 +29,7 @@ if (isset($_POST['save']))
     </head>
     <body style="background: #efefef;">
 
-        <!-- LIST CSS STYLE CUSTOM -->
+        <!-- LIST CSS STYLE CUSTOM
         <style>
 
             .list-group {
@@ -48,6 +48,7 @@ if (isset($_POST['save']))
             }
 
         </style>
+        -->
 
         <!-- START NEW STORY/DEFAULT STORY BUTTONS CONTAINER + LOGIC -->
         <div class="container">
@@ -95,14 +96,32 @@ if (isset($_POST['save']))
 
         if(mysqli_num_rows($stories) > 0)
         {
-            echo '<div class="container">
+            /*echo '<div class="container">
                     <div class="row">
                         <div class="col-md-2">
                             <h4>Riskories</h4>
                             <ul class="list-group">';
+            */
+            echo '<div class="container">
+                    <h4>Current Riskories</h4>
+                        <ul class="list-group">';
         }
         foreach ($stories as $row)
         {
+            printf('<li class="list-group-item">
+                        <span style="float:right;">
+                            <a class="btn btn-primary" href="../cyo/create.php?story=%s">Create</a>&nbsp&nbsp
+                            <a class="btn btn-primary" href="../cyo/deleteS.php?story=%s">Delete</a>
+                        </span>
+                        <h4 class="list-group-item-heading"><a href="../cyo/room_adm.php?story=%s">%s</a></h4>
+                        <p class="list-group-item-text">A story about..</p>
+                    </li>',
+                    $row['title'],
+                    $row['title'],
+                    $row['title'],
+                    htmlspecialchars($row['title'])
+                  );
+            /*
             printf('<li class="list-group-item">
                         <a href="../cyo/room_adm.php?story=%s">%s</a>
                         <span style="float:right;">
@@ -115,14 +134,13 @@ if (isset($_POST['save']))
                     $row['title'],
                     $row['title']
                   );
+            */
         }
 
         mysqli_close($db);
         ?>
         </ul>
-    </div>
-</div><!--end story row-->
-</div><!--end story container-->
+    </div><!--end story container-->
 </body>
 </html>
 
