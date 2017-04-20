@@ -86,9 +86,24 @@
 		echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
 		echo "</div>\n";
 	}
-	#TK UPDATE TRACKING COOKIES
+#TK UPDATE TRACKING COOKIES
 	if (isset($_GET['room'])){
-		$_SESSION['path'] = $_SESSION['path'].$_SESSION['choiceNum'].",".$_GET['opt'].";";
+		#TK add risk factor
+		//first get option and from what room
+		$opts = $_GET['opt'];
+		$fram = $_GET['from'];
+		//make a query using story name and from
+		$sql = sprintf("SELECT * FROM %s WHERE id='%s'",
+			mysqli_real_escape_string($db, $_GET['story']."_rooms"),
+			mysqli_real_escape_string($db, $fram)
+		);
+		$result = mysqli_query($db, $sql);
+		$row = mysqli_fetch_assoc($result);
+		//use the returned row to select the risk factor for choice
+		$riskLvl = $row['choice'.$opts.'_risk'];
+		#TK
+		//accumulate path and increment choice num
+		$_SESSION['path'] = $_SESSION['path'].$_SESSION['choiceNum'].",".$riskLvl.";";
 		$_SESSION['choiceNum']++;
 	}
 	#TK
