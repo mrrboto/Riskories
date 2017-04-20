@@ -101,9 +101,18 @@ if ($db) {
                                      <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                  </button>
-                                 <a class="navbar-brand" href="profile.php">
-                                     <img alt="Brand" src="../img/s_logo_3.png" height="45px" width="40px" style="padding-bottom: 20px">
-                                 </a>
+                                 <?php
+                                 if($status == 'admin')
+                                 {
+                                     echo "<a class='navbar-brand' href='../admin/admin.php'>
+                                     <img alt='Brand' src='../img/s_logo_3.png' height='45px' width='40px' style='padding-bottom: 20px'></a>";
+                                 }
+                                 else
+                                 {
+                                   echo "<span class='navbar-brand'>
+                                   <img alt='Brand' src='../img/s_logo_3.png' height='45px' width='40px' style='padding-bottom: 20px'></span>" ;
+                                 }
+                                 ?>
                              </div>
 
                              <!-- Collect the nav links, forms, and other content for toggling -->
@@ -115,7 +124,7 @@ if ($db) {
                                         <?php
                                         if($status == 'guest' || $status == 'user')
                                         {
-                                          echo "<li>Total Rooms: ".$total_rooms['total']."</li>";
+                                          echo "<li><a>Total Rooms: ".$total_rooms['total']."</a></li>";
                                         }
                                         else
                                         {
