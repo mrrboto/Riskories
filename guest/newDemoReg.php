@@ -103,8 +103,7 @@
 	}
 	//header("Location: profile.php");	
 ?>
-<!--
+
 <script>
 window.location = "../user/profile.php";
 </script>
--->
