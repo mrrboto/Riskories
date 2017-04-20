@@ -13,9 +13,11 @@
 		$id = intval($_POST['id']);
 
 		db_update($storyR, array(
-			'blurb'		=> AddSlashes($_POST['blurb']),
-			'text_1'	=> AddSlashes($_POST['text_1']),
-			'text_2'	=> AddSlashes($_POST['text_2']),
+			'blurb'		    => AddSlashes($_POST['blurb']),
+			'text_1'	    => AddSlashes($_POST['text_1']),
+            'choice1_risk'  => $_POST['risk1'],
+			'text_2'	    => AddSlashes($_POST['text_2']),
+            'choice2_risk'  => $_POST['risk2'],
 		), "id=$id");
 
 		header("location: edit.php?story=$storyT&id=$id&done=1");
@@ -96,6 +98,15 @@
 		(no story written)
 <?php } ?>
 		<br /><input type="text" name="text_1" size="50" value="<?= HtmlSpecialChars($room['text_1']) ?>" />
+        <!--ADDED RISK LEVEL FOR EDIT #VP -->
+        Risk Level
+        <select name='risk1'>
+            <option name ='c1r1' value='1'>1</option>
+            <option name ='c1r2' value='2'>2</option>
+            <option name ='c1r3' value='3'>3</option>
+            <option name ='c1r4' value='4'>4</option>
+            <option name ='c1r5' value='5'>5</option>
+        </select>
 	</p>
 
 	<p>	Choice 2:
@@ -105,6 +116,15 @@
 		(no story written)
 <?php } ?>
 		<br /><input type="text" name="text_2" size="50" value="<?= HtmlSpecialChars($room['text_2']) ?>" />
+        <!--ADDED RISK LEVEL FOR EDIT #VP -->
+        Risk Level
+        <select name='risk2'>
+            <option name ='c2r1' value='1'>1</option>
+            <option name ='c2r2' value='2'>2</option>
+            <option name ='c2r3' value='3'>3</option>
+            <option name ='c2r4' value='4'>4</option>
+            <option name ='c2r5' value='5'>5</option>
+        </select>
 	</p>
 
 <?php } ?>

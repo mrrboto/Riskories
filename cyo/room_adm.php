@@ -76,13 +76,15 @@
 
 			$ret = db_insert($storyR, array(
 				//'email'		=> AddSlashes($_POST['email']),
-				'blurb'		=> AddSlashes($_POST['blurb']),
-				'text_1'	=> AddSlashes($_POST['choice1']),
-				'room_1'	=> 0,
-				'text_2'	=> AddSlashes($_POST['choice2']),
-				'room_2'	=> 0,
-				'end_here'	=> AddSlashes($_POST['end_here']),
-				//'ip'		=> AddSlashes($_SERVER['REMOTE_ADDR']),
+				'blurb'		   => AddSlashes($_POST['blurb']),
+				'text_1'	   => AddSlashes($_POST['choice1']),
+                'choice1_risk'  => $_POST['risk1'],
+				'room_1'	   => 0,
+				'text_2'	   => AddSlashes($_POST['choice2']),
+                'choice2_risk'  => $_POST['risk2'],
+				'room_2'	   => 0,
+				'end_here'	   => AddSlashes($_POST['end_here']),
+				//'ip'		   => AddSlashes($_SERVER['REMOTE_ADDR']),
 			));
 
 			//$room_id = $ret['insert_id'];
@@ -134,6 +136,7 @@
 			echo "<br />\n";
 		}
 
+
         // Start Add New Room
         echo "<div class=\"well\">";
   		print "<!-- Depth: $depth -->";
@@ -170,12 +173,31 @@
         /* Begin Choices code */
         echo "<div class=\"form-group\">"; // added by Spencer
         echo "<label for=\"\">Choice 1:</label>"; // added by Spencer // Note: for attribute not needed
- 		print "<input class=\"form-control\" type=\"text\" name=\"choice1\" size=\"50\">";
-        echo "</div>"; // added by Spencer
 
+        #VP RISK LEVEL ADDITION
+        print "<input class='form-control' type='text' name='choice1' size='50'>
+        Risk Level
+        <select name='risk1'>
+            <option name ='c1r1' value='1'>1</option>
+            <option name ='c1r2' value='2'>2</option>
+            <option name ='c1r3' value='3'>3</option>
+            <option name ='c1r4' value='4'>4</option>
+            <option name ='c1r5' value='5'>5</option>
+        </select>";
+        echo "</div>"; // added by Spencer
         echo "<div class=\"form-group\">"; // added by Spencer
         echo "<label for=\"\">Choice 2:</label>"; // added by Spencer // Note: for attribute not needed
- 		print "<input class=\"form-control\" type=\"text\" name=\"choice2\" size=\"50\">";
+ 		print "<input class='form-control' type='text' name='choice2' size='50'>
+        Risk Level
+        <select name='risk2'>
+            <option name ='c2r1' value='1'>1</option>
+            <option name ='c2r2' value='2'>2</option>
+            <option name ='c2r3' value='3'>3</option>
+            <option name ='c2r4' value='4'>4</option>
+            <option name ='c2r5' value='5'>5</option>
+        </select>";
+        #VP END RISK LEVEL ADDITION
+
         echo "</div>"; // added by Spencer
         print "<input class=\"btn btn-primary\" type=\"submit\" value=\"Add This Room\">";
         /* End Choices code */
@@ -195,6 +217,7 @@
  		include('footer.php');
         echo "</div>";
         // End Add New Room
+
 		exit;
 	}
 

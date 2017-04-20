@@ -13,21 +13,25 @@ $room_set = $title."_settings";
 
 //mysql_select_db("riskories", $db);
 
+
+//added room_1_risk and room_2_risk #VP
 $sql = "CREATE TABLE `$room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
   `blurb` text NOT NULL,
   `text_1` varchar(255) NOT NULL DEFAULT '',
+  `choice1_risk` int(11) NOT NULL DEFAULT '0',
   `room_1` int(11) NOT NULL DEFAULT '0',
   `text_2` varchar(255) NOT NULL DEFAULT '',
+  `choice2_risk` int(11) NOT NULL DEFAULT '0',
   `room_2` int(11) NOT NULL DEFAULT '0',
   `end_here` tinyint(4) NOT NULL DEFAULT '0',
   `ip` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;";
 
-
-$table = "INSERT INTO `$room` (`id`, `email`, `blurb`, `text_1`, `room_1`, `text_2`, `room_2`, `end_here`, `ip`) VALUES (1, '', 'This is route 1', 'Choose this route', 0, 'Choose this other route', 0, 0, '');";
+//added room_1_risk and room_2_risk default integers #VP
+$table = "INSERT INTO `$room` (`id`, `email`, `blurb`, `text_1`, `choice1_risk`, `room_1`, `text_2`, `choice2_risk`, `room_2`, `end_here`, `ip`) VALUES (1, '', 'This is route 1', 'Choose this route', 0, 0, 'Choose this other route', 0, 0, 0, '');";
 
 $story = "INSERT INTO `stories` (`title`, `table_loc`) VALUES ('$title', '$room');";
 $user_add = "ALTER TABLE `users` ADD `$title` VARCHAR(255);";
