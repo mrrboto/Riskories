@@ -11,7 +11,7 @@
 ?>
 <h1><?php echo $db ? $settings['title'] : "An epic adventure!"; ?></h1>
 </div>
-<div class="content">
+<div class="container">
 <br>
 
 <?php
@@ -82,9 +82,12 @@
 	echo "<!-- depth: ".$depth." -->\n";
 
 	if ($room['id'] == 1){
-		echo "<div class=\"warnbox\">\n";
-		echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
-		echo "</div>\n";
+        echo "<div class=\"alert alert-danger\">\n";
+ 		echo "<strong>Warning:</strong>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
+  		echo "</div>\n";
+		//echo "<div class=\"warnbox\">\n";
+		//echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
+		//echo "</div>\n";
 	}
 	#TK UPDATE TRACKING COOKIES
 	if (isset($_GET['room'])){
@@ -111,29 +114,43 @@
 		}
 	#TK TAKE AWAY THE CHOICE
 	}else if($_SESSION['randChoice']){
-		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
-		echo "<br />\n";
-		echo "<b>What will you do?</b><br />\n";
-		echo "<div class=\"choices\">\n";
+        echo "<div class=\"well\">"; // added by Spencer
+        echo "<h4>Riskory Text:</h4>";
+        echo "<div class=\"panel panel-default\"><div class=\"panel-body\"><p>";
+  		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
+        echo "</p></div></div>";//end panel and panel body
+		//echo "<br />\n";
+		//echo "<b>What will you do?</b><br />\n";
+		//echo "<div class=\"choices\">\n";
+        echo "<h4>Available Decisions:</h4>";
 		$randRoom = rand(1,2);
 		if ($randRoom == 1){
-			echo "<a href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
+			echo "<a class=\"btn btn-primary\" a href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
 		}else{
-			echo "<a href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
+			echo "<a class=\"btn btn-primary\" a href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities("Proceed"))."</a><br />\n";
 		}
-		echo "</div>\n";
+		//echo "</div>\n";
+        echo "</div>"; // end well
 	}
 	#TK
 	else{
-		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
-		echo "<br />\n";
-		echo "<b>What will you do?</b><br />\n";
-		echo "<div class=\"choices\">\n";
-		print "[1] <a href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br />\n";
-		print "[2] <a href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a><br />\n";
-		echo "</div>\n";
+        echo "<div class=\"well\">"; // added by Spencer
+        echo "<h4>Riskory Text:</h4>";
+        echo "<div class=\"panel panel-default\"><div class=\"panel-body\"><p>";
+  		print defaulty(nl2br(htmlentities(trim($story))))."<br />\n";
+        echo "</p></div></div>";//end panel and panel body
+        echo "<h4>Available Decisions:</h4>";
+        print "[1] <a class=\"btn btn-primary\" href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br/>";
+ 		print "[2] <a class=\"btn btn-primary\" href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a></p>";
+		//echo "<br />\n";
+		//echo "<b>What will you do?</b><br />\n";
+		//echo "<div class=\"choices\">\n";
+		//print "[1] <a href=\"room.php?story=".$storyT."&room=".$room['room_1']."&from=".$room_id."&opt=1\">".defaulty(htmlentities($room['text_1']))."</a><br />\n";
+		//print "[2] <a href=\"room.php?story=".$storyT."&room=".$room['room_2']."&from=".$room_id."&opt=2\">".defaulty(htmlentities($room['text_2']))."</a><br />\n";
+		//echo "</div>\n";
+        echo "</div>"; // end well
 	}
-	print "<br><br><br><br>";
+	print "<br>";//print "<br><br><br><br>";
 	echo "Something wrong with this entry? Bad spelling/grammar? Empty? Makes no sense? Then <a href=\"report.php?id=".$room['id']."\">report it</a>.<br />";
 
 
