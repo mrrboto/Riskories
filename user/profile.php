@@ -148,7 +148,7 @@ if (isset ($_SESSION['path'])){
             foreach ($stories as $row)
             {
                 printf('<li class="list-group-item">
-                        <h4 class="list-group-item-heading"><a href="../cyo/room_adm.php?story=%s">%s</a></h4>
+                        <h4 class="list-group-item-heading"><a href="../cyo/room.php?story=%s">%s</a></h4>
                         <p class="list-group-item-text">A story about..</p>
                     </li>',
                     $row['title'],
