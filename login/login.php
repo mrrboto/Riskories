@@ -99,7 +99,7 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 					<div class="form-group login-group-text">
                         <a class="link" href="login.php?page=2">Register</a>
                         or log in as
-                        <a class="link" href="../guest/guest.php">Guest</a>
+                        <a class="link" href="../guest/guestConsent.php">Guest</a>
 					</div>
 				</div>
 				<button type="submit" class="login-button" value="Login"><i class="fa fa-chevron-right"></i></button>

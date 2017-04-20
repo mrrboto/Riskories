@@ -26,8 +26,8 @@ echo "</h4></div><div class=\"panel-body\">";
 <!--<br /><br /> -->
 So what are you waiting for?
 <?php
-//$story = $_GET['story'];
-echo "<a data-toggle='modal' data-target='#consentModal' style='font-size: 140%;'>Start playing</a>."; //<br /><br />";
+$story = $_GET['story'];
+echo "<a href= '../cyo/room.php?story=$story' style='font-size: 140%;'>Start playing</a>."; //<br /><br />";
 ?>
 <!-- End Well/Panel (only need one of two closing div tags if well used) -->
 </div>

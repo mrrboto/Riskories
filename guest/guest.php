@@ -19,21 +19,13 @@
 	#TK Story randomization
 	$_SESSION['randChoice'] = rand(0,1);
 	$_SESSION['stockDemo'] = 1;
-	#TK REDIRECT TO RANDOM Story
-	$sql = sprintf("SELECT * FROM stories");
-	$result = mysqli_query($db, $sql);
-	$rows = mysqli_num_rows($result);
-	$counter = rand(1,$rows);
-	for ($i = 0; $i < $counter; $i++){
-		$row = mysqli_fetch_assoc($result);
-	}
-	$go2 = sprintf("Location: ../cyo/index.php%s",
-	"?story=".$row['title']
-	);
-	echo $go2;
-	header($go2);
-	#TK
-
+	#GUEST DEMOGRAPHICS
+	$_SESSION['age'] = '';
+	$_SESSION['gender'] = '';
+	$_SESSION['realName'] = '';
+	$_SESSION['soStatus'] = '';
+	$_SESSION['soName'] = '';
+	
     mysqli_close($db);
 	
     //header("Location: ../cyo/index.php");
