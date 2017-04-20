@@ -120,8 +120,15 @@
 
 <p>This room can't be deleted - it has children.</p>
 
-<?php
-	}else{
+
+<?php  //ADDED CASE TO CHECK IF IT IS FIRST ROOM (DO NOT DELETE) #VP
+	}
+    else if ($room['id'] == 1)
+    {
+        echo "<p>This room can't be deleted - it is the first room.</p>";
+    }
+    else
+    {
 ?>
 
 <form method="post">

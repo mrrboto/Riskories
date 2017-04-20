@@ -41,6 +41,7 @@ echo "<a data-toggle='modal' data-target='#consentModal' style='font-size: 140%;
  function modalClick() {
      // redirect based off of $storyT // Note: since $storyT is a PHP variable need to convert to a variable recognizable in Javascript
      var storyT=<?php echo json_encode($storyT); ?>;
+     window.location.replace("room.php?story="+storyT);
      //console.log(storyT);
 
      /* Note this is commented out currently because of some other changes. Eventually it should be fixed. */
