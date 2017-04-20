@@ -55,7 +55,6 @@
 		}
     }else{
 		$message = 'Passwords do not match';
-		echo "shit";
 	}
   }
 ?>
@@ -98,9 +97,6 @@
                 <div class="form-group">
                     <input type="password" class="form-control" id="lg_password_cf" name="password_cf" placeholder="confirm password">
                 </div>
-				<?php #TK so that this wont appear on guest reg
-				//if (isset($_GET['page'])){
-				?>
                 <div class="form-group">
                     Gender:
                     <input type="radio" name="gender" value="f"<?php
@@ -112,9 +108,6 @@
                         echo ' checked';
                     }?>>male<br>
                 </div>
-				<?php #TK so that this wont appear on guest reg
-				//}
-				?>
             </div>
 			<!-- Tyler added this, feel free to CSS it better -->
             <!--
@@ -158,11 +151,15 @@
 			Tyler addition ends here -->
             <!--<button class="btn-primary" data-toggle="modal" data-target="#myModal">Agree To Terms</button>-->
 			<?php #TK so that this wont appear on guest reg
-			//if (isset($_GET['page'])){
+			if (isset($_GET['page'])){
 			?>
             <button class="login-button" type="submit" name="submit" value="Login"><i class="fa fa-chevron-right"></i></button>
 			<?php #TK so that this wont appear on guest reg
-			//}
+			} else {
+			?>
+			<button class="btn btn-primary type="submit" name="submit" value="Register Me!">Register Me!</button>
+			<?php
+			}
 			?>
         </div>
     </form>

@@ -1,5 +1,7 @@
 <?php
 	$message = '';
+	include('../db/config.php');
+	include('../db/db.php');
 	session_start();	
 	
 	
@@ -60,8 +62,8 @@
                   <div class="panel-body">
                     <!--<div class="btn-group">-->
 						<!-- THIS NEEDS TO BE HERE VVVVVVVVVVVVVVVVVVVVVVVVVV IT INCLUDES REGISTER IN THE PAGE -->
-						<button onclick="window.location.href='guestReg.php?gpage=2'">Yes Please</button>
-						<a class="btn btn-danger" href="../login/login.php">No thanks</a>
+						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=2'">Yes Please</button>
+						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=3'">No thanks</a>
                     <!--</div>-->
                   
 
@@ -74,20 +76,13 @@
                     {
                         if ($_GET['gpage'] == 2)
                         {
-                            /*echo "	<div class=\"form-group\">
-										<input type=\"text\" class=\"form-control\" id=\"lg_username\" name=\"name\" placeholder=\"enter username\">
-									</div>
-									<div class=\"form-group\">
-										<input type=\"password\" class=\"form-control\" id=\"lg_password\" name=\"password\" placeholder=\"enter password\">
-									</div>
-									<div class=\"form-group\">
-										<input type=\"password\" class=\"form-control\" id=\"lg_password_cf\" name=\"password_cf\" placeholder=\"confirm password\">
-									</div> ";*/
-							include('../guest/guestDemographic.php');
 							include('../login/reg.php');
-							//include('../guest/guestDemographic.php');
                             echo "<p>$message</p>";
                         }
+						if ($_GET['gpage'] == 3){
+							//if the user clicked no
+							include("demoUpdate.php");
+						}
                     }
 				?>
             </div>
