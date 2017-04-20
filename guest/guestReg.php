@@ -1,6 +1,8 @@
 <?php
 	$message = '';
-	session_start();
+	session_start();	
+	
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,32 +59,37 @@
                   <div class="panel-heading"><h4>Hey! We hope you liked the story. If you want to do more we would request that you register. Would you like to register?</h4></div>
                   <div class="panel-body">
                     <!--<div class="btn-group">-->
-                    <a class="btn btn-success" href="../login/login.php?page=2">Yes, please!</a>
-                    <a class="btn btn-danger" href="../login/login.php">No thanks</a>
+						<!-- THIS NEEDS TO BE HERE VVVVVVVVVVVVVVVVVVVVVVVVVV IT INCLUDES REGISTER IN THE PAGE -->
+						<button onclick="window.location.href='guestReg.php?gpage=2'">Yes Please</button>
+						<a class="btn btn-danger" href="../login/login.php">No thanks</a>
                     <!--</div>-->
-                  </div>
-                </div>
-                <!--<h2> Hey! We hope you liked the story. If you want to do more please register!</h2>
-                <p>Would you like to register?</p>
-                <button onclick="window.location.href='guestReg.php?page=2'">Yes Please</button>
-                <form method="post" id="reg-form" action=""><br/>
-                <input type="submit" name="no" value="No">
-                </form>
-                -->
+                  
+
 
                 <?php
-                    if (isset($_POST['no'])){
+                    /*if (isset($_POST['no'])){
                         header("Location: ../login/login.php");
-                    }
-                    if(isset($_GET['page']))
+                    }*/
+                    if(isset($_GET['gpage']))
                     {
-                        if ($_GET['page'] == 2)
+                        if ($_GET['gpage'] == 2)
                         {
-                            include('../login/reg.php');
+                            /*echo "	<div class=\"form-group\">
+										<input type=\"text\" class=\"form-control\" id=\"lg_username\" name=\"name\" placeholder=\"enter username\">
+									</div>
+									<div class=\"form-group\">
+										<input type=\"password\" class=\"form-control\" id=\"lg_password\" name=\"password\" placeholder=\"enter password\">
+									</div>
+									<div class=\"form-group\">
+										<input type=\"password\" class=\"form-control\" id=\"lg_password_cf\" name=\"password_cf\" placeholder=\"confirm password\">
+									</div> ";*/
+							include('../guest/guestDemographic.php');
+							include('../login/reg.php');
+							//include('../guest/guestDemographic.php');
                             echo "<p>$message</p>";
                         }
                     }
-                ?>
+				?>
             </div>
         </div>
 

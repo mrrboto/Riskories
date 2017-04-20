@@ -28,6 +28,7 @@
 	
     mysqli_close($db);
 	
+	header("Location: guestConsent.php")
     //header("Location: ../cyo/index.php");
     ?>
 </html>
