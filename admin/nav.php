@@ -58,7 +58,7 @@ color: white;
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="admin.php">Home <span class="sr-only">(current)</span></a></li>
+                            <li><a href="admin.php">Home<span class="sr-only">(current)</span></a></li>
                             <li><a href="../consent/consentform.php">View Consent Form</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
