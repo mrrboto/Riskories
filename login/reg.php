@@ -43,15 +43,19 @@
 				mysqli_real_escape_string($db, $hash),
 				mysqli_real_escape_string($db, $gender));
 				mysqli_query($db, $sql);
-				mysqli_close($db);
+				//mysqli_close($db);
 				$message = 'User added.';
 
 				$_SESSION['user'] = $name;
 				$_SESSION['isAdmin'] = 0;
-				header("Location: ../user/profile.php");
+				if (!isset($_GET['gpage'])){
+					header("Location: ../user/profile.php");
+				}
+				else{					
+					include("../guest/newDemoReg.php");
+				}
 			}
-			echo "shitty";
-            mysqli_close($db);
+            //mysqli_close($db);
 		}
     }else{
 		$message = 'Passwords do not match';
