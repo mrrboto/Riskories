@@ -18,7 +18,7 @@
 	$_SESSION['storyNum'] = '';
 	#TK Story randomization
 	$_SESSION['randChoice'] = rand(0,1);
-	$_SESSION['stockDemo'] = 1;
+	$_SESSION['stockDemo'] = 0;
 	#GUEST DEMOGRAPHICS
 	$_SESSION['age'] = '';
 	$_SESSION['gender'] = '';
@@ -28,7 +28,7 @@
 	
     mysqli_close($db);
 	
-	header("Location: guestConsent.php")
+	header("Location: guestDemographic.php")
     //header("Location: ../cyo/index.php");
     ?>
 </html>

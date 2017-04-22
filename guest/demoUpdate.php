@@ -45,75 +45,80 @@
 
 	if($ok){
 	//create a guest user
-	$sql = "INSERT INTO guests (name) VALUES ('guest')";
-	mysqli_query($db, $sql);
-	$sql = "SELECT * FROM guests
-			ORDER BY id DESC
-			LIMIT 1";
-	$result = mysqli_query($db, $sql);
-	$que = mysqli_fetch_assoc($result);
-	$eyeD = $que['id'];
-	
-		if($okRN){
-			$sql = sprintf(
-			"UPDATE guests
-			SET `realName`='%s'
-			WHERE id='%s'",
-			mysqli_real_escape_string($db,$_SESSION['realName']),
-			$eyeD);
-			$query = mysqli_query($db, $sql);
-		}
-		if($okSOS){
-			//check if soName needs to be cleared
-			$clar = 0;
-			if($_SESSION['soStatus'] === 'single'){
-				$clar=1;
+		$sql = "INSERT INTO guests (name) VALUES ('guest')";
+		mysqli_query($db, $sql);
+		$sql = "SELECT * FROM guests
+				ORDER BY id DESC
+				LIMIT 1";
+		$result = mysqli_query($db, $sql);
+		$que = mysqli_fetch_assoc($result);
+		$eyeD = $que['id'];
+		$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
+		$_SESSION['path'] .= '[';
+			if($okA){
+				$sql = sprintf(
+				"UPDATE guests
+				SET `age`= %s
+				WHERE id='%s'",
+				mysqli_real_escape_string($db,$_SESSION['age']),
+				$eyeD);
+				$query = mysqli_query($db, $sql);
+				$_SESSION['path'] .= 'a;';
 			}
-			$sql = sprintf(
-			"UPDATE guests
-			SET `soStatus`='%s'
-			WEHRE id='%s'",
-			$_SESSION['soStatus'],
-			$eyeD);
-			$query = mysqli_query($db, $sql);
+			if($okRN){
+				$sql = sprintf(
+				"UPDATE guests
+				SET `realName`='%s'
+				WHERE id='%s'",
+				mysqli_real_escape_string($db,$_SESSION['realName']),
+				$eyeD);
+				$query = mysqli_query($db, $sql);
+				$_SESSION['path'] .= 'rN;';
+			}
+			if($okSOS){
+				//check if soName needs to be cleared
+				$clar = 0;
+				if($_SESSION['soStatus'] === 'single'){
+					$clar=1;
+				}
+				$sql = sprintf(
+				"UPDATE guests
+				SET `soStatus`='%s'
+				WHERE id='%s'",
+				$_SESSION['soStatus'],
+				$eyeD);
+				$query = mysqli_query($db, $sql);
 
-			if($clar==1){
+				$_SESSION['path'] .= 'soS;';
+			}
+			if($okSON){
 				$sql = sprintf(
 				"UPDATE guests
 				SET `soName`='%s'
-				WEHRE id='%s'",
-				mysqli_real_escape_string($db,'friend'),
+				WHERE id='%s'",
+				mysqli_real_escape_string($db,$_SESSION['soName']),
 				$eyeD);
 				$query = mysqli_query($db, $sql);
+				$_SESSION['path'] .= 'soN;';
 			}
-		}
-		if($okSON){
-			$sql = sprintf(
+			if($okG){
+				$sql = sprintf(
+				"UPDATE guests
+				SET `gender`='%s'
+				WHERE id='%s'",
+				mysqli_real_escape_string($db,$_SESSION['gender']),
+				$eyeD);
+				$query = mysqli_query($db, $sql);
+				$_SESSION['path'] .= 'g;';
+			}
+		$_SESSION['path'] .= ']';
+		$sql = sprintf(
 			"UPDATE guests
-			SET `soName`='%s'
-			WEHRE id='%s'",
-			mysqli_real_escape_string($db,$_SESSION['soName']),
+			SET `story`='%s'
+			WHERE id='%s'",
+			mysqli_real_escape_string($db,$_SESSION['path']),
 			$eyeD);
-			$query = mysqli_query($db, $sql);
-		}
-		if($okG){
-			$sql = sprintf(
-			"UPDATE guests
-			SET `gender`='%s'
-			WEHRE id='%s'",
-			mysqli_real_escape_string($db,$_SESSION['gender']),
-			$eyeD);
-			$query = mysqli_query($db, $sql);
-		}
-		if($okA){
-			$sql = sprintf(
-			"UPDATE guests
-			SET `age`= %s
-			WEHRE id='%s'",
-			mysqli_real_escape_string($db,$_SESSION['age']),
-			$eyeD);
-			$query = mysqli_query($db, $sql);
-		}
+		$query = mysqli_query($db, $sql);
 		mysqli_close($db);
 	}
 	header("Location: ../login/login.php");

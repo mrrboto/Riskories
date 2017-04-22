@@ -4,8 +4,6 @@ include('nav.php');
 //echo $_SESSION['isAdmin'];
 
 #TK temp? rerandom randomizers every time this page loads
-$_SESSION['randChoice'] = rand(0,1);
-$_SESSION['stockDemo'] = rand(0,1);
 //echo "stockdemo".$_SESSION['stockDemo']." nochoice".$_SESSION['randChoice'];
 #TK STORING USER PATHS FOR BOTH GUEST AND USER
 if (isset ($_SESSION['path'])){
@@ -69,6 +67,8 @@ if (isset ($_SESSION['path'])){
         //mysqli_close($db);
 	}
 }
+$_SESSION['randChoice'] = rand(0,1);
+$_SESSION['stockDemo'] = rand(0,1);
 //echo $_SESSION['randChoice'];
 #TK
 
