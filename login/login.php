@@ -108,7 +108,7 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
                         <a class="link" href="#" data-toggle="modal" data-target="#guestConsentModal">Guest</a>
 					</div>
 				</div>
-				<button type="submit" class="login-button" value="Login"><i class="fa fa-chevron-right"></i></button>
+				<button onclick="displayLoginErrors()" type="submit" class="login-button" value="Login"><i class="fa fa-chevron-right"></i></button>
 			</div>
 		</form>
 	</div>
@@ -130,7 +130,6 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 <!-- </div> -->
 <div>
 <?php
-
     if(isset($_GET['page']))
     {
 
@@ -145,11 +144,43 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
         }
     }
 
-    /*
-    <div id="alertBox" class="alert alert-success">
-                    <strong>Success!</strong> You won a prize.
-                </div>
-    */
+    // remove any previous message
+    echo "<script type=\"text/javascript\">";
+    echo "var alert = document.getElementById(\"centerSlotForAlert\");";
+    echo "while (alert.hasChildNodes()) {
+        alert.removeChild(alert.lastChild);
+    }";
+    echo "</script>";
+    if(strcmp($message, '') == 0) {
+    }
+    else if(strcmp($message, 'Login failed.') == 0) {
+        echo "<script type=\"text/javascript\">";
+        echo "var alert = document.getElementById(\"centerSlotForAlert\");";
+        echo "var div = document.createElement(\"div\");";
+        echo "div.setAttribute(\"class\", \"alert alert-danger\");";
+        echo "var strongTag = document.createElement(\"strong\");";
+        echo "var strongText = document.createTextNode(\"Error: \");";
+        echo "strongTag.appendChild(strongText);";
+        echo "var divText = document.createTextNode(\"Login failed\");";
+        echo "div.appendChild(strongTag);";
+        echo "div.appendChild(divText);";
+        echo "alert.appendChild(div);";
+        echo "</script>";
+    }
+    else if(strcmp($message, 'Login successful.') == 0) {
+        echo "<script type=\"text/javascript\">";
+        echo "var alert = document.getElementById(\"centerSlotForAlert\");";
+        echo "var div = document.createElement(\"div\");";
+        echo "div.setAttribute(\"class\", \"alert alert-danger\");";
+        echo "var strongTag = document.createElement(\"strong\");";
+        echo "var strongText = document.createTextNode(\"Success: \");";
+        echo "strongTag.appendChild(strongText);";
+        echo "var divText = document.createTextNode(\"Login successful\");";
+        echo "div.appendChild(strongTag);";
+        echo "div.appendChild(divText);";
+        echo "alert.appendChild(div);";
+        echo "</script>";
+    }
 
     /*$dom = new DOMDocument;
     $dom->loadHTML($html);
@@ -176,12 +207,37 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 </div>
 
 <script type="text/javascript">
+
+//console.log("Hello world");
+/*
+var alert = document.getElementById("centerSlotForAlert");
+var div = document.createElement("div");
+div.setAttribute("class", "alert alert-danger");
+var strongTag = document.createElement("strong");
+var strongText = document.createTextNode("Error: ");
+strongTag.appendChild(strongText);
+var divText = document.createTextNode("Some error message");
+div.appendChild(strongTag);
+div.appendChild(divText);
+alert.appendChild(div);
+*/
+// Use this to clear
+/*
+while (alert.hasChildNodes()) {
+    alert.removeChild(alert.lastChild);
+}
+*/
+
 function agreeToTermsGuest() {
     window.location = "../guest/guest.php";
 }
 function agreeToTermsRegister() {
     // redirect to login.php?page=2
     window.location = "login.php?page=2";
+}
+
+function displayLoginErrors() {
+    console.log("Clicked");
 }
 </script>
 
