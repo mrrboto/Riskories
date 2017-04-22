@@ -76,13 +76,15 @@
 
 			$ret = db_insert($storyR, array(
 				//'email'		=> AddSlashes($_POST['email']),
-				'blurb'		=> AddSlashes($_POST['blurb']),
-				'text_1'	=> AddSlashes($_POST['choice1']),
-				'room_1'	=> 0,
-				'text_2'	=> AddSlashes($_POST['choice2']),
-				'room_2'	=> 0,
-				'end_here'	=> AddSlashes($_POST['end_here']),
-				//'ip'		=> AddSlashes($_SERVER['REMOTE_ADDR']),
+				'blurb'		   => AddSlashes($_POST['blurb']),
+				'text_1'	   => AddSlashes($_POST['choice1']),
+                'choice1_risk'  => $_POST['risk1'],
+				'room_1'	   => 0,
+				'text_2'	   => AddSlashes($_POST['choice2']),
+                'choice2_risk'  => $_POST['risk2'],
+				'room_2'	   => 0,
+				'end_here'	   => AddSlashes($_POST['end_here']),
+				//'ip'		   => AddSlashes($_SERVER['REMOTE_ADDR']),
 			));
 
 			//$room_id = $ret['insert_id'];
