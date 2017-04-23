@@ -2,8 +2,8 @@
 	$message = '';
 	include('../db/config.php');
 	include('../db/db.php');
-	session_start();	
-	
+	session_start();
+
 	//echo $_SESSION['path'];
 ?>
 <!DOCTYPE html>
@@ -65,7 +65,7 @@
 						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=2'">Yes Please</button>
 						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=3'">No thanks</button>
                     <!--</div>-->
-                  
+
 
 
                 <?php

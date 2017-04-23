@@ -91,7 +91,7 @@
 						<input type="text" class="form-control" name="realName" placeholder="">
 						</div>
 					<?php }
-                    
+
 					#THIS WILL FILL IN THE FIELD IF THE USER HAS INPUT DEMOGRAPHICS
 					if($_SESSION['age']!=''){
 						$age =$_SESSION['age'];
@@ -105,7 +105,7 @@
 						<input type="text" class="form-control" name="age" placeholder="">
 						</div>
 					<?php } ?>
-					
+
 					<div class="form-group">
 					<label for="gender">Gender: </label>
 					<select class="form-control" name="gender" id="gender">
@@ -113,13 +113,13 @@
 							if($_SESSION['gender']==''){
                                echo "<option value=\"\">Please Select One</option>";
 							}
-							if($_SESSION['gender']=='f'){ 
+							if($_SESSION['gender']=='f'){
 								echo "<option id=\"female\" value=\"f\" selected=\"selected\">Female</option>";
 							} else{
                                 echo "<option id=\"female\" value=\"f\">Female</option>";
-							} 
+							}
 							if($_SESSION['gender']=='m'){
-								echo "<option id=\"male\" value=\"m\" selected=\"selected\">Male</option>"; 
+								echo "<option id=\"male\" value=\"m\" selected=\"selected\">Male</option>";
 							} else {
                                 echo "<option id=\"male\" value =\"m\">Male</option>";
 							} ?>

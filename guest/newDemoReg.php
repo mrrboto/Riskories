@@ -101,7 +101,7 @@
 
 		//mysqli_close($db);
 	}
-	//header("Location: profile.php");	
+	//header("Location: profile.php");
 ?>
 
 <script>

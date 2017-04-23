@@ -11,7 +11,7 @@
 	$okSOS = true;
 	$okG = true;
 	$okA = true;
-	
+
 	if (!isset($_SESSION['realName']) || $_SESSION['realName'] === '') {
 		$okRN = false;
 	} else {

@@ -25,7 +25,7 @@
 	$_SESSION['realName'] = '';
 	$_SESSION['soStatus'] = '';
 	$_SESSION['soName'] = '';
-	
+
     mysqli_close($db);
 	
 	header("Location: guestDemographic.php")

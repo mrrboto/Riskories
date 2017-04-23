@@ -89,7 +89,7 @@
 		//echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
 		//echo "</div>\n";
 	}
-	#TK UPDATE TRACKING COOKIES
+#TK UPDATE TRACKING COOKIES
 	if (isset($_GET['room'])){
 		#TK add risk factor
 		//first get option and from what room

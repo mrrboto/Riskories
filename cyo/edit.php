@@ -56,7 +56,6 @@
 	$parent	= db_single(mysqli_query($db, "SELECT * FROM `$storyR` WHERE room_1=$room_id OR room_2=$room_id"));
 
 	if (!$room['id']){
-		include('header.php');
 		print "error: room $room_id not found";
 		include('footer.php');
 		exit;
@@ -141,8 +140,15 @@
 
 <p>This room can't be deleted - it has children.</p>
 
-<?php
-	}else{
+
+<?php  //ADDED CASE TO CHECK IF IT IS FIRST ROOM (DO NOT DELETE) #VP
+	}
+    else if ($room['id'] == 1)
+    {
+        echo "<p>This room can't be deleted - it is the first room.</p>";
+    }
+    else
+    {
 ?>
 
 <form method="post">

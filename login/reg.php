@@ -51,7 +51,7 @@
 				if (!isset($_GET['gpage'])){
 					header("Location: ../user/profile.php");
 				}
-				else{					
+				else{
 					include("../guest/newDemoReg.php");
 				}
 			}
