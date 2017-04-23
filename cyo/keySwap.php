@@ -2,7 +2,7 @@
 
     if(isset($_SESSION['name']) || $_SESSION['stockDemo']==0)
     {
-        $name = $_SESSION['name'];
+        $name = $_SESSION['realName'];
         $soName = $_SESSION['soName'];
         $age = $_SESSION['age'];
     }

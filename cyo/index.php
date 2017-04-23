@@ -4,7 +4,6 @@ include('../db/config.php');
 include('../db/db.php');
 include('header.php');
 
-
     //If the user is an admin - redirect to room_adm.php
     if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1)
     {
@@ -27,7 +26,8 @@ echo "</h4></div><div class=\"panel-body\">";
 So what are you waiting for?
 <?php
 //$story = $_GET['story'];
-echo "<a data-toggle='modal' data-target='#consentModal' style='font-size: 140%;'>Start playing</a>."; //<br /><br />";
+//echo "<a data-toggle='modal' data-target='#consentModal' style='font-size: 140%;'>Start playing</a>."; //<br /><br />";
+echo "<a href='room.php?story=$storyT' style='font-size: 140%;'>Start playing</a>.<br /><br />";
 ?>
 <!-- End Well/Panel (only need one of two closing div tags if well used) -->
 </div>
@@ -104,3 +104,4 @@ echo "<a data-toggle='modal' data-target='#consentModal' style='font-size: 140%;
          </div>
      </div>
  </div>
+ <!-- End Modal -->

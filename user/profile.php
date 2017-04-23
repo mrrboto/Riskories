@@ -4,8 +4,6 @@ include('nav.php');
 //echo $_SESSION['isAdmin'];
 
 #TK temp? rerandom randomizers every time this page loads
-$_SESSION['randChoice'] = rand(0,1);
-$_SESSION['stockDemo'] = rand(0,1);
 //echo "stockdemo".$_SESSION['stockDemo']." nochoice".$_SESSION['randChoice'];
 #TK STORING USER PATHS FOR BOTH GUEST AND USER
 if (isset ($_SESSION['path'])){
@@ -69,6 +67,8 @@ if (isset ($_SESSION['path'])){
         //mysqli_close($db);
 	}
 }
+$_SESSION['randChoice'] = rand(0,1);
+$_SESSION['stockDemo'] = rand(0,1);
 //echo $_SESSION['randChoice'];
 #TK
 
@@ -92,7 +92,7 @@ if (isset ($_SESSION['path'])){
     </head>
     <body style="background: #efefef;">
 
-        <!-- LIST CSS STYLE CUSTOM -->
+        <!-- LIST CSS STYLE CUSTOM
         <style>
 
             .list-group {
@@ -125,6 +125,7 @@ if (isset ($_SESSION['path'])){
             }
 
         </style>
+        -->
 
         <?php //display stories
 
@@ -133,21 +134,36 @@ if (isset ($_SESSION['path'])){
 
             if(mysqli_num_rows($stories) > 0)
             {
-                echo '<div class="container">
+                /*echo '<div class="container">
                         <div class="row">
                             <div class="col-md-2">
                                 <h4>Riskories</h4>
                                 <ul class="list-group">';
+                */
+                 echo '<div class="container">
+                    <h4>Current Riskories</h4>
+                        <ul class="list-group">';
             }
 
             foreach ($stories as $row)
             {
+                printf('<li class="list-group-item">
+                        <h4 class="list-group-item-heading"><a href="../cyo/room.php?story=%s">%s</a></h4>
+                        <p class="list-group-item-text">A story about..</p>
+                    </li>',
+                    $row['title'],
+                    $row['title'],
+                    $row['title'],
+                    htmlspecialchars($row['title'])
+                  );
+                /*
                 printf('<span style="text-align:center">
                         <a href="../cyo/room.php?story=%s"
                         class="list-group-item">%s</a></span>',
                         $row['title'],
                         htmlspecialchars($row['title'])
                       );
+                */
             }
 
             mysqli_close($db);

@@ -1,6 +1,10 @@
 <?php
 	$message = '';
+	include('../db/config.php');
+	include('../db/db.php');
 	session_start();
+
+	//echo $_SESSION['path'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,32 +61,31 @@
                   <div class="panel-heading"><h4>Hey! We hope you liked the story. If you want to do more we would request that you register. Would you like to register?</h4></div>
                   <div class="panel-body">
                     <!--<div class="btn-group">-->
-                    <a class="btn btn-success" href="../login/login.php?page=2">Yes, please!</a>
-                    <a class="btn btn-danger" href="../login/login.php">No thanks</a>
+						<!-- THIS NEEDS TO BE HERE VVVVVVVVVVVVVVVVVVVVVVVVVV IT INCLUDES REGISTER IN THE PAGE -->
+						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=2'">Yes Please</button>
+						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=3'">No thanks</button>
                     <!--</div>-->
-                  </div>
-                </div>
-                <!--<h2> Hey! We hope you liked the story. If you want to do more please register!</h2>
-                <p>Would you like to register?</p>
-                <button onclick="window.location.href='guestReg.php?page=2'">Yes Please</button>
-                <form method="post" id="reg-form" action=""><br/>
-                <input type="submit" name="no" value="No">
-                </form>
-                -->
+
+
 
                 <?php
-                    if (isset($_POST['no'])){
+                    /*if (isset($_POST['no'])){
                         header("Location: ../login/login.php");
-                    }
-                    if(isset($_GET['page']))
+                    }*/
+                    if(isset($_GET['gpage']))
                     {
-                        if ($_GET['page'] == 2)
+                        if ($_GET['gpage'] == 2)
                         {
-                            include('../login/reg.php');
+							include('../login/reg.php');
                             echo "<p>$message</p>";
+							//include('../guest/newDemoReg.php');
                         }
+						if ($_GET['gpage'] == 3){
+							//if the user clicked no
+							include("demoUpdate.php");
+						}
                     }
-                ?>
+				?>
             </div>
         </div>
 
