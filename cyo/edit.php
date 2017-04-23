@@ -68,101 +68,120 @@
 
 <h1>Edit <a href="room_adm.php?story=<?= $storyT ?>&room=<?= $room['id'] ?>">Room <?= $room['id'] ?></a></h1>
 
-<?php if ($parent['id']){ ?>
-	<p>Parent room: <a href="edit.php?story=<?= $storyT ?>&id=<?= $parent['id'] ?>">room <?= $parent['id'] ?></a>.</p>
-<?php } ?>
+<div class="well">
 
-<?php if (isset($_GET['done']) && $_GET['done']){ ?>
-	<div style="border: 1px solid #000000; padding: 10px; background-color: #eeeeee;">Your changes have been saved.</div>
-<?php } ?>
+    <!-- Sample for Styling Forms
+    <div class="form-group">
+        <label>Story Title: </label>
+            <input class="form-control" name="title" type="text" size="50" value="<?= HtmlSpecialChars($settings['title']) ?>"/>
+    </div>
+    -->
 
-<form method="post">
-<input type="hidden" name="id" value="<?= $room['id'] ?>" />
-<input type="hidden" name="done" value="1" />
+    <?php if ($parent['id']){ ?>
+        <p>Parent room: <a href="edit.php?story=<?= $storyT ?>&id=<?= $parent['id'] ?>">room <?= $parent['id'] ?></a>.</p>
+    <?php } ?>
 
-	<br /><p>Description:<br /><textarea name="blurb" cols="50" rows="10"><?= HtmlSpecialChars($room['blurb']) ?></textarea></p>
+    <?php if (isset($_GET['done']) && $_GET['done']){ ?>
+        <div style="border: 1px solid #000000; padding: 10px; background-color: #eeeeee;">Your changes have been saved.</div>
+    <?php } ?>
 
-<?php if ($room['end_here']){ ?>
+    <form method="post">
+    <input type="hidden" name="id" value="<?= $room['id'] ?>" />
+    <input type="hidden" name="done" value="1" />
 
-	<p>(story ends here)</p>
+    <div class="form-group">
+        <label>Description: </label>
+        <textarea class="form-control" name="blurb" cols="50" rows="10"><?= HtmlSpecialChars($room['blurb']) ?></textarea>
+    </div>
 
-	<input type="hidden" name="text_1" value="" />
-	<input type="hidden" name="text_2" value="" />
+    <?php if ($room['end_here']){ ?>
 
-<?php }else{ ?>
+        <p>(story ends here)</p>
 
-	<p>	Choice 1:
-<?php if ($room['room_1']){ ?>
-		(to <a href="edit.php?story=<?= $storyT ?>&id=<?= $room['room_1'] ?>">room <?= $room['room_1'] ?></a>)
-<?php }else{ ?>
-		(no story written)
-<?php } ?>
-		<br /><input type="text" name="text_1" size="50" value="<?= HtmlSpecialChars($room['text_1']) ?>" />
-        <!--ADDED RISK LEVEL FOR EDIT #VP -->
-        Risk Level
-        <select name='risk1'>
-            <option name ='c1r1' value='1'>1</option>
-            <option name ='c1r2' value='2'>2</option>
-            <option name ='c1r3' value='3'>3</option>
-            <option name ='c1r4' value='4'>4</option>
-            <option name ='c1r5' value='5'>5</option>
-        </select>
-	</p>
+        <input type="hidden" name="text_1" value="" />
+        <input type="hidden" name="text_2" value="" />
 
-	<p>	Choice 2:
-<?php if ($room['room_2']){ ?>
-		(to <a href="edit.php?story=<?= $storyT ?>&id=<?= $room['room_2'] ?>">room <?= $room['room_2'] ?></a>)
-<?php }else{ ?>
-		(no story written)
-<?php } ?>
-		<br /><input type="text" name="text_2" size="50" value="<?= HtmlSpecialChars($room['text_2']) ?>" />
-        <!--ADDED RISK LEVEL FOR EDIT #VP -->
-        Risk Level
-        <select name='risk2'>
-            <option name ='c2r1' value='1'>1</option>
-            <option name ='c2r2' value='2'>2</option>
-            <option name ='c2r3' value='3'>3</option>
-            <option name ='c2r4' value='4'>4</option>
-            <option name ='c2r5' value='5'>5</option>
-        </select>
-	</p>
+    <?php }else{ ?>
 
-<?php } ?>
+    <div class="form-group form-inline">
+        <label>Choice 1: </label>
+        <!--<p>	Choice 1:-->
+    <?php if ($room['room_1']){ ?>
+            (to <a href="edit.php?story=<?= $storyT ?>&id=<?= $room['room_1'] ?>">room <?= $room['room_1'] ?></a>)
+    <?php }else{ ?>
+            (no story written)
+    <?php } ?>
+            <br /><input class="form-control" type="text" name="text_1" size="50" value="<?= HtmlSpecialChars($room['text_1']) ?>" />
+            <!--ADDED RISK LEVEL FOR EDIT #VP -->
+            Risk Level
+            <select class="form-control" name='risk1'>
+                <option name ='c1r1' value='1'>1</option>
+                <option name ='c1r2' value='2'>2</option>
+                <option name ='c1r3' value='3'>3</option>
+                <option name ='c1r4' value='4'>4</option>
+                <option name ='c1r5' value='5'>5</option>
+            </select>
+        <!--</p>-->
+    </div>
 
-	<p>
-		<input type="submit" value="Save Changes" />
-	</p>
-</form>
+    <div class="form-group form-inline">
+        <label>Choice 2: </label>
+        <!--<p>	Choice 2: -->
+    <?php if ($room['room_2']){ ?>
+            (to <a href="edit.php?story=<?= $storyT ?>&id=<?= $room['room_2'] ?>">room <?= $room['room_2'] ?></a>)
+    <?php }else{ ?>
+            (no story written)
+    <?php } ?>
+            <br /><input class="form-control" type="text" name="text_2" size="50" value="<?= HtmlSpecialChars($room['text_2']) ?>" />
+            <!--ADDED RISK LEVEL FOR EDIT #VP -->
+            Risk Level
+            <select class="form-control" name='risk2'>
+                <option name ='c2r1' value='1'>1</option>
+                <option name ='c2r2' value='2'>2</option>
+                <option name ='c2r3' value='3'>3</option>
+                <option name ='c2r4' value='4'>4</option>
+                <option name ='c2r5' value='5'>5</option>
+            </select>
+        <!--</p> -->
 
-<?php
-	if ($room['room_1'] || $room['room_2']){
-?>
+    <?php } ?>
+    </div>
 
-<p>This room can't be deleted - it has children.</p>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Save Changes" />
+    </div>
+
+    </form>
+
+    <?php
+        if ($room['room_1'] || $room['room_2']){
+    ?>
+
+    <div class="alert alert-info">
+        <p>This room can't be deleted - it has children.</p>
+    </div>
 
 
-<?php  //ADDED CASE TO CHECK IF IT IS FIRST ROOM (DO NOT DELETE) #VP
-	}
-    else if ($room['id'] == 1)
-    {
-        echo "<p>This room can't be deleted - it is the first room.</p>";
-    }
-    else
-    {
-?>
+    <?php  //ADDED CASE TO CHECK IF IT IS FIRST ROOM (DO NOT DELETE) #VP
+        }
+        else if ($room['id'] == 1)
+        {
+            echo "<div class=\"alert alert-info\"><p>This room can't be deleted - it is the first room.</p><div>";
+        }
+        else
+        {
+    ?>
 
-<form method="post">
-<input type="hidden" name="id" value="<?= $room['id'] ?>" />
-<input type="hidden" name="delete" value="1" />
+    <form method="post">
+    <input type="hidden" name="id" value="<?= $room['id'] ?>" />
+    <input type="hidden" name="delete" value="1" />
 
-	<p>
-		<br />
-		<br />
-		<br />
-		<br />
-		<input type="submit" value="Delete This Room" style="background-color: red; color: white; font-weight: bold;" />
-	</p>
-</form>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Delete This Room" />
+        </div>
+    </form>
+
+</div>
 
 <?php
 	}

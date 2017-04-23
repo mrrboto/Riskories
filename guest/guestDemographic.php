@@ -36,7 +36,17 @@
     </head>
     <body onload="changeSOS()" style="background: #efefef;">
 
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+            </script>
+
 		<script>
+
+
 
             function changeSOS(){
                 var l = document.getElementById("soStatus").value
@@ -58,19 +68,45 @@
 
         </script>
 
+        <div class="navbar">
+         <nav class="container navbar-inverse">
+             <div class="container-fluid">
+                 <!-- Brand and toggle get grouped for better mobile display -->
+                 <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                         <span class="sr-only">Toggle navigation</span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                     </button>
+                     <span class='navbar-brand'>
+                       <img alt='Brand' src='../img/s_logo_3.png' height='45px' width='40px' style='padding-bottom: 20px'>
+                     </span>
+                 </div>
+
+                 <!-- Collect the nav links, forms, and other content for toggling -->
+                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                     <ul class="nav navbar-nav navbar-right">
+                         <li><a href='../index.html'><span class='glyphicon glyphicon-log-out'></span>Exit</a></li>
+                    </ul>
+                 </div><!-- /.navbar-collapse -->
+             </div><!-- /.container-fluid -->
+         </nav>
+        </div>
+
 
         <div class="container">
-            <div class="row">
+            <!--<div class="row"></div>
                 <div class="col-md-6">
                     <h4>Enter your Demographics (optional)</h4>
-                </div>
+                </div> -->
                 <!-- EXTRA SAVE BUTTON
                 <div class="col-md-1 col-md-offset-5">
                     <a class="btn btn-primary btn-sm pull-right">Save</a>
                 </div>-->
-            </div>
-            <div>
-                blank fields will not be used
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Enter your Demographics (optional)</h4> <small>blank fields will not be used</small></div>
                 <div class="panel-body">
                 <!--
                 <em>
@@ -171,7 +207,7 @@
 					?>
 
                     </form>
-                    </div>
+                    </div> <!-- end panel body -->
                 </div>
             </div>
     </body>

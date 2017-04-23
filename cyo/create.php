@@ -68,7 +68,7 @@
 
     <div class="well">
         <div class="form-group">
-            <label>Site Title: </label>
+            <label>Story Title: </label>
             <input class="form-control" name="title" type="text" size="50" value="<?= HtmlSpecialChars($settings['title']) ?>"/>
         </div>
         <div class="form-group">

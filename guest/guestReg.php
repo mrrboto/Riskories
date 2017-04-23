@@ -62,7 +62,7 @@
                   <div class="panel-body">
                     <!--<div class="btn-group">-->
 						<!-- THIS NEEDS TO BE HERE VVVVVVVVVVVVVVVVVVVVVVVVVV IT INCLUDES REGISTER IN THE PAGE -->
-						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=2'">Yes Please</button>
+						<button class="btn btn-success" onclick="window.location.href='guestReg.php?gpage=2'">Yes Please</button>
 						<button class="btn btn-danger" onclick="window.location.href='guestReg.php?gpage=3'">No thanks</button>
                     <!--</div>-->
 
