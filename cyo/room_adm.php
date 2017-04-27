@@ -171,13 +171,13 @@
         /* End options code */
 
         /* Begin Choices code */
-        echo "<div class=\"form-group\">"; // added by Spencer
+        echo "<div class=\"form-group form-inline\">"; // added by Spencer
         echo "<label for=\"\">Choice 1:</label>"; // added by Spencer // Note: for attribute not needed
 
         #VP RISK LEVEL ADDITION
         print "<input class='form-control' type='text' name='choice1' size='50'>
         Risk Level
-        <select name='risk1'>
+        <select class='form-control' name='risk1'>
             <option name ='c1r1' value='1'>1</option>
             <option name ='c1r2' value='2'>2</option>
             <option name ='c1r3' value='3'>3</option>
@@ -185,11 +185,11 @@
             <option name ='c1r5' value='5'>5</option>
         </select>";
         echo "</div>"; // added by Spencer
-        echo "<div class=\"form-group\">"; // added by Spencer
+        echo "<div class=\"form-group form-inline\">"; // added by Spencer
         echo "<label for=\"\">Choice 2:</label>"; // added by Spencer // Note: for attribute not needed
  		print "<input class='form-control' type='text' name='choice2' size='50'>
         Risk Level
-        <select name='risk2'>
+        <select class='form-control' name='risk2'>
             <option name ='c2r1' value='1'>1</option>
             <option name ='c2r2' value='2'>2</option>
             <option name ='c2r3' value='3'>3</option>
@@ -258,8 +258,14 @@
 	}
 
 	if ($room['end_here']){
-		print nl2br(htmlentities(chop($room['blurb'])));
-		print "<br><br><b>It's all over.</b> Why not <a href=\"room_adm.php?story=$storyT\">start again</a>.";
+
+        #VP Well/Panel feature added to story end
+        echo "<div class=\"well\">";
+        echo "<h4>Riskory Text:</h4>";
+        echo "<div class=\"panel panel-default\"><div class=\"panel-body\"><p>";
+		print nl2br(htmlentities(trim($room['blurb'])))."<br />\n";
+        echo "</p></div></div>";//end panel and panel body
+		echo "<b>It's all over.</b> Why not <a href=\"room_adm.php?story=$storyT\">start again</a></div>";
 	}
     else{
         //echo "<div class=\"well\"><p>";

@@ -112,8 +112,14 @@
 	#TK
 
 	if ($room['end_here']){
-		print nl2br(htmlentities(trim($room['blurb'])));
-		echo "<br><br><b>It's all over.</b>";
+
+        echo "<div class=\"well\">";
+        echo "<h4>Riskory Text:</h4>";
+        echo "<div class=\"panel panel-default\"><div class=\"panel-body\"><p>";
+		print nl2br(htmlentities(trim($room['blurb'])))."<br />\n";
+        echo "</p></div></div>";//end panel and panel body
+		echo "<b>It's all over.</b></div>";
+
 		#TK purge path if random
 		if ($_SESSION['randChoice'] == 1){
 			$_SESSION['path'] = 'generic;';
