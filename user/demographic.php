@@ -177,6 +177,7 @@
                                 <option value="">Please Select One</option>
                                 <option id="female" value="f">Female</option>
                                 <option id="male" value ="m">Male</option>
+                                <option id="other" value ="o">Other</option>
                       </select>
                     </div>
                         <div class="form-group">

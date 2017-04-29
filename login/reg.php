@@ -101,16 +101,13 @@
                 <div class="form-group">
                     <input type="password" class="form-control" id="lg_password_cf" name="password_cf" placeholder="confirm password">
                 </div>
-                <div class="form-group">
-                    Gender:
-                    <input type="radio" name="gender" value="f"<?php
-                    if ($gender === 'f') {
-                        echo ' checked';
-                    }?>>female
-                    <input type="radio" name="gender" value="m"<?php
-                    if ($gender === 'm') {
-                        echo ' checked';
-                    }?>>male<br>
+                <div class="form-group form-inline">
+                <label >Gender:</label>
+                <select class='form-control' name='gender'>
+                    <option name ='male' value='m'>male</option>
+                    <option name ='female' value='f'>female</option>
+                    <option name ='other' value='o'>other</option>
+                </select>
                 </div>
             </div>
 			<!-- Tyler added this, feel free to CSS it better -->
