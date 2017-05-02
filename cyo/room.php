@@ -81,14 +81,17 @@
 
 	echo "<!-- depth: ".$depth." -->\n";
 
-	if ($room['id'] == 1){
+
+    /*
+    if ($room['id'] == 1){
         echo "<div class=\"alert alert-danger\">\n";
  		echo "<strong>Warning:</strong>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
   		echo "</div>\n";
 		//echo "<div class=\"warnbox\">\n";
 		//echo "<b>Warning:</b>  ".nl2br(htmlentities(chop($settings['warn_box_blurb'])));
 		//echo "</div>\n";
-	}
+	}*/
+
 #TK UPDATE TRACKING COOKIES
 	if (isset($_GET['room'])){
 		#TK add risk factor
@@ -172,8 +175,11 @@
         echo "</div>"; // end well
 	}
 	print "<br>";//print "<br><br><br><br>";
-	echo "Something wrong with this entry? Bad spelling/grammar? Empty? Makes no sense? Then <a href=\"report.php?id=".$room['id']."\">report it</a>.<br />";
 
+    #VP REMOVED REPORT FEATURE
+    /*
+    echo "Something wrong with this entry? Bad spelling/grammar? Empty? Makes no sense? Then <a href=\"report.php?id=".$room['id']."\">report it</a>.<br />";
+    */
 
 
 	function defaulty($x){
