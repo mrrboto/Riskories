@@ -40,34 +40,13 @@
 
     <?php
     if (isset($_POST["title"]) && isset($_POST["header1"]) && isset($_POST["body1"])) {
-
+        // isset vs. empty()..
         echo $_POST["title"];
         echo "<br>";
         echo $_POST["header1"];
         echo "<br>";
         echo $_POST["body1"];
     }
-
-
-    ?>
-
-    <?php
-        #$the_var = 0; // not set, empty
-        $the_var = 0;
-
-        if (isset($the_var)) {
-          echo "set";
-        } else {
-          echo "not set";
-        }
-
-        echo "\n";
-
-        if (empty($the_var)) {
-          echo "empty";
-        } else {
-          echo "not empty";
-        }
     ?>
 </body>
 </html>
