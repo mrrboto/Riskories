@@ -147,8 +147,17 @@ $_SESSION['stockDemo'] = rand(0,1);
 
             foreach ($stories as $row)
             {
-                printf('<li class="list-group-item">
+               /* printf('<li class="list-group-item">
                         <h4 class="list-group-item-heading"><a href="../cyo/room.php?story=%s">%s</a></h4>
+                        <p class="list-group-item-text">A story about..</p>
+                    </li>',
+                    $row['title'],
+                    $row['title'],
+                    $row['title'],
+                    htmlspecialchars($row['title'])
+                  );*/
+				printf('<li class="list-group-item">
+                        <h4 class="list-group-item-heading"><a href="../questions/preQ?user=user&story=%s">%s</a></h4>
                         <p class="list-group-item-text">A story about..</p>
                     </li>',
                     $row['title'],

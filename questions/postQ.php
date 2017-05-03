@@ -1,15 +1,15 @@
 <?php
     //include('../user/nav.php');
-session_start();
-$postQs = '';
-$postQ1= '';
-$postQ2 = '';
-$postQ3 = '';
-$comments ='';
-$story = $_GET['story'];
-$_SESSION['storyN'] = $story;
+	session_start();
+	$postQs = '';
+	$postQ1= '';
+	$postQ2 = '';
+	$postQ3 = '';
+	$comments ='';
+	$story = $_GET['story'];
+	$_SESSION['storyN'] = $story;
 
-$postQ1Err = $postQ2Err = $postQ3Err = "";
+	$postQ1Err = $postQ2Err = $postQ3Err = "";
 
     if (isset($_POST['saveBtn']))   {
         $ok = true;

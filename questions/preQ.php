@@ -4,89 +4,91 @@
 $preQ1= '';
 $preQ2 = '';
 $preQ3 = '';
+$preQs = '';
 
 $preQ1Err = $preQ2Err = $preQ3Err = "";
 
 	if (isset($_POST['saveBtn']))	{
 		$ok = false;
-		$okPreQ1 = true;
-		$okPreQ2 = true;
-		$okPreQ3 = true;
         $okComments = true;
 		
-		if (!isset($_POST['preQ1']) || $_POST['preQ1'] === '') {
+		#TK + MAN if the user doesnt fill in one field beside comments change $ok to false and prevent them from moving on
+        if (!isset($_POST['preQ1']) || $_POST['preQ1'] === '') {
             $preQ1Err = "Please answer question 1";
-			$okPreQ1 = false;
-			
-		} else {
-			$ok = true;
-			$preQ1 = $_POST['preQ1'];
-		}
-		if (!isset($_POST['preQ2']) || $_POST['preQ2'] === '') {
+            $ok = false;
+        } else {
+            $preQ1 = $_POST['preQ1'];
+			$preQs .= $preQ1;
+        }
+        if (!isset($_POST['preQ2']) || $_POST['preQ2'] === '') {
             $preQ2Err = "Please answer question 2";
-			$okPreQ2 = false;
-		
-		} else {
-			$ok = true;
-			$preQ2 = $_POST['preQ2'];
-		}
-		if (!isset($_POST['preQ3']) || $_POST['preQ3'] === '') {
+			$ok = false;
+        } else {
+            $preQ2 = $_POST['preQ2'];
+			$preQs .= $preQ2;
+        }
+        if (!isset($_POST['preQ3']) || $_POST['preQ3'] === '') {
             $preQ3Err = "Please answer question 3";
-			$okPreQ3 = false;
-			
-		} else {
-			$ok = true;
-			$preQ3 = $_POST['preQ3'];
+            $ok = false;
+        } else {
+            $preQ3 = $_POST['preQ3'];
+			$preQs .= $preQ3;
+        }
+        if (!isset($_POST['comments']) || $_POST['comments'] === '') {
+            $okComments = false;
+        } else {
+            $comments = $_POST['comments'];
+        }
+		
+		#Check if user is guest or registered user
+		if($_GET['page']=="user"){	#TK USER VERSION
+			#make sure the field isnt already filled
+			$db = mysqli_connect('localhost', 'root', '', 'riskories');
+			$sql = sprintf("SELECT * FROM users WHERE name='%s' AND 'preQ_$story' IS NULL",
+				mysqli_real_escape_string($db, $_SESSION['user']));
+			$result = mysqli_query($db, $sql);
+			$row = mysqli_fetch_assoc($result);
+			if($row){}else{
+				$ok = false;
+			}
+			#if all fields are filled AND the field isnt filled, user can proceed with db calls
+			if($ok){
+					
+					$sql = sprintf(
+					"UPDATE users 
+					SET `preQ_$story`= '%s'
+					WHERE name='%s'",
+					mysqli_real_escape_string($db,$preQs),
+					mysqli_real_escape_string($db,$_SESSION['user']));
+					$query = mysqli_query($db, $sql);
+				#check if theres comments, add if there are
+				$comments = '';
+				if($okComments){
+					$comments = $_POST['commnets'];
+				}
+				$sql = sprintf(
+				"UPDATE users 
+				SET `comments4_$story`= '%s'
+				WHERE name='%s'",
+				mysqli_real_escape_string($db,$comments),
+				$_SESSION['user']);
+				$query = mysqli_query($db, $sql);
+				
+
+				mysqli_close($db);
+				header("Location: ../user/profile.php");
+			}
+		} else if ($_GET['page']=="guest"){ #TK GUEST VERSION
+			if($ok){
+				$_SESSION['preQ'] = $preQs;
+				if($okComments){
+					$_SESSION['comments'] = $_POST['comments'];
+				}
+				
+				header("Location: ../guest/guestReg.php?story=$story");
+			}	
 		}
 
-
-        $queryString = sprintf("SELECT * FROM `users` WHERE name='%s'", $_SESSION['user']);
-     $res = mysqli_query($db,$queryString);
-     $spec = mysqli_fetch_assoc($res);
-     $flag = 1;
-
-		if($ok){
-			if($okPreQ1){
-                if($spec["flag"] == 0){
-        			$db = mysqli_connect('localhost', 'root', '', 'riskories');
-                    $sql = sprintf(
-                    "UPDATE users 
-                    SET preQ1 = '%s'
-                    WHERE name='%s'",
-                    mysqli_real_escape_string($db,$_POST['preQ1']),
-                    $_SESSION['user']);
-                    $query = mysqli_query($db, $sql);
-                }
-			}
-            
-			if($okPreQ2){
-                if($spec["flag"] == 0){
-    				$db = mysqli_connect('localhost', 'root', '', 'riskories');
-    				$sql = sprintf(
-    				"UPDATE users 
-    				SET `preQ2`= '%s'
-    				WHERE name='%s'",
-    				mysqli_real_escape_string($db,$_POST['preQ2']),
-    				$_SESSION['user']);
-    				$query = mysqli_query($db, $sql);
-                }
-			}
-			if($okPreQ3){
-                if($spec["flag"] == 0){
-    				$db = mysqli_connect('localhost', 'root', '', 'riskories');
-    				$sql = sprintf(
-    				"UPDATE users 
-    				SET `preQ3`= '%s', flag = 1
-    				WHERE name='%s'",
-    				mysqli_real_escape_string($db,$_POST['preQ3']),
-    				$_SESSION['user']);
-    				$query = mysqli_query($db, $sql);
-                }
-			}
-
-            mysqli_close($db);
-		}
-		header("Location: profile.php");
 	}
 ?>
 
