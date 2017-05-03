@@ -18,18 +18,18 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h4>Edit Consent Form</h4></div>
                   <div class="panel-body">
-                      <form>
+                      <form method="post">
                             <div class="form-group">
                                 <label for="consentFormTitle">Consent form title: </label>
-                                <input type="text" class="form-control">
+                                <input name="title" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="consentFormSectionHeader1">Consent form section header 1: </label>
-                                <input type="text" class="form-control">
+                                <input name="header1" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="consentFormBody1">Consent form body 1: </label>
-                                <textarea class="form-control" rows="5"></textarea>
+                                <textarea name="body1" class="form-control" rows="5"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
@@ -37,5 +37,37 @@
             </div>
         </div>
     </div>
+
+    <?php
+    if (isset($_POST["title"]) && isset($_POST["header1"]) && isset($_POST["body1"])) {
+
+        echo $_POST["title"];
+        echo "<br>";
+        echo $_POST["header1"];
+        echo "<br>";
+        echo $_POST["body1"];
+    }
+
+
+    ?>
+
+    <?php
+        #$the_var = 0; // not set, empty
+        $the_var = 0;
+
+        if (isset($the_var)) {
+          echo "set";
+        } else {
+          echo "not set";
+        }
+
+        echo "\n";
+
+        if (empty($the_var)) {
+          echo "empty";
+        } else {
+          echo "not empty";
+        }
+    ?>
 </body>
 </html>
