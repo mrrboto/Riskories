@@ -27,6 +27,14 @@
 
             mysqli_close($db);
 
+            // remove any previous message
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"adminDeleteAlert\");";
+            echo "while (alert.hasChildNodes()) {
+                alert.removeChild(alert.lastChild);
+            }";
+            echo "</script>";
+
             if(strcmp($adminDeleteMessage, 'User deleted.') == 0) {
                 echo "<script type=\"text/javascript\">";
                 echo "var alert = document.getElementById(\"adminDeleteAlert\");";
