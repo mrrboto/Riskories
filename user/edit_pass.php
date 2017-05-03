@@ -92,12 +92,12 @@
             /*echo "<p>$message</p>";*/
             /* Added by SR */
             // remove any previous message
-            //echo "<script type=\"text/javascript\">";
-            //echo "var alert = document.getElementById(\"editPassAlert\");";
-            //echo "while (alert.hasChildNodes()) {
-            //    alert.removeChild(alert.lastChild);
-            //}";
-            //echo "</script>";
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"editPassAlert\");";
+            echo "while (alert.hasChildNodes()) {
+                alert.removeChild(alert.lastChild);
+            }";
+            echo "</script>";
 
             if(strcmp($message, 'Your password has been changed') == 0) {
                 echo "<script type=\"text/javascript\">";
@@ -120,7 +120,7 @@
                 echo "var div = document.createElement(\"div\");";
                 echo "div.setAttribute(\"class\", \"alert alert-danger\");";
                 echo "var strongTag = document.createElement(\"strong\");";
-                echo "var strongText = document.createTextNode(\"Success: \");";
+                echo "var strongText = document.createTextNode(\"Error: \");";
                 echo "strongTag.appendChild(strongText);";
                 echo "var divText = document.createTextNode(\"The wrong current password has been entered\");";
                 echo "div.appendChild(strongTag);";
@@ -135,7 +135,7 @@
                 echo "var div = document.createElement(\"div\");";
                 echo "div.setAttribute(\"class\", \"alert alert-danger\");";
                 echo "var strongTag = document.createElement(\"strong\");";
-                echo "var strongText = document.createTextNode(\"Success: \");";
+                echo "var strongText = document.createTextNode(\"Error: \");";
                 echo "strongTag.appendChild(strongText);";
                 echo "var divText = document.createTextNode(\"You forgot to put in a new password\");";
                 echo "div.appendChild(strongTag);";
@@ -150,7 +150,7 @@
                 echo "var div = document.createElement(\"div\");";
                 echo "div.setAttribute(\"class\", \"alert alert-danger\");";
                 echo "var strongTag = document.createElement(\"strong\");";
-                echo "var strongText = document.createTextNode(\"Success: \");";
+                echo "var strongText = document.createTextNode(\"Error: \");";
                 echo "strongTag.appendChild(strongText);";
                 echo "var divText = document.createTextNode(\"You forgot to retype your new password\");";
                 echo "div.appendChild(strongTag);";
@@ -165,7 +165,7 @@
                 echo "var div = document.createElement(\"div\");";
                 echo "div.setAttribute(\"class\", \"alert alert-danger\");";
                 echo "var strongTag = document.createElement(\"strong\");";
-                echo "var strongText = document.createTextNode(\"Success: \");";
+                echo "var strongText = document.createTextNode(\"Error: \");";
                 echo "strongTag.appendChild(strongText);";
                 echo "var divText = document.createTextNode(\"New password and Confirm password are not the same\");";
                 echo "div.appendChild(strongTag);";
@@ -173,7 +173,6 @@
                 echo "alert.appendChild(div);";
                 echo "</script>";
             }
-
             /* End Added by SR */
         ?>
       </div>
