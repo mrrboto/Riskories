@@ -19,7 +19,19 @@
                 <div class="panel-heading"><h4>Edit Consent Form</h4></div>
                   <div class="panel-body">
                       <form>
-
+                            <div class="form-group">
+                                <label for="consentFormTitle">Consent form title: </label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="consentFormSectionHeader1">Consent form section header 1: </label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="consentFormBody1">Consent form body 1: </label>
+                                <textarea class="form-control" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
                 </div>
             </div>
