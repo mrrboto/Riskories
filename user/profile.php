@@ -11,7 +11,7 @@ if (isset ($_SESSION['path'])){
 
 
 		$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
-
+		#MAKE SURE STORY PATH IS EMPTY IN DB
 		$sql = sprintf("SELECT * FROM users WHERE name='%s' AND %s IS NULL",
         mysqli_real_escape_string($db, $_SESSION['user']),
 		mysqli_real_escape_string($db, $_SESSION['storyNum'])

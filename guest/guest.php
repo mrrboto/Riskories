@@ -25,6 +25,10 @@
 	$_SESSION['realName'] = '';
 	$_SESSION['soStatus'] = '';
 	$_SESSION['soName'] = '';
+	#GUEST QUESTION TRACKING
+	$_SESSION['preQ'] = '';
+	$_SESSION['postQ'] = '';
+	$_SESSION['comments'] = '';
 
     mysqli_close($db);
 	

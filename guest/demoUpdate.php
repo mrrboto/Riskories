@@ -45,7 +45,12 @@
 
 	if($ok){
 	//create a guest user
-		$sql = "INSERT INTO guests (name) VALUES ('guest')";
+		$sql = sprintf("INSERT INTO guests (name,story,preQ,postQ,comments) VALUES ('guest','%s','%s','%s','%s')",
+			mysqli_real_escape_string($db,$_SESSION['storyN']),
+			mysqli_real_escape_string($db,$_SESSION['preQ']),
+			mysqli_real_escape_string($db,$_SESSION['postQ']),
+			mysqli_real_escape_string($db,$_SESSION['comments'])
+		);
 		mysqli_query($db, $sql);
 		$sql = "SELECT * FROM guests
 				ORDER BY id DESC
@@ -114,7 +119,7 @@
 		$_SESSION['path'] .= ']';
 		$sql = sprintf(
 			"UPDATE guests
-			SET `story`='%s'
+			SET `path`='%s'
 			WHERE id='%s'",
 			mysqli_real_escape_string($db,$_SESSION['path']),
 			$eyeD);

@@ -41,7 +41,7 @@
 		if($okRN){
 			$sql = sprintf(
 			"UPDATE users
-			SET `realName`='%s'
+			SET `realName`='%s', comments4_$_SESSION['storyN'] = '%s', preQ_$_SESSION['storyN'], postQ_$SESSION['storyN']
 			WHERE name='%s'",
 			mysqli_real_escape_string($db,$_SESSION['realName']),
 			$_SESSION['user']);

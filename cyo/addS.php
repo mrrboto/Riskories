@@ -34,8 +34,13 @@ $sql = "CREATE TABLE `$room` (
 $table = "INSERT INTO `$room` (`id`, `email`, `blurb`, `text_1`, `choice1_risk`, `room_1`, `text_2`, `choice2_risk`, `room_2`, `end_here`, `ip`) VALUES (1, '', 'This is route 1', 'Choose this route', 0, 0, 'Choose this other route', 0, 0, 0, '');";
 
 $story = "INSERT INTO `stories` (`title`, `table_loc`) VALUES ('$title', '$room');";
-$user_add = "ALTER TABLE `users` ADD `$title` VARCHAR(255);";
-
+#TK altered this to add pre and post attatched to story in user table
+$user_add = "ALTER TABLE `users` ADD 
+	(`$title` VARCHAR(255),
+     `preQ_$title` VARCHAR(255),
+     `postQ_$title` VARCHAR(255),
+	 `comments4_$title` VARCHAR(255));";
+#TK
 
 mysqli_query($db, $sql);
 mysqli_query($db, $table);
