@@ -64,7 +64,7 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 <meta charset="utf-8">
     <title>Riskories Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <div class="text-center">
     <img src="../img/logo_1.png" class="rounded" alt="..." width="50%" style="min-width:200px;">
     </div>
@@ -74,8 +74,8 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
 <body>
 <!-- All the files that are required -->
 <link rel="stylesheet" href="log_style.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 <!-- jQuery library - Added for Modal -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <!-- Latest compiled JavaScript - Added for Modal -->
