@@ -77,11 +77,11 @@ color: white;
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                   aria-expanded="false">Data Tools<span class="caret"></span></a>
+                                   aria-expanded="false"> Data Tools<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="../admin/excel.php">Export Users CSV</a></li>
                                     <li><a href="../admin/guests_excel.php">Export Guests CSV</a></li>
-                                    <li><a href="../admin/nuke.php">Delete Database</a></li>
+                                    <li><a href="../admin/nuke.php" onclick ="return confirm('Are you sure?');">Delete Database</a></li>
                                 </ul>
                             </li>
                         </ul>
