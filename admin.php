@@ -80,8 +80,14 @@ if (isset($_POST['save']))
                         </button>                       
                     </a>
                     </span>
+                    <span style="padding-right:8px">
                     <a href="../consent/editConsentForm.php"><button type="button" class="btn btn-default btn-md">
                         Edit Consent Form
+                        </button>
+                    </a>
+                    </span>
+                    <a href="../admin/nuke.php"><button type="button" class="btn btn-default btn-md" onclick="return confirm('Are you sure?');">
+                        Delete Database
                         </button>
                     </a>
                     <ul>
