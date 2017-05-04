@@ -1,6 +1,6 @@
 <?php
 
-    if(isset($_SESSION['name']) || $_SESSION['stockDemo']==0)
+    if(($_SESSION['realName']!='' && $_SESSION['soName']!='' && $_SESSION['age']!=0) || $_SESSION['stockDemo']==0)
     {
         $name = $_SESSION['realName'];
         $soName = $_SESSION['soName'];

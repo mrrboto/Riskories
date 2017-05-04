@@ -47,7 +47,7 @@
 		if($_GET['page']=="user"){	#TK USER VERSION
 			#make sure the field isnt already filled
 			$db = mysqli_connect('localhost', 'root', '', 'riskories');
-			$sql = sprintf("SELECT * FROM users WHERE name='%s' AND 'postQ_$story' IS NULL",
+			$sql = sprintf("SELECT * FROM users WHERE (name='as') OR ('postQ_$story' IS NULL)",
 				mysqli_real_escape_string($db, $_SESSION['user']));
 			$result = mysqli_query($db, $sql);
 			$row = mysqli_fetch_assoc($result);
@@ -65,9 +65,8 @@
 					mysqli_real_escape_string($db,$_SESSION['user']));
 					$query = mysqli_query($db, $sql);
 				#check if theres comments, add if there are
-				$comments = '';
 				if($okComments){
-					$comments = $_POST['commnets'];
+					$comments = $_POST['comments'];
 				}
 				$sql = sprintf(
 				"UPDATE users 
@@ -76,7 +75,6 @@
 				mysqli_real_escape_string($db,$comments),
 				$_SESSION['user']);
 				$query = mysqli_query($db, $sql);
-				
 
 				mysqli_close($db);
 				header("Location: ../user/profile.php");

@@ -29,7 +29,8 @@
 	$_SESSION['preQ'] = '';
 	$_SESSION['postQ'] = '';
 	$_SESSION['comments'] = '';
-
+	$_SESSION['preQ'] = 'exists';
+	
     mysqli_close($db);
 	
 	header("Location: guestDemographic.php")

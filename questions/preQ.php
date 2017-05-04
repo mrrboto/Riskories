@@ -1,16 +1,18 @@
 <?php
 //include('../user/nav.php');
+session_start();
 
 $preQ1= '';
 $preQ2 = '';
 $preQ3 = '';
 $preQs = '';
+$story = $_GET['story'];
+
 
 $preQ1Err = $preQ2Err = $preQ3Err = "";
 
 	if (isset($_POST['saveBtn']))	{
-		$ok = false;
-        $okComments = true;
+		$ok = true;
 		
 		#TK + MAN if the user doesnt fill in one field beside comments change $ok to false and prevent them from moving on
         if (!isset($_POST['preQ1']) || $_POST['preQ1'] === '') {
@@ -34,17 +36,12 @@ $preQ1Err = $preQ2Err = $preQ3Err = "";
             $preQ3 = $_POST['preQ3'];
 			$preQs .= $preQ3;
         }
-        if (!isset($_POST['comments']) || $_POST['comments'] === '') {
-            $okComments = false;
-        } else {
-            $comments = $_POST['comments'];
-        }
-		
+
 		#Check if user is guest or registered user
 		if($_GET['page']=="user"){	#TK USER VERSION
 			#make sure the field isnt already filled
 			$db = mysqli_connect('localhost', 'root', '', 'riskories');
-			$sql = sprintf("SELECT * FROM users WHERE name='%s' AND 'preQ_$story' IS NULL",
+			$sql = sprintf("SELECT * FROM users WHERE (name='as') OR ('preQ_$story' IS NULL)",
 				mysqli_real_escape_string($db, $_SESSION['user']));
 			$result = mysqli_query($db, $sql);
 			$row = mysqli_fetch_assoc($result);
@@ -62,10 +59,6 @@ $preQ1Err = $preQ2Err = $preQ3Err = "";
 					mysqli_real_escape_string($db,$_SESSION['user']));
 					$query = mysqli_query($db, $sql);
 				#check if theres comments, add if there are
-				$comments = '';
-				if($okComments){
-					$comments = $_POST['commnets'];
-				}
 				$sql = sprintf(
 				"UPDATE users 
 				SET `comments4_$story`= '%s'
@@ -76,16 +69,23 @@ $preQ1Err = $preQ2Err = $preQ3Err = "";
 				
 
 				mysqli_close($db);
-				header("Location: ../user/profile.php");
+				//this is to make sure path variables are initialized
+				if (!isset($_SESSION['choiceNum'])){
+					$_SESSION['choiceNum'] = 1;
+				}
+				if (!isset($_SESSION['path'])){
+					$_SESSION['path'] = '';
+				}
+				if (!isset($_SESSION['storyNum'])){
+					$_SESSION['storyNum'] = '';
+				}
+				
+				header("Location: ../cyo/index.php?story=$story");
 			}
 		} else if ($_GET['page']=="guest"){ #TK GUEST VERSION
 			if($ok){
 				$_SESSION['preQ'] = $preQs;
-				if($okComments){
-					$_SESSION['comments'] = $_POST['comments'];
-				}
-				
-				header("Location: ../guest/guestReg.php?story=$story");
+				header("Location: ../cyo/index.php?story=$story");
 			}	
 		}
 
