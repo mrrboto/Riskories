@@ -3,8 +3,8 @@
 	include('../db/config.php');
 	include('../db/db.php');
 	session_start();
-
-	//echo $_SESSION['path'];
+	
+	//echo $_SESSION['postQ'];
 ?>
 <!DOCTYPE html>
 <html>

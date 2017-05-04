@@ -20,10 +20,10 @@
 		for ($i = 0; $i < $counter; $i++){
 			$row = mysqli_fetch_assoc($result);
 		}
-		$go2 = sprintf("Location: ../cyo/index.php%s",
-		"?story=".$row['title']
+		$go2 = sprintf("Location: ../questions/preQ.php?page=guest%s",
+		"&story=".$row['title']
 		);
-		echo $go2;
+
 		header($go2);
 		#TK
 	}

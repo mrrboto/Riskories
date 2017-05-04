@@ -11,7 +11,7 @@ if (isset ($_SESSION['path'])){
 
 
 		$_SESSION['path'] = substr($_SESSION['path'],0,strlen($_SESSION['path'])-1);
-
+		#MAKE SURE STORY PATH IS EMPTY IN DB
 		$sql = sprintf("SELECT * FROM users WHERE name='%s' AND %s IS NULL",
         mysqli_real_escape_string($db, $_SESSION['user']),
 		mysqli_real_escape_string($db, $_SESSION['storyNum'])
@@ -25,7 +25,7 @@ if (isset ($_SESSION['path'])){
 			//stock demographics werent used
 			if ($_SESSION['stockDemo'] == 0){
 				$anyFilled = false;
-				if ($row['age'] != ''){
+				if ($row['age'] != 0){
 					$_SESSION['path'] .= 'a;';
 					$anyFilled = true;
 				}
@@ -69,6 +69,16 @@ if (isset ($_SESSION['path'])){
 }
 $_SESSION['randChoice'] = rand(0,1);
 $_SESSION['stockDemo'] = rand(0,1);
+
+if (!isset($_SESSION['age'])){
+	$_SESSION['age'] = 0;
+}
+if (!isset($_SESSION['realName'])){
+	$_SESSION['realName'] = '';
+}
+if (!isset($_SESSION['soName'])){
+	$_SESSION['soName'] = '';
+}
 //echo $_SESSION['randChoice'];
 #TK
 
@@ -147,8 +157,17 @@ $_SESSION['stockDemo'] = rand(0,1);
 
             foreach ($stories as $row)
             {
-                printf('<li class="list-group-item">
+               /* printf('<li class="list-group-item">
                         <h4 class="list-group-item-heading"><a href="../cyo/room.php?story=%s">%s</a></h4>
+                        <p class="list-group-item-text">A story about..</p>
+                    </li>',
+                    $row['title'],
+                    $row['title'],
+                    $row['title'],
+                    htmlspecialchars($row['title'])
+                  );*/
+				printf('<li class="list-group-item">
+                        <h4 class="list-group-item-heading"><a href="../questions/preQ.php?page=user&story=%s">%s</a></h4>
                         <p class="list-group-item-text">A story about..</p>
                     </li>',
                     $row['title'],

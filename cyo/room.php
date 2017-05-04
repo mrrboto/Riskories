@@ -130,11 +130,13 @@
 		#TK get the story name
 		$_SESSION['storyNum'] = $_GET['story'];
 		if(isset($_SESSION['user'])){
-			header( "Refresh:5; url=../user/profile.php", true, 303);
+			$dir = $_GET['story'];
+			header( "Refresh:5; url=../questions/postQ.php?page=user&story=$dir", true, 303);
 		}
 		//guest
 		else{
-			header( "Refresh:5; url=../guest/guestReg.php", true, 303);
+			$dir = $_GET['story'];
+			header( "Refresh:5; url=../questions/postQ.php?page=guest&story=$dir", true, 303);
 		}
 	#TK TAKE AWAY THE CHOICE
 	}else if($_SESSION['randChoice']){

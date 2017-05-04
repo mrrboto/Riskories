@@ -25,7 +25,12 @@
 	$_SESSION['realName'] = '';
 	$_SESSION['soStatus'] = '';
 	$_SESSION['soName'] = '';
-
+	#GUEST QUESTION TRACKING
+	$_SESSION['preQ'] = '';
+	$_SESSION['postQ'] = '';
+	$_SESSION['comments'] = '';
+	$_SESSION['preQ'] = 'exists';
+	
     mysqli_close($db);
 	
 	header("Location: guestDemographic.php")

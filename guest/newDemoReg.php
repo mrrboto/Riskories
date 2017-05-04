@@ -29,7 +29,7 @@
 		$ok = true;
 		$gender = $_SESSION['gender'];
 	}
-	if (!isset($_SESSION['age']) || $_SESSION['age'] === '') {
+	if (!isset($_SESSION['age']) || $_SESSION['age'] === 0) {
 		$okA = false;
 	} else {
 		$ok = true;
@@ -38,6 +38,19 @@
 
 	if($ok && isset($_SESSION['user'])){
 		sleep(1);
+		$sql = sprintf(
+			"UPDATE users
+			SET comments4_%s = '%s', preQ_%s = '%s', postQ_%s = '%s'
+			WHERE name='%s'",
+			mysqli_real_escape_string($db,$_SESSION['storyN']),
+			mysqli_real_escape_string($db,$_SESSION['comments']),
+			mysqli_real_escape_string($db,$_SESSION['storyN']),
+			mysqli_real_escape_string($db,$_SESSION['preQ']),
+			mysqli_real_escape_string($db,$_SESSION['storyN']),
+			mysqli_real_escape_string($db,$_SESSION['postQ']),
+			mysqli_real_escape_string($db,$_SESSION['user'])
+		);
+		$query = mysqli_query($db, $sql);
 		if($okRN){
 			$sql = sprintf(
 			"UPDATE users
