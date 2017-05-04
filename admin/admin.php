@@ -8,16 +8,19 @@ if (isset($_POST['save']))
 {
     if(!isset($_POST['title']) || $_POST['title'] == '')
     {
-        $message = "<p>Field cannot be blank</p>";
+        //$message = "<p>Field cannot be blank</p>";
+        $message = "Field cannot be blank";
     }
     else if(preg_match("/[^A-Za-z0-9\' ']/", $_POST['title']))
     {
-        $message = "<p>Title cannot contain special characters</p>";
+        //$message = "<p>Title cannot contain special characters</p>";
+        $message = "Title cannot contain special characters";
     }
     else
     {
         include('../cyo/addS.php');
-        $message = "<p>Story added</p>";
+        //$message = "<p>Story added</p>";
+        $message = "Story added";
         header('Location: admin.php');
     }
 }
@@ -78,7 +81,7 @@ if (isset($_POST['save']))
                             <div class="form-group">
                             <input type="text" style="max-width: 200px;" name="title" class="form-control" placeholder="Story Name">
                             </div>
-                            <button type="submit" name="save" class="btn btn-default">Submit</button>'.$message.'
+                            <button type="submit" name="save" class="btn btn-default">Submit</button>
                           </form>';
                         }
 
@@ -141,6 +144,73 @@ if (isset($_POST['save']))
         ?>
         </ul>
     </div><!--end story container-->
+    <div id="adminAlert" class="container">
+
+    </div>
+
+    <?php
+        /* Added by SR */
+        // remove any previous message
+        echo "<script type=\"text/javascript\">";
+        echo "var alert = document.getElementById(\"adminAlert\");";
+        echo "while (alert.hasChildNodes()) {
+            alert.removeChild(alert.lastChild);
+        }";
+        echo "console.log(\"$message\");"; // TESTING
+        echo "</script>";
+
+        // $message = "<p>Field cannot be blank</p>";
+        // $message = "<p>Title cannot contain special characters</p>";
+        // $message = "<p>Story added</p>";
+
+        // $message = "Field cannot be blank";
+        // $message = "Title cannot contain special characters";
+        // $message = "Story added";
+
+        if(strcmp($message, 'Field cannot be blank') == 0) {
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"adminAlert\");";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-danger\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Error: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"Field cannot be blank\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+        }
+        else if(strcmp($message, 'Title cannot contain special characters') == 0) {
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"adminAlert\");";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-danger\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Error: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"Title cannot contain special characters\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+        }
+        else if(strcmp($message, 'Story added') == 0) {
+            echo "<script type=\"text/javascript\">";
+            //echo "console.log(\"Story added\");";
+            echo "var alert = document.getElementById(\"adminAlert\");";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-success\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Success: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"Story added\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+        }
+    ?>
 </body>
 </html>
 

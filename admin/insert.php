@@ -15,6 +15,8 @@
   $password = '';
   $gender = '';
 
+    // added by SR
+    $message = '';
 
   if (isset($_POST['submit'])) {
     $ok = true;
@@ -41,7 +43,8 @@
 		$query = mysqli_query($db, "SELECT name FROM users WHERE name='$name'");
 		if (mysqli_num_rows($query) != 0)
 		{
-            echo '<p>User already exists</p>';
+            //echo '<p>User already exists</p>';
+            $message = "User already exists";
 		}
 		else
 		{
@@ -52,7 +55,8 @@
 				mysqli_real_escape_string($db, $gender));
 				mysqli_query($db, $sql);
 				mysqli_close($db);
-				echo '<p>User added.</p>';
+				//echo '<p>User added.</p>';
+                $message = "User added";
 		}
 
     }
@@ -105,6 +109,49 @@
         </form>
   </div>
   </div>
+
+    <div id="adminInsertAlert">
+
+    </div>
+    <?php
+        /* Added by SR */
+        // remove any previous message
+        echo "<script type=\"text/javascript\">";
+        echo "var alert = document.getElementById(\"adminInsertAlert\");";
+        echo "while (alert.hasChildNodes()) {
+            alert.removeChild(alert.lastChild);
+        }";
+        echo "</script>";
+
+        if(strcmp($message, 'User added') == 0) {
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"adminInsertAlert\");";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-success\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Success: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"User added\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+        }
+        else if(strcmp($message, 'User already exists') == 0) {
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"adminInsertAlert\");";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-info\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Info: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"User already exists\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+        }
+    ?>
 </div>
 
 

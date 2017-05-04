@@ -14,16 +14,42 @@
     <title>PHP</title>
 </head>
 <body style="background: #efefef;">
-<?php
-    //readfile('nav.php');
-    //include('../db/config.php');
-    //include('../db/db.php');
+    <div id="adminDeleteAlert" class="container">
+        <?php
+            //readfile('nav.php');
+            //include('../db/config.php');
+            //include('../db/db.php');
 
-    $sql = "DELETE FROM users WHERE id=$id";
-    mysqli_query($db, $sql);
-    echo '<p>User deleted.</p>';
+            $sql = "DELETE FROM users WHERE id=$id";
+            mysqli_query($db, $sql);
+            $adminDeleteMessage = "User deleted.";
+            //echo '<p>User deleted.</p>';
 
-    mysqli_close($db);
-?>
+            mysqli_close($db);
+
+            // remove any previous message
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"adminDeleteAlert\");";
+            echo "while (alert.hasChildNodes()) {
+                alert.removeChild(alert.lastChild);
+            }";
+            echo "</script>";
+
+            if(strcmp($adminDeleteMessage, 'User deleted.') == 0) {
+                echo "<script type=\"text/javascript\">";
+                echo "var alert = document.getElementById(\"adminDeleteAlert\");";
+                echo "var div = document.createElement(\"div\");";
+                echo "div.setAttribute(\"class\", \"alert alert-success\");";
+                echo "var strongTag = document.createElement(\"strong\");";
+                echo "var strongText = document.createTextNode(\"Success: \");";
+                echo "strongTag.appendChild(strongText);";
+                echo "var divText = document.createTextNode(\"User deleted\");";
+                echo "div.appendChild(strongTag);";
+                echo "div.appendChild(divText);";
+                echo "alert.appendChild(div);";
+                echo "</script>";
+            }
+        ?>
+    </div>
 </body>
 </html>

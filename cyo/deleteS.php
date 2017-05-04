@@ -31,6 +31,6 @@ mysqli_query($db, $drop6);
 #TK
 mysqli_query($db, $delete);
 
-echo "<p>Story deleted</p>";
+echo "<p>Story deleted</p>"; // <--
 header('Location: ../admin/admin.php');
 ?>

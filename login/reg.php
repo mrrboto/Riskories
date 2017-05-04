@@ -158,13 +158,84 @@
 			<?php #TK so that this wont appear on guest reg
 			} else {
 			?>
-			<button class="btn btn-primary type="submit" name="submit" value="Register Me!">Register Me!</button>
+			<button class="btn btn-primary" type="submit" name="submit" value="Register Me!">Register Me!</button>
 			<?php
 			}
 			?>
+
         </div>
     </form>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- empty on purpose -->
+        </div>
+        <div id="loginRegisterAlert" class="col-md-4">
+            <!-- $message should eventually be added here -->
+        </div>
+        <div class="col-md-4">
+            <!-- empty on purpose -->
+        </div>
+    </div>
+</div>
+
+<?php
+
+    // remove any previous message
+    echo "<script type=\"text/javascript\">";
+    echo "console.log(\"$message\");"; // TESTING
+    echo "var alert = document.getElementById(\"loginRegisterAlert\");";
+    echo "while (alert.hasChildNodes()) {
+        alert.removeChild(alert.lastChild);
+    }";
+    echo "</script>";
+
+    if(strcmp($message, 'Username already exists.') == 0) {
+        echo "<script type=\"text/javascript\">";
+        echo "var alert = document.getElementById(\"loginRegisterAlert\");";
+        echo "var div = document.createElement(\"div\");";
+        echo "div.setAttribute(\"class\", \"alert alert-danger\");";
+        echo "var strongTag = document.createElement(\"strong\");";
+        echo "var strongText = document.createTextNode(\"Error: \");";
+        echo "strongTag.appendChild(strongText);";
+        echo "var divText = document.createTextNode(\"Username already exists\");";
+        echo "div.appendChild(strongTag);";
+        echo "div.appendChild(divText);";
+        echo "alert.appendChild(div);";
+        echo "</script>";
+    }
+    else if(strcmp($message, 'User added.') == 0) {
+        echo "<script type=\"text/javascript\">";
+        echo "var alert = document.getElementById(\"loginRegisterAlert\");";
+        echo "var div = document.createElement(\"div\");";
+        echo "div.setAttribute(\"class\", \"alert alert-success\");";
+        echo "var strongTag = document.createElement(\"strong\");";
+        echo "var strongText = document.createTextNode(\"Success: \");";
+        echo "strongTag.appendChild(strongText);";
+        echo "var divText = document.createTextNode(\"User added.\");";
+        echo "div.appendChild(strongTag);";
+        echo "div.appendChild(divText);";
+        echo "alert.appendChild(div);";
+        echo "</script>";
+    }
+    else if(strcmp($message, 'Passwords do not match') == 0) {
+        echo "<script type=\"text/javascript\">";
+        echo "var alert = document.getElementById(\"loginRegisterAlert\");";
+        echo "var div = document.createElement(\"div\");";
+        echo "div.setAttribute(\"class\", \"alert alert-danger\");";
+        echo "var strongTag = document.createElement(\"strong\");";
+        echo "var strongText = document.createTextNode(\"Error: \");";
+        echo "strongTag.appendChild(strongText);";
+        echo "var divText = document.createTextNode(\"Passwords do not match\");";
+        echo "div.appendChild(strongTag);";
+        echo "div.appendChild(divText);";
+        echo "alert.appendChild(div);";
+        echo "</script>";
+    }
+?>
+
 </div>
 </body>
 </html>
