@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS `consentForm` (
 
 INSERT INTO `consentForm` (`sectionNumber`, `header`, `body`) VALUES
 (1, 'Sample Header', 'Sample Body'),
-(2, '', ''),
-(3, '', '')
+(2, 'Header Two', 'Body Two'),
+(3, 'Header Three', 'Body Three');
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
