@@ -21,6 +21,6 @@ mysqli_query($db, $drop2);
 mysqli_query($db, $drop3);
 mysqli_query($db, $delete);
 
-echo "<p>Story deleted</p>";
+echo "<p>Story deleted</p>"; // <--
 header('Location: ../admin/admin.php');
 ?>

@@ -77,7 +77,7 @@
                         if ($_GET['gpage'] == 2)
                         {
 							include('../login/reg.php');
-                            echo "<p>$message</p>";
+                            echo "<p>$message</p>"; // <--
 							//include('../guest/newDemoReg.php');
                         }
 						if ($_GET['gpage'] == 3){
