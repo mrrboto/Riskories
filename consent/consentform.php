@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+include('../db/config.php');
+include('../db/db.php');
+?>
 <html>
 
 <head>
@@ -16,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4>Consent Form</h4></div>
+                <div class="panel-heading"><h4>Original Consent Form</h4></div>
                   <div class="panel-body">
                     <h4>Title of research study:</h4> Riskories – how does being embedded in a story affect risk perceptions?
                     <h4>Investigator:</h4> Prof. Andrew Maynard
@@ -56,6 +60,41 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Stored Consent Form</h4></div>
+                <div class="panel-body" id="databaseConsentForm">
+
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
+<?php
+    // Grab current consent form
+    $sql = 'SELECT * FROM consentForm';
+    $result = mysqli_query($db, $sql);
+
+    echo "<script type=\"text/javascript\">";
+    echo "var consentDiv = document.getElementById(\"databaseConsentForm\");";
+    foreach ($result as $row) {
+        echo "var h4 = document.createElement(\"h4\");";
+        printf("var headerText = document.createTextNode(\"%s\");", htmlspecialchars($row['header']));
+        echo "var p = document.createElement(\"p\");";
+        printf("var pText = document.createTextNode(\"%s\");", htmlspecialchars($row['body']));
+
+        // Add text to tags
+        echo "h4.appendChild(headerText);";
+        echo "p.appendChild(pText);";
+
+        // Add tags to div
+        echo "consentDiv.appendChild(h4);";
+        echo "consentDiv.appendChild(p);";
+    }
+    echo "</script>";
+
+    mysqli_close($db);
+
+?>

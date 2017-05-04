@@ -27,10 +27,10 @@ include('../db/db.php');
                                 <label for="consentFormTitle">Consent form title: </label>
                                 <input name="title" type="text" class="form-control">
                             </div>-->
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="sectionNumber">Section number: </label>
                                 <input name="sectionNumber" type="number" class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label for="consentFormSectionHeader">Section header: </label>
                                 <input name="header" type="text" class="form-control">
@@ -56,48 +56,68 @@ include('../db/db.php');
         </div>
     </div>
 
+    <script type="text/javascript">
+        console.log(document.getElementById("storedConsentForm"));
+    </script>
+
     <?php
         // Grab current consent form
         $sql = 'SELECT * FROM consentForm';
         $result = mysqli_query($db, $sql);
 
+        echo "<script type=\"text/javascript\">";
+        //echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
+        echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
         foreach ($result as $row) {
-            printf('<p>%u: <p>', htmlspecialchars($row['sectionNumber']));
-            printf('<h4>%s</h4>', htmlspecialchars($row['header']));
-            printf('<p>%s</p>', htmlspecialchars($row['body']));
+            //printf('%u: ', htmlspecialchars($row['sectionNumber']));
+            //printf('<h4>%s</h4>', htmlspecialchars($row['header']));
+            //printf('<p>%s</p>', htmlspecialchars($row['body']));
 
+            echo "var h4 = document.createElement(\"h4\");";
+            printf("var headerText = document.createTextNode(\"%s\");", htmlspecialchars($row['header']));
+            echo "var p = document.createElement(\"p\");";
+            printf("var pText = document.createTextNode(\"%s\");", htmlspecialchars($row['body']));
+
+            // Add text to tags
+            echo "h4.appendChild(headerText);";
+            echo "p.appendChild(pText);";
+
+            // Add tags to div
+            echo "consentDiv.appendChild(h4);";
+            echo "consentDiv.appendChild(p);";
         }
+        echo "</script>";
 
         mysqli_close($db);
 
     ?>
 
     <?php
-    if (isset($_POST["sectionNumber"]) && isset($_POST["header"]) && isset($_POST["body"])) {
+    //if (isset($_POST["header"]) && isset($_POST["body"])) {
         // isset vs. empty()..
         //echo $_POST["title"];
-        echo $_POST["sectionNumber"];
+        /*echo $_POST["sectionNumber"];
         echo "<br>";
         echo $_POST["header"];
         echo "<br>";
-        echo $_POST["body"];
-        echo "<p>Test run<p>";
-    }
+        echo $_POST["body"];*/
+        //echo "<p>Test run<p>";
+    //}
 
     $sectionNumber = 0;
     $header = "";
     $body = "";
     $ok = true;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sectionNumber"]) && isset($_POST["header"]) && isset($_POST["body"])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["header"]) && isset($_POST["body"])) {
         // Check if title empty
-        if (empty($_POST["sectionNumber"])) {
+        /*if (empty($_POST["sectionNumber"])) {
             // error
             $ok = false;
         }
         else {
             $sectionNumber = test_input($_POST["sectionNumber"]);
-        }
+        }*/
 
         // Check if header1 empty
         if (empty($_POST["header"])) {
@@ -123,6 +143,12 @@ include('../db/db.php');
               mysqli_real_escape_string($db, $title),
               mysqli_real_escape_string($db, $header1),
               mysqli_real_escape_string($db, $body1));*/
+            $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+
+            if (!$db)
+            {
+                die('Could not connect: ' . mysqli_error($db). "\n\nHave you run the install.php script yet?");
+            }
 
             $sql = sprintf("INSERT INTO consentForm (sectionNumber, header, body) VALUES ('%u', '%s', '%s')", $sectionNumber, $header, $body);
 
@@ -131,10 +157,15 @@ include('../db/db.php');
 
             mysqli_query($db, $sql);
 
-            echo "<p>Form submitted<p>";
+            //echo "<p>Form submitted<p>"; // for testing
 
             // Close connection to database
             mysqli_close($db);
+
+            /*// Refresh the page to update results
+            echo "<script type=\"text/javascript\">";
+            echo "window.location.reload();";
+            echo "</script>";*/
         }
     }
 
