@@ -57,19 +57,37 @@ if (isset($_POST['save']))
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span style="padding-right:15px">
+                    <span style="padding-right:8px">
                         <a href="admin.php?add=1">
                         <button type="button" class="btn btn-default btn-md">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> New Story
                         </button></a>
                     </span>
-                    <span style="padding-right:15px">
+                    <span style="padding-right:8px">
                     <a href="../cyo/room_adm.php"><button type="button" class="btn btn-default btn-md">
                         Default Story
                         </button></a>
                     </span>
+                    <span style="padding-right:8px">
                     <a href="../admin/excel.php"><button type="button" class="btn btn-default btn-md">
-                        Export CSV
+                        Export Users CSV
+                        </button>
+                    </a>
+                    </span>
+                    <span style="padding-right:8px">
+                    <a href="../admin/guests_excel.php"><button type="button" class="btn btn-default btn-md">
+                        Export Guests CSV
+                        </button>                       
+                    </a>
+                    </span>
+                    <span style="padding-right:8px">
+                    <a href="../consent/editConsentForm.php"><button type="button" class="btn btn-default btn-md">
+                        Edit Consent Form
+                        </button>
+                    </a>
+                    </span>
+                    <a href="../admin/nuke.php"><button type="button" class="btn btn-default btn-md" onclick="return confirm('Are you sure?');">
+                        Delete Database
                         </button>
                     </a>
                     <ul>

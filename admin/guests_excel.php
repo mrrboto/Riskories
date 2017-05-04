@@ -6,10 +6,10 @@ include('../db/db.php');
 
  session_start();
 
- $sqli = 'SELECT * FROM users';
+ $sqli = 'SELECT * FROM guests';
  $result = mysqli_query($db, $sqli);
 
-$filename = 'UsersData.csv';
+$filename = 'GuestData.csv';
 
 $fp = fopen("php://output", 'w');
 $header_flag = false;
