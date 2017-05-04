@@ -14,19 +14,21 @@ SET time_zone = "+00:00";
 -- Table structure for table `ConsentForm`
 --
 
-DROP TABLE IF EXISTS `ConsentForm`;
-CREATE TABLE IF NOT EXISTS `ConsentForm` (
-    `Title` VARCHAR(255) NOT NULL DEFAULT '' ,
-    `Header1` VARCHAR(255) NOT NULL DEFAULT '' ,
-    `Body1` VARCHAR(255) NOT NULL DEFAULT ''
+DROP TABLE IF EXISTS `consentForm`;
+CREATE TABLE IF NOT EXISTS `consentForm` (
+    `sectionNumber` int(11) NOT NULL,
+    `header` VARCHAR(255) NOT NULL DEFAULT '' ,
+    `body` VARCHAR(255) NOT NULL DEFAULT ''
 ) ENGINE = MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ConsentForm`
 --
 
-INSERT INTO `consentForm` (`Title`, `Header1`, `Body1`) VALUES
-('Consent Form', '', '');
+INSERT INTO `consentForm` (`sectionNumber`, `header`, `body`) VALUES
+(1, 'Sample Header', 'Sample Body'),
+(2, '', ''),
+(3, '', '')
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
