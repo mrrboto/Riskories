@@ -10,6 +10,35 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+--
+-- Table structure for table `ConsentForm`
+--
+
+DROP TABLE IF EXISTS `consentForm`;
+CREATE TABLE IF NOT EXISTS `consentForm` (
+    `sectionNumber` int(11) NOT NULL,
+    `header` VARCHAR(1000) NOT NULL DEFAULT '' ,
+    `body` VARCHAR(5000) NOT NULL DEFAULT ''
+) ENGINE = MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ConsentForm`
+--
+
+INSERT INTO `consentForm` (`sectionNumber`, `header`, `body`) VALUES
+(1, 'Title of research study: ', 'Riskories: how does being embedded in a story affect risk perceptions?'),
+(2, 'Investigator:', 'Prof. Andrew Maynard'),
+(3, 'Why am I being invited to take part in a research study?', 'We invite you to take part in a research study because you have an interest in stories and risk and represent our study population.'),
+(4, 'Why is this research being done?', 'ASU, SFIS, and FSE are studying narrative as stories relate to risk perceptions. We are enrolling persons at ASU and elsewhere as our part and to be able to cross compare our results.'),
+(5, 'How long will the research last?', 'We expect that individuals will spend on average about 5-15 minutes per story (Riskory). The data collection will continue indefinitely as readers continue to engage with the Riskories on the app.'),
+(6, 'How many people will be studied?', 'This is unknown. We hope that at least about 100 or so people will participate in this research study. You must be 18 years old or older to participate in the study.'),
+(7, 'What happens if I say, “yes, I want to be in this research”?', 'You will be allowed to continue on to the app and to engage with the Riskories. You will enter a few demographics to your profile. Your demographics will not be known to anyone but you. The researchers won’t be able to “see” any individual’s information. You will then be able to engage with one or more Riskories that have your or another’s demographics.'),
+(8, 'What happens if I say yes, but I change my mind later?', 'You can leave the research at any time it will not be held against you.'),
+(9, 'Is there any way being in this study could be bad for me?', 'There really are not any significant risks. You may feel some uncomfortable thoughts depending on your story choices within the Riskories and how you feel about reading about yourself.'),
+(10, 'Will being in this study help me in any way?', 'We cannot promise any benefits to you or others from your taking part in this research. However, possible benefits include increased awareness of risk and how you perceive it. This could also result in benefits to you depending on the risks you might face in your life. Also, it could help ASU determine how best to improve its overall risk communications.'),
+(11, 'What happens to the information collected for the research?', 'Efforts will be made to limit the use and disclosure of your personal information, including research study records, to people who have a need to review this information. We cannot promise complete secrecy. Organizations that may inspect and copy your information include the University board that reviews research and agencies who want to make sure the study researchers (us, not you) are doing their jobs correctly and protecting your information and rights. Information will be anonymized and none of the researchers will know actual identities of study participants nor the demographic information of individual participants. The demographics will be used as an aggregate as will your story plot choices and your pre and post riskory questions. Records will be safely stored in the administrative side of the app on ASU servers.'),
+(12, 'What else do I need to know?', 'This research is not being funded by any outside entities. There are no financial conflicts of interest.');
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
