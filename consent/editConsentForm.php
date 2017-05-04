@@ -78,11 +78,15 @@ include('../db/db.php');
                                 <label for="consentFormBody">Section body: </label>
                                 <textarea name="body" class="form-control" rows="5"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Add</button>
-                            <button type="button" class="btn btn-primary">Delete All</button> <!-- button type="submit|button|reset" -->
+                            <button type="submit" name="add" class="btn btn-primary">Add</button>
+                            <button type="submit" name="delete" class="btn btn-primary">Delete All</button> <!-- button type="submit|button|reset" -->
                       </form>
                 </div>
             </div>
+        </div>
+
+        <div class="row" id="consentUpdateAlert">
+
         </div>
 
         <div class="row">
@@ -93,11 +97,8 @@ include('../db/db.php');
                 </div>
             </div>
         </div>
-    </div>
 
-    <script type="text/javascript">
-        console.log(document.getElementById("storedConsentForm"));
-    </script>
+    </div>
 
     <?php
         // Grab current consent form
@@ -129,6 +130,112 @@ include('../db/db.php');
 
         mysqli_close($db);
 
+    ?>
+
+    <?php
+        $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+
+        if (!$db)
+        {
+            die('Could not connect: ' . mysqli_error($db). "\n\nHave you run the install.php script yet?");
+        }
+
+        /*echo "<script type=\"text/javascript\">";
+        echo "console.log('Testing1');";
+        echo "</script>";*/
+
+        // If Delete all pressed empty the consentForm table
+        if (isset($_POST['delete']))
+        {
+            mysqli_query($db, "TRUNCATE TABLE consentForm;");
+            echo "<script type=\"text/javascript\">";
+            echo "console.log('Delete pressed');";
+            //echo "window.location.reload();"; // BAD
+            echo "</script>";
+            //$db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+            //loadForm($db);
+            // remove any previous message then notify user of update
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"consentUpdateAlert\");";
+            echo "while (alert.hasChildNodes()) {
+                alert.removeChild(alert.lastChild);
+            }";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-success\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Success: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"Previous consent form deleted. Please refresh page to see results.\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+        }
+
+        // If add is pressed reload the page
+        if(isset($_POST['add']))
+        {
+            // Refresh the page to update results
+            echo "<script type=\"text/javascript\">";
+            echo "console.log('Add pressed');";
+            //echo "window.location.reload();"; // BAD
+            echo "</script>";
+            //$db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+            //loadForm($db);
+            // remove any previous message then notify user of update
+            echo "<script type=\"text/javascript\">";
+            echo "var alert = document.getElementById(\"consentUpdateAlert\");";
+            echo "while (alert.hasChildNodes()) {
+                alert.removeChild(alert.lastChild);
+            }";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-success\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Success: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"Section added. Please refresh page to see results.\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+        }
+
+        function loadForm($db) {
+
+            if (!$db)
+            {
+                die('Could not connect: ' . mysqli_error($db). "\n\nHave you run the install.php script yet?");
+            }
+
+            // Grab current consent form
+            $sql = 'SELECT * FROM consentForm';
+            $result = mysqli_query($db, $sql);
+
+            echo "<script type=\"text/javascript\">";
+            //echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
+            echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
+            foreach ($result as $row) {
+                //printf('%u: ', htmlspecialchars($row['sectionNumber']));
+                //printf('<h4>%s</h4>', htmlspecialchars($row['header']));
+                //printf('<p>%s</p>', htmlspecialchars($row['body']));
+
+                echo "var h4 = document.createElement(\"h4\");";
+                printf("var headerText = document.createTextNode(\"%s\");", htmlspecialchars($row['header']));
+                echo "var p = document.createElement(\"p\");";
+                printf("var pText = document.createTextNode(\"%s\");", htmlspecialchars($row['body']));
+
+                // Add text to tags
+                echo "h4.appendChild(headerText);";
+                echo "p.appendChild(pText);";
+
+                // Add tags to div
+                echo "consentDiv.appendChild(h4);";
+                echo "consentDiv.appendChild(p);";
+            }
+            echo "</script>";
+        mysqli_close($db);
+
+        }
     ?>
 
     <?php

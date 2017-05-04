@@ -250,10 +250,37 @@ function displayLoginErrors() {
                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                  <h2 class="modal-title">Consent Form</h2>
              </div>
-             <div class="modal-body">
-                      <h4>Title of research study:</h4> Riskories – how does being embedded in a story affect risk perceptions?
-                      <h4>Investigator:</h4> Prof. Andrew Maynard
-                      <h4>Why am I being invited to take part in a research study?</h4>
+             <div class="modal-body" id="registerModalBody">
+                <?php
+                    // Grab current consent form from database
+                    $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+                    $sql = 'SELECT * FROM consentForm';
+                    $result = mysqli_query($db, $sql);
+
+                    echo "<script type=\"text/javascript\">";
+                    echo "var consentDiv = document.getElementById(\"registerModalBody\");";
+                    foreach ($result as $row) {
+                        echo "var h4 = document.createElement(\"h4\");";
+                        printf("var headerText = document.createTextNode(\"%s\");", htmlspecialchars($row['header']));
+                        echo "var p = document.createElement(\"p\");";
+                        printf("var pText = document.createTextNode(\"%s\");", htmlspecialchars($row['body']));
+
+                        // Add text to tags
+                        echo "h4.appendChild(headerText);";
+                        echo "p.appendChild(pText);";
+
+                        // Add tags to div
+                        echo "consentDiv.appendChild(h4);";
+                        echo "consentDiv.appendChild(p);";
+                    }
+                    echo "</script>";
+
+                    mysqli_close($db);
+                ?>
+                <!--
+                <h4>Title of research study:</h4> Riskories – how does being embedded in a story affect risk perceptions?
+                <h4>Investigator:</h4> Prof. Andrew Maynard
+                <h4>Why am I being invited to take part in a research study?</h4>
                  We invite you to take part in a research study because you have an interest in stories and risk and represent our study population.
                  <h4>Why is this research being done?</h4>
                  ASU, SFIS, and FSE are studying narrative as stories relate to risk perceptions.  We are enrolling persons at ASU and elsewhere as our part and to be able to cross compare our results.
@@ -286,6 +313,7 @@ function displayLoginErrors() {
                  <br>•	You want to get information or provide input about this research.
                  <br><br>
                  By clicking “Agree To Terms” you are granting your consent.  Thank you and enjoy your Riskories!
+                 -->
              </div>
              <div class="modal-footer">
                  <button onclick="agreeToTermsRegister()" class="btn btn-success" data-dismiss="modal">Agree To Terms</a>
@@ -303,10 +331,37 @@ function displayLoginErrors() {
                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                  <h2 class="modal-title">Consent Form</h2>
              </div>
-             <div class="modal-body">
-                      <h4>Title of research study:</h4> Riskories – how does being embedded in a story affect risk perceptions?
-                      <h4>Investigator:</h4> Prof. Andrew Maynard
-                      <h4>Why am I being invited to take part in a research study?</h4>
+             <div class="modal-body" id="guestModalBody">
+                <?php
+                    // Grab current consent form from database
+                    $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+                    $sql = 'SELECT * FROM consentForm';
+                    $result = mysqli_query($db, $sql);
+
+                    echo "<script type=\"text/javascript\">";
+                    echo "var consentDiv = document.getElementById(\"guestModalBody\");";
+                    foreach ($result as $row) {
+                        echo "var h4 = document.createElement(\"h4\");";
+                        printf("var headerText = document.createTextNode(\"%s\");", htmlspecialchars($row['header']));
+                        echo "var p = document.createElement(\"p\");";
+                        printf("var pText = document.createTextNode(\"%s\");", htmlspecialchars($row['body']));
+
+                        // Add text to tags
+                        echo "h4.appendChild(headerText);";
+                        echo "p.appendChild(pText);";
+
+                        // Add tags to div
+                        echo "consentDiv.appendChild(h4);";
+                        echo "consentDiv.appendChild(p);";
+                    }
+                    echo "</script>";
+
+                    mysqli_close($db);
+                ?>
+                <!--
+                <h4>Title of research study:</h4> Riskories – how does being embedded in a story affect risk perceptions?
+                <h4>Investigator:</h4> Prof. Andrew Maynard
+                <h4>Why am I being invited to take part in a research study?</h4>
                  We invite you to take part in a research study because you have an interest in stories and risk and represent our study population.
                  <h4>Why is this research being done?</h4>
                  ASU, SFIS, and FSE are studying narrative as stories relate to risk perceptions.  We are enrolling persons at ASU and elsewhere as our part and to be able to cross compare our results.
@@ -339,6 +394,7 @@ function displayLoginErrors() {
                  <br>•	You want to get information or provide input about this research.
                  <br><br>
                  By clicking “Agree To Terms” you are granting your consent.  Thank you and enjoy your Riskories!
+                 -->
              </div>
              <div class="modal-footer">
                  <button onclick="agreeToTermsGuest()" class="btn btn-success" data-dismiss="modal">Agree To Terms</a>
