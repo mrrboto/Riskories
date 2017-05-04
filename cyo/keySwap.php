@@ -10,7 +10,7 @@
     {
         $name = 'you';
         $soName = 'a friend';
-        $age = 'whatever';
+        $age = '30';
     }
 
     //SWAP for story text

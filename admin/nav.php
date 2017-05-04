@@ -59,13 +59,29 @@ color: white;
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="admin.php">Home<span class="sr-only">(current)</span></a></li>
-                            <li><a href="../consent/consentform.php">View Consent Form</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false">Consent Form <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="../consent/consentform.php">View</a></li>
+                                    <li><a href="../consent/editConsentForm.php">Edit</a></li>
+                                </ul>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Users <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="insert.php">Add</a></li>
                                     <li><a href="select.php">List</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false">Data Tools<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="../admin/excel.php">Export Users CSV</a></li>
+                                    <li><a href="../admin/guests_excel.php">Export Guests CSV</a></li>
+                                    <li><a href="../admin/nuke.php">Delete Database</a></li>
                                 </ul>
                             </li>
                         </ul>
