@@ -67,6 +67,8 @@ if (isset($_POST['lg_username']) && isset($_POST['lg_password'])) {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <div class="text-center">
     <img src="../img/logo_1.png" class="rounded" alt="..." width="50%" style="min-width:200px;">
+    <h5>Riskories, or risk-based stories, are everyday scenarios that put the user at the</h5>
+    <h5>center of the story to determine how narrative can affect perception of risk.</h5>
     </div>
 
 
