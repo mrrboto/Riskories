@@ -64,7 +64,7 @@ include('../db/db.php');
                       <form method="post">
                             <div class="form-group">
                                 <label for="consentFormHTML">Consent Form HTML: </label>
-                                <textarea id="consentFormTextArea" name="consentFormHTML" class="form-control" rows="10" oninput="textAreaChanged()"></textarea>
+                                <textarea id="consentFormTextArea" name="consentFormHTML" class="form-control" rows="20" oninput="textAreaChanged()"></textarea>
                             </div>
                             <button type="submit" name="save" class="btn btn-primary">Save</button> <!-- button type="submit|button|reset" -->
                       </form>
@@ -109,7 +109,7 @@ include('../db/db.php');
         echo "var consentTextArea = document.getElementById(\"consentFormTextArea\");";
         echo "var storedConsentDiv = document.getElementById(\"storedConsentForm\");";
         foreach($result as $row) {
-            printf("consentTextArea.value = '%s';", $row['html']);
+            printf("consentTextArea.value = '%s';", $row['html']); // $db->real_escape_string($row['html'])
             printf("storedConsentDiv.innerHTML = '%s';", $row['html']);
         }
         echo "</script>";
