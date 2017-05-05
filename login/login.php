@@ -254,6 +254,7 @@ function displayLoginErrors() {
              </div>
              <div class="modal-body" id="registerModalBody">
                 <?php
+                    /*
                     // Grab current consent form from database
                     $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
                     $sql = 'SELECT * FROM consentForm';
@@ -274,6 +275,24 @@ function displayLoginErrors() {
                         // Add tags to div
                         echo "consentDiv.appendChild(h4);";
                         echo "consentDiv.appendChild(p);";
+                    }
+                    echo "</script>";
+
+                    mysqli_close($db);
+                    */
+                ?>
+
+                <?php
+                    // Grab current consent form from database
+                    $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+                    $sql = 'SELECT * FROM consentForm';
+                    $result = mysqli_query($db, $sql);
+
+                    echo "<script type=\"text/javascript\">";
+                    // Grab string from database and put into consent form div
+                    echo "var storedConsentDiv = document.getElementById(\"registerModalBody\");";
+                    foreach($result as $row) {
+                        printf("storedConsentDiv.innerHTML = '%s';", $row['html']);
                     }
                     echo "</script>";
 
@@ -335,6 +354,7 @@ function displayLoginErrors() {
              </div>
              <div class="modal-body" id="guestModalBody">
                 <?php
+                    /*
                     // Grab current consent form from database
                     $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
                     $sql = 'SELECT * FROM consentForm';
@@ -355,6 +375,24 @@ function displayLoginErrors() {
                         // Add tags to div
                         echo "consentDiv.appendChild(h4);";
                         echo "consentDiv.appendChild(p);";
+                    }
+                    echo "</script>";
+
+                    mysqli_close($db);
+                    */
+                ?>
+
+                <?php
+                    // Grab current consent form from database
+                    $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
+                    $sql = 'SELECT * FROM consentForm';
+                    $result = mysqli_query($db, $sql);
+
+                    echo "<script type=\"text/javascript\">";
+                    // Grab string from database and put into consent form div
+                    echo "var storedConsentDiv = document.getElementById(\"guestModalBody\");";
+                    foreach($result as $row) {
+                        printf("storedConsentDiv.innerHTML = '%s';", $row['html']);
                     }
                     echo "</script>";
 
