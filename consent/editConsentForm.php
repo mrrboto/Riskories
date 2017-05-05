@@ -62,24 +62,11 @@ include('../db/db.php');
                 <div class="panel-heading"><h4>Edit Consent Form</h4></div>
                   <div class="panel-body">
                       <form method="post">
-                            <!--<div class="form-group">
-                                <label for="consentFormTitle">Consent form title: </label>
-                                <input name="title" type="text" class="form-control">
-                            </div>-->
-                            <!--<div class="form-group">
-                                <label for="sectionNumber">Section number: </label>
-                                <input name="sectionNumber" type="number" class="form-control">
-                            </div>-->
                             <div class="form-group">
-                                <label for="consentFormSectionHeader">Section header: </label>
-                                <input name="header" type="text" class="form-control">
+                                <label for="consentFormHTML">Consent Form HTML: </label>
+                                <textarea id="consentFormTextArea" name="consentFormHTML" class="form-control" rows="10" oninput="textAreaChanged()"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="consentFormBody">Section body: </label>
-                                <textarea name="body" class="form-control" rows="5"></textarea>
-                            </div>
-                            <button type="submit" name="add" class="btn btn-primary">Add</button>
-                            <button type="submit" name="delete" class="btn btn-primary">Delete All</button> <!-- button type="submit|button|reset" -->
+                            <button type="submit" name="save" class="btn btn-primary">Save</button> <!-- button type="submit|button|reset" -->
                       </form>
                 </div>
             </div>
@@ -91,45 +78,43 @@ include('../db/db.php');
 
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4>Current Consent Form</h4></div>
+                <div class="panel-heading"><h4>Live Look</h4></div>
                 <div class="panel-body" id="storedConsentForm">
-
                 </div>
             </div>
         </div>
 
     </div>
 
+    <script type="text/javascript">
+        // Script to update live HTML
+        function textAreaChanged() {
+            console.log("Event called");
+            // Access text area value
+            var textAreaValue = document.getElementById('consentFormTextArea').value;
+            // Update html
+            var liveHTML = document.getElementById('storedConsentForm');
+            liveHTML.innerHTML = textAreaValue;
+        }
+    </script>
+
+
     <?php
-        // Grab current consent form
+        /// Grab current consent form
         $sql = 'SELECT * FROM consentForm';
         $result = mysqli_query($db, $sql);
 
         echo "<script type=\"text/javascript\">";
-        //echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
-        echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
-        foreach ($result as $row) {
-            //printf('%u: ', htmlspecialchars($row['sectionNumber']));
-            //printf('<h4>%s</h4>', htmlspecialchars($row['header']));
-            //printf('<p>%s</p>', htmlspecialchars($row['body']));
-
-            echo "var h4 = document.createElement(\"h4\");";
-            printf("var headerText = document.createTextNode(\"%s\");", htmlspecialchars($row['header']));
-            echo "var p = document.createElement(\"p\");";
-            printf("var pText = document.createTextNode(\"%s\");", htmlspecialchars($row['body']));
-
-            // Add text to tags
-            echo "h4.appendChild(headerText);";
-            echo "p.appendChild(pText);";
-
-            // Add tags to div
-            echo "consentDiv.appendChild(h4);";
-            echo "consentDiv.appendChild(p);";
+        // Grab string from database and put into text area and stored consent form div
+        echo "var consentTextArea = document.getElementById(\"consentFormTextArea\");";
+        echo "var storedConsentDiv = document.getElementById(\"storedConsentForm\");";
+        foreach($result as $row) {
+            printf("consentTextArea.value = '%s';", $row['html']);
+            printf("storedConsentDiv.innerHTML = '%s';", $row['html']);
         }
         echo "</script>";
 
         mysqli_close($db);
-
     ?>
 
     <?php
@@ -140,20 +125,13 @@ include('../db/db.php');
             die('Could not connect: ' . mysqli_error($db). "\n\nHave you run the install.php script yet?");
         }
 
-        /*echo "<script type=\"text/javascript\">";
-        echo "console.log('Testing1');";
-        echo "</script>";*/
-
-        // If Delete all pressed empty the consentForm table
+        /*// If Delete all pressed empty the consentForm table
         if (isset($_POST['delete']))
         {
             mysqli_query($db, "TRUNCATE TABLE consentForm;");
             echo "<script type=\"text/javascript\">";
             echo "console.log('Delete pressed');";
-            //echo "window.location.reload();"; // BAD
             echo "</script>";
-            //$db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
-            //loadForm($db);
             // remove any previous message then notify user of update
             echo "<script type=\"text/javascript\">";
             echo "var alert = document.getElementById(\"consentUpdateAlert\");";
@@ -170,18 +148,15 @@ include('../db/db.php');
             echo "div.appendChild(divText);";
             echo "alert.appendChild(div);";
             echo "</script>";
-        }
+        }*/
 
-        // If add is pressed reload the page
+        /*// If add is pressed
         if(isset($_POST['add']))
         {
             // Refresh the page to update results
             echo "<script type=\"text/javascript\">";
             echo "console.log('Add pressed');";
-            //echo "window.location.reload();"; // BAD
             echo "</script>";
-            //$db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
-            //loadForm($db);
             // remove any previous message then notify user of update
             echo "<script type=\"text/javascript\">";
             echo "var alert = document.getElementById(\"consentUpdateAlert\");";
@@ -198,97 +173,36 @@ include('../db/db.php');
             echo "div.appendChild(divText);";
             echo "alert.appendChild(div);";
             echo "</script>";
-        }
-
-        function loadForm($db) {
-
-            if (!$db)
-            {
-                die('Could not connect: ' . mysqli_error($db). "\n\nHave you run the install.php script yet?");
-            }
-
-            // Grab current consent form
-            $sql = 'SELECT * FROM consentForm';
-            $result = mysqli_query($db, $sql);
-
-            echo "<script type=\"text/javascript\">";
-            //echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
-            echo "var consentDiv = document.getElementById(\"storedConsentForm\");";
-            foreach ($result as $row) {
-                //printf('%u: ', htmlspecialchars($row['sectionNumber']));
-                //printf('<h4>%s</h4>', htmlspecialchars($row['header']));
-                //printf('<p>%s</p>', htmlspecialchars($row['body']));
-
-                echo "var h4 = document.createElement(\"h4\");";
-                printf("var headerText = document.createTextNode(\"%s\");", htmlspecialchars($row['header']));
-                echo "var p = document.createElement(\"p\");";
-                printf("var pText = document.createTextNode(\"%s\");", htmlspecialchars($row['body']));
-
-                // Add text to tags
-                echo "h4.appendChild(headerText);";
-                echo "p.appendChild(pText);";
-
-                // Add tags to div
-                echo "consentDiv.appendChild(h4);";
-                echo "consentDiv.appendChild(p);";
-            }
-            echo "</script>";
-        mysqli_close($db);
-
-        }
+        }*/
     ?>
 
     <?php
-    //if (isset($_POST["header"]) && isset($_POST["body"])) {
-        // isset vs. empty()..
-        //echo $_POST["title"];
-        /*echo $_POST["sectionNumber"];
-        echo "<br>";
-        echo $_POST["header"];
-        echo "<br>";
-        echo $_POST["body"];*/
-        //echo "<p>Test run<p>";
-    //}
-
-    $sectionNumber = 0;
-    $header = "";
-    $body = "";
+    $consentHTML = "";
     $ok = true;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["header"]) && isset($_POST["body"])) {
-        // Check if title empty
-        /*if (empty($_POST["sectionNumber"])) {
-            // error
-            $ok = false;
-        }
-        else {
-            $sectionNumber = test_input($_POST["sectionNumber"]);
-        }*/
+    // If save is pressed..
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save'])) {
 
-        // Check if header1 empty
-        if (empty($_POST["header"])) {
-            // error
-            $ok = false;
-        }
-        else {
-            $header = test_input($_POST["header"]);
-        }
+        // Testing
+        echo "<script type=\"text/javascript\">";
+        echo "console.log('Save pressed');";
+        echo "</script>";
 
-        // Check if body1 empty
-        if (empty($_POST["body"])) {
+        // Check if empty
+        if (empty($_POST["consentFormHTML"])) {
             // error
             $ok = false;
         }
         else {
-            $body = test_input($_POST["body"]);
+            //$consentHTML = test_input($_POST["consentFormHTML"]);
+            $consentHTML = $_POST["consentFormHTML"];
+            echo "<script type=\"text/javascript\">";
+            printf("console.log('%s');", $consentHTML);
+            echo "</script>";
         }
 
         // Update database
         if($ok) {
-            /*$sql = sprintf("UPDATE ConsentForm SET Title='%s', Header1='%s', Body1='%s'",
-              mysqli_real_escape_string($db, $title),
-              mysqli_real_escape_string($db, $header1),
-              mysqli_real_escape_string($db, $body1));*/
             $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_data']);
 
             if (!$db)
@@ -296,22 +210,36 @@ include('../db/db.php');
                 die('Could not connect: ' . mysqli_error($db). "\n\nHave you run the install.php script yet?");
             }
 
-            $sql = sprintf("INSERT INTO consentForm (sectionNumber, header, body) VALUES ('%u', '%s', '%s')", $sectionNumber, $header, $body);
+            // Drop previous entries
+            mysqli_query($db, "TRUNCATE TABLE consentForm;");
 
-            // $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-            // VALUES ('John', 'Doe', 'john@example.com')";
+            $sql = sprintf("INSERT INTO consentForm (html) VALUES ('%s')", $consentHTML);
 
             mysqli_query($db, $sql);
-
-            //echo "<p>Form submitted<p>"; // for testing
 
             // Close connection to database
             mysqli_close($db);
 
-            /*// Refresh the page to update results
+            // Refresh the page to update results..
+
+            // Notify user of update
             echo "<script type=\"text/javascript\">";
-            echo "window.location.reload();";
-            echo "</script>";*/
+            echo "var alert = document.getElementById(\"consentUpdateAlert\");";
+            echo "while (alert.hasChildNodes()) {
+                alert.removeChild(alert.lastChild);
+            }";
+            echo "var div = document.createElement(\"div\");";
+            echo "div.setAttribute(\"class\", \"alert alert-success\");";
+            echo "var strongTag = document.createElement(\"strong\");";
+            echo "var strongText = document.createTextNode(\"Success: \");";
+            echo "strongTag.appendChild(strongText);";
+            echo "var divText = document.createTextNode(\"Form updated. Please refresh page to see results.\");";
+            echo "div.appendChild(strongTag);";
+            echo "div.appendChild(divText);";
+            echo "alert.appendChild(div);";
+            echo "</script>";
+
+
         }
     }
 

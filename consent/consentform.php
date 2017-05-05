@@ -73,6 +73,7 @@ include('../db/db.php');
 </html>
 
 <?php
+    /*
     // Grab current consent form
     $sql = 'SELECT * FROM consentForm';
     $result = mysqli_query($db, $sql);
@@ -96,5 +97,22 @@ include('../db/db.php');
     echo "</script>";
 
     mysqli_close($db);
+    */
 
+?>
+
+<?php
+    /// Grab current consent form
+    $sql = 'SELECT * FROM consentForm';
+    $result = mysqli_query($db, $sql);
+
+    echo "<script type=\"text/javascript\">";
+    // Grab string from database and put into consent form div
+    echo "var storedConsentDiv = document.getElementById(\"databaseConsentForm\");";
+    foreach($result as $row) {
+        printf("storedConsentDiv.innerHTML = '%s';", $row['html']);
+    }
+    echo "</script>";
+
+    mysqli_close($db);
 ?>
